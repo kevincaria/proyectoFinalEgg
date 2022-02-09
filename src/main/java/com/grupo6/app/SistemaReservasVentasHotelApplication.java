@@ -8,6 +8,8 @@ public class SistemaReservasVentasHotelApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(SistemaReservasVentasHotelApplication.class, args);
+
+		System.out.println("Prueba de repositorio rama Alexis");
 	}
 
 }
