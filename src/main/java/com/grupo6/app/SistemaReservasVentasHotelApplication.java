@@ -8,6 +8,7 @@ public class SistemaReservasVentasHotelApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(SistemaReservasVentasHotelApplication.class, args);
-	}
+	           System.out.println("PRUEBA PARTE 1 JUAN-CRUZ");
+        }
 
 }
