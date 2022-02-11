@@ -15,18 +15,18 @@ public class Reserva implements Serializable {
     private static final long serialVersionUID = 8154277958314205310L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_reserva", nullable = false)
+    @Column(name = "reserva_id", nullable = false)
     private Integer id;
 
     @NotNull(message = "Debe marcar una fecha de ingreso")
-    @Temporal(TemporalType.TIMESTAMP)
-    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
+    @Temporal(TemporalType.DATE)
+    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
     @Column(name = "fecha_ingreso", nullable = false)
     private Date fechaIngreso;
 
     @NotNull(message = "Debe marcar una fecha de egreso")
-    @Temporal(TemporalType.TIMESTAMP)
-    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
+    @Temporal(TemporalType.DATE)
+    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
     @Column(name = "fecha_salida", nullable = false)
     private Date fechaSalida;
 
@@ -34,23 +34,23 @@ public class Reserva implements Serializable {
     @Column(name = "cantidad_personas", nullable = false)
     private Integer cantidadPersonas;
 
-    @Column(name = "estado", length = 45)
-    private String estado;
+    @Column(name = "alta")
+    private Boolean alta;
 
     @ManyToOne(cascade = {CascadeType.MERGE,CascadeType.PERSIST})
-    @JoinColumn(name = "id_habitacion")
+    @JoinColumn(name = "habitacion_id")
     private Habitacion habitacion;
 
     @ManyToOne(cascade = {CascadeType.MERGE,CascadeType.PERSIST})
-    @JoinColumn(name = "id_cliente")
+    @JoinColumn(name = "cliente_id")
     private Cliente cliente;
 
     @ManyToOne(cascade = {CascadeType.MERGE,CascadeType.PERSIST})
-    @JoinColumn(name = "id_empleado")
+    @JoinColumn(name = "empleado_id")
     private Empleado empleado;
 
     @ManyToOne(cascade = {CascadeType.MERGE,CascadeType.PERSIST})
-    @JoinColumn(name = "id_pago")
+    @JoinColumn(name = "pago_id")
     private Pago pago;
 
 
