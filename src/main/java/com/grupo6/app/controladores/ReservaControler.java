@@ -1,7 +1,11 @@
 package com.grupo6.app.controladores;
 
 import com.grupo6.app.entidades.Reserva;
+<<<<<<< HEAD
 import com.grupo6.app.servicios.ReservaService;
+=======
+import com.grupo6.app.servicios.IServicioReserva;
+>>>>>>> 4d1af5b (se armo repo de habitacion, controlador, y la vista de las hab con colores por estado)
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
@@ -18,7 +22,11 @@ import java.util.List;
 @RequestMapping("/reserva")
 public class ReservaControler {
     @Autowired
+<<<<<<< HEAD
     ReservaService servicioReserva;
+=======
+    IServicioReserva servicioReserva;
+>>>>>>> 4d1af5b (se armo repo de habitacion, controlador, y la vista de las hab con colores por estado)
 
     @GetMapping("/formConsulta")
     public String consultarDisponibilidad(
