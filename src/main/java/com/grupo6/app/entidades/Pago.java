@@ -18,7 +18,7 @@ public class Pago implements Serializable {
     private static final long serialVersionUID = -7271383503006207924L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_pago", nullable = false)
+    @Column(name = "pago_id", nullable = false)
     private Integer id;
 
     @Column(name = "comprobante_img")

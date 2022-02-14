@@ -17,7 +17,7 @@ public class Habitacion implements Serializable {
     private static final long serialVersionUID = 2567821086822562978L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_habitacion", nullable = false)
+    @Column(name = "habitacion_id", nullable = false)
     private Integer id;
 
     @Column(name = "nombre", nullable = false, length = 10)
@@ -34,11 +34,11 @@ public class Habitacion implements Serializable {
     private Double precio;
 
     @ManyToOne(cascade = {CascadeType.MERGE,CascadeType.PERSIST})
-    @JoinColumn(name = "id_categoria", nullable = false)
-    private Categoria idCategoria;
+    @JoinColumn(name = "categoria_id")
+    private Categoria categoria;
 
     @ManyToOne(cascade = {CascadeType.MERGE,CascadeType.PERSIST})
-    @JoinColumn(name = "id_nivel", nullable = false)
+    @JoinColumn(name = "nivel_id")
     private Nivel idNivel;
 
     @OneToMany(mappedBy = "habitacion")
