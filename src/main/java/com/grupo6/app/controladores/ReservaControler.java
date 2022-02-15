@@ -1,7 +1,7 @@
 package com.grupo6.app.controladores;
 
 import com.grupo6.app.entidades.Reserva;
-import com.grupo6.app.servicios.IServicioReserva;
+import com.grupo6.app.servicios.ReservaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
@@ -18,7 +18,7 @@ import java.util.List;
 @RequestMapping("/reserva")
 public class ReservaControler {
     @Autowired
-    IServicioReserva servicioReserva;
+    ReservaService servicioReserva;
 
     @GetMapping("/formConsulta")
     public String consultarDisponibilidad(

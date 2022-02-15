@@ -42,7 +42,7 @@ public class HabitacionServiceImpl implements HabitacionService {
     @Override
     @Transactional(readOnly = true)
     public Habitacion buscarPorNombreHabitacion(String nombre) {
-        return habitacionRepository.findByNombreHabitacion(nombre).orElse(null);
+        return habitacionRepository.findByNombre(nombre).orElse(null);
     }
     
 }

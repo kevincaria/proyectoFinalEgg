@@ -42,7 +42,7 @@ public class HuespedServiceImpl implements HuespedService{
     @Override
     @Transactional(readOnly = true)
     public Huesped buscarPorNombreHuesped(String nombre) {
-        return huespedRepository.findByNombreHuesped(nombre).orElse(null);
+        return huespedRepository.findByNombre(nombre).orElse(null);
     }
     
 }

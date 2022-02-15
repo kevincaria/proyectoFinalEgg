@@ -42,7 +42,7 @@ public class PersonaServiceImpl implements PersonaService{
     @Override
     @Transactional(readOnly = true)
     public Persona buscarPorNombrePersona(String nombre) {
-        return personaRepository.findByNombrePersona(nombre).orElse(null);
+        return personaRepository.findByNombre(nombre).orElse(null);
     }
     
 }

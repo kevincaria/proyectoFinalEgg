@@ -42,7 +42,7 @@ public class EmpleadoServiceImpl implements EmpleadoService{
     @Override
     @Transactional(readOnly = true)
     public Empleado buscarPorNombreEmpleado(String nombre) {
-        return empleadoRepository.findByNombreEmpleado(nombre).orElse(null);
+        return empleadoRepository.findByNombre(nombre).orElse(null);
     }
     
 }

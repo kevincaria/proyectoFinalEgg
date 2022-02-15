@@ -42,7 +42,7 @@ public class ClienteServiceImpl implements ClienteService {
     @Override
     @Transactional(readOnly = true)
     public Cliente buscarPorNombreCliente(String nombre) {
-        return clienteRepository.findByNombreCliente(nombre).orElse(null);
+        return clienteRepository.findByNombre(nombre).orElse(null);
     }
     
 }

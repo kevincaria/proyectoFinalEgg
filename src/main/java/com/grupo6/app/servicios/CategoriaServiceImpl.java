@@ -42,7 +42,7 @@ public class CategoriaServiceImpl implements CategoriaService{
     @Override
     @Transactional(readOnly = true)
     public Categoria buscarPorNombreCategoria(String nombre) {
-        return categoriaRepository.findByNombreCategoria(nombre).orElse(null);
+        return categoriaRepository.findByNombre(nombre).orElse(null);
     }
     
 }

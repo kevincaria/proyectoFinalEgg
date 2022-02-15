@@ -9,5 +9,5 @@ import java.util.Optional;
 
 @Repository
 public interface NivelRepository extends JpaRepository<Nivel, Integer> {
-    Optional<Nivel> findByNombreNivel(String nombre);
+    Optional<Nivel> findByNombre(String nombre);
 }

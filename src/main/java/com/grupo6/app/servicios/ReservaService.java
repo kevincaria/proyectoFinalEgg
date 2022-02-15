@@ -3,10 +3,9 @@ package com.grupo6.app.servicios;
 import com.grupo6.app.entidades.Reserva;
 
 import java.time.LocalDate;
-import java.util.Date;
 import java.util.List;
 
-public interface IServicioReserva {
+public interface ReservaService {
 
     List<Reserva> listarReservas();
 

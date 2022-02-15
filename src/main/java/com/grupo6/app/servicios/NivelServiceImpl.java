@@ -42,7 +42,7 @@ public class NivelServiceImpl implements NivelService{
     @Override
     @Transactional(readOnly = true)
     public Nivel buscarPorNombreNivel(String nombre) {
-        return nivelRepository.findByNombreNivel(nombre).orElse(null);
+        return nivelRepository.findByNombre(nombre).orElse(null);
     }
     
 }
