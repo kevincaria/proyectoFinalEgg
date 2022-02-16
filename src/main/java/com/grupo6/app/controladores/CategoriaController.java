@@ -19,7 +19,7 @@ public class CategoriaController {
     @GetMapping("/lista")
     public String listar(Model model) {
         model.addAttribute("lista", categoriaService.listarCategorias());
-        model.addAttribute("titulo", "Lista de Categoriaes");
+        model.addAttribute("titulo", "Lista de Categorias");
         model.addAttribute("Categoria", new Categoria());
         return "categoria-lista";
     }
