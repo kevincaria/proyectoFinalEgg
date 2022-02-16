@@ -1,67 +1,64 @@
 <!DOCTYPE html>
 <html lang="en"  xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Formulario habitación</title>
-    <link rel="stylesheet" href="/static/style-form.css">
+   
 </head>
 <body>
-  <div class="contenedor">
-    <div class="encabezado ">
+  <div >
+    <div >
       <h1>Formulario de habitación</h1>
     </div>
 
-    <form th:action="@{#}" th:object="${#}" method="post" class="formulario">
-        <div class="campo">
+    <form th:action="@{#####}" th:object="${#}" method="post" >
+        <div >
           <label for="nombre">Nombre: </label>
           <input type="text" placeholder="Nombre" th:field="*{nombre}"required />
         </div>
 
-        <div class="campo">
+        <div >
              <label for="descripcion">Descripción: </label>
             <textarea name="descripcion" id="" cols="30" rows="10" placeholder="Descripción" th:field="*{descripcion}"required></textarea>
         </div>
 
-        <div class="campo">
+        <div >
             <label for="estado">Estado: </label>
-            <select class="form-select" th:field="*{#}">
+            <select  th:field="*{###}">
               <option   required></option>
             </select>
         </div>
 
-        <div class="campo">
+        <div >
             <label for="precio">Precio: </label>
             <input type="number" placeholder="Precio" th:field="*{precio}"required />
         </div>
 
-        <div class="campo">
+        <div >
             <label for="categoria">Categoria: </label>
-            <select class="form-select" th:field="*{#}">
+            <select th:field="*{####}">
               <option    required></option>
             </select>
         </div>
 
-        <div class="campo">
+        <div >
             <label for="nivel">Nivel: </label>
-            <select class="form-select" th:field="*{#}">
+            <select  th:field="*{####}">
               <option    required></option>
             </select>
         </div>
 
-        <div class="campo">
-            <label for="habitacion">Habitación: </label>
-            <select class="form-select" th:field="*{#}">
+        <div >
+            <label for="reserva">Reserva: </label>
+            <select  th:field="*{###}">
               <option    required></option>
             </select>
         </div>
 
 
-        <div class="botones">
-          <input type="submit" id="boton-enviar" value="Registrar" />
-          <p class="mensaje" id="mensaje"></p>
-        </div>
+        <button type="submit">Guardar</button>
       </form>
 
 </body>
