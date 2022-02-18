@@ -6,7 +6,7 @@ import org.springframework.stereotype.Repository;
 
 import java.util.Optional;
 
-@Repository
+
 public interface ClienteRepository extends JpaRepository<Cliente, Integer> {
-    Optional<Cliente> findByNombre(String nombre);
+
 }

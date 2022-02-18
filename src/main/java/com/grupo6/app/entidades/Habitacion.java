@@ -1,15 +1,14 @@
 package com.grupo6.app.entidades;
 
 import com.grupo6.app.enums.Estado;
+import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
-
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.List;
 
-@Getter
-@Setter
+@Data
 @Entity
 @Table(name = "habitacion")
 public class Habitacion implements Serializable {

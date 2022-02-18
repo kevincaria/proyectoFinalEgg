@@ -9,5 +9,4 @@ import com.grupo6.app.entidades.Empleado;
 
 @Repository
 public interface EmpleadoRepository extends JpaRepository<Empleado, Integer> {
-    Optional<Empleado> findByNombre(String nombre);
 }

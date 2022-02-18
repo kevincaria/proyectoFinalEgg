@@ -44,5 +44,10 @@ public class CategoriaServiceImpl implements CategoriaService{
     public Categoria buscarPorNombreCategoria(String nombre) {
         return categoriaRepository.findByNombre(nombre).orElse(null);
     }
-    
+
+    @Override
+    public List<Categoria> buscarPorCantidad(Integer cantidad) {
+        return categoriaRepository.findByCantidad(cantidad);
+    }
+
 }

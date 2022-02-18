@@ -9,5 +9,4 @@ import java.util.Optional;
 
 @Repository
 public interface PagoRepository extends JpaRepository<Pago, Integer> {
-    Optional<Pago> findByNombre(String nombre);
 }

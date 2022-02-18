@@ -15,7 +15,6 @@
 </head>
 
 <body>
-
     <!--Nav bar-->
     <ul class="nav justify-content-end">
         <li class="nav-item">
@@ -32,17 +31,14 @@
         </li>
     </ul>
 
-<!--    th:classappend="${#strings.toString(hab.estado) == 'DISPONIBLE' } ? 'bg-success':|-->
-<!--                         ${#strings.toString(hab.estado) == 'LIMPIEZA'} ? 'bg-warning : bg-danger'"-->
-
         <div class=" container mt-5">
             <div  class="row">
-                <div th:each="hab : ${listaHab}" class="col-md-3">
-                    <div class="card text-center">
+                <div th:each="hab : ${listaHab}" class="col-md-5">
+                    <div class="card text-center" style="max-width: 18rem;">
                         <div class="card-header text-white"
                              th:classappend="${#strings.toString(hab.estado) == 'DISPONIBLE' } ? 'bg-success'
                              : (${#strings.toString(hab.estado) == 'LIMPIEZA' } ? 'bg-warning'
-                             : (${#strings.toString(hab.estado) == 'OCUPADO' } ? 'bg-danger': 'bg-secondary'))">
+                             : (${#strings.toString(hab.estado) == 'OCUPADO' } ? 'bg-info': 'bg-danger'))">
 
                             <div class="row aling-items-center">
                                 <div class="col">
@@ -57,7 +53,10 @@
                         </div>
                         <div class="card-footer">
                             <h5>
-                                <a href="#" class="text-success text-decoration-none">
+                                <a href="#" class="text-decoration-none"
+                                   th:classappend="${#strings.toString(hab.estado) == 'DISPONIBLE' } ? 'text-success'
+                             : (${#strings.toString(hab.estado) == 'LIMPIEZA' } ? 'text-warning'
+                             : (${#strings.toString(hab.estado) == 'OCUPADO' } ? 'text-info': 'text-danger'))">
                                     <span th:text="${hab.estado}">ESTADO</span>
                                     <i class="fas fa-edit"></i>
                                 </a>
@@ -66,7 +65,6 @@
                     </div>
                 </div>
             </div>
-
         </div>
 
         <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"

@@ -8,13 +8,9 @@ import com.grupo6.app.entidades.Reserva;
 import java.time.LocalDate;
 import java.util.List;
 
-import java.util.Optional;
-
-
-
 @Repository
 public interface ReservaRepository extends JpaRepository<Reserva, Integer> {
-    @Query("SELECT r FROM Reserva r WHERE r.fechaIngreso =:i and r.fechaSalida =:s")
-    Optional<List<Reserva>> findAllFechasIngresoSalida (@Param("i") LocalDate inicio, @Param("s") LocalDate salida);
 
+    @Query("SELECT r FROM Reserva r WHERE r.fechaIngreso =:i and r.fechaSalida =:s ")
+    List<Reserva> findAllFechasIngresoSalida (@Param("i") LocalDate inicio, @Param("s") LocalDate salida);
 }

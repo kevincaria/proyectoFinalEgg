@@ -9,5 +9,4 @@ import java.util.Optional;
 
 @Repository
 public interface HuespedRepository extends JpaRepository<Huesped, Integer> {
-    Optional<Huesped> findByNombre(String nombre);
 }

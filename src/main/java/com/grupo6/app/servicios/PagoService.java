@@ -8,5 +8,4 @@ public interface PagoService {
     public void eliminarPago(Integer id);
     public void crearPago(Pago Pago);
     public Pago findByIdPago(Integer id);
-    public Pago buscarPorNombrePago(String nombre);
 }

@@ -8,5 +8,4 @@ public interface EmpleadoService {
     public void eliminarEmpleado(Integer id);
     public void crearEmpleado(Empleado Empleado);
     public Empleado findByIdEmpleado(Integer id);
-    public Empleado buscarPorNombreEmpleado(String nombre);
 }

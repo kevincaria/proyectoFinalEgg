@@ -1,15 +1,10 @@
 package com.grupo6.app.controladores;
 
+import com.grupo6.app.entidades.Habitacion;
 import com.grupo6.app.entidades.Reserva;
-<<<<<<< HEAD
-import com.grupo6.app.servicios.IServicioReserva;
-=======
-<<<<<<< HEAD
+import com.grupo6.app.servicios.CategoriaService;
+import com.grupo6.app.servicios.HabitacionService;
 import com.grupo6.app.servicios.ReservaService;
-=======
-import com.grupo6.app.servicios.IServicioReserva;
->>>>>>> 4d1af5b (se armo repo de habitacion, controlador, y la vista de las hab con colores por estado)
->>>>>>> kevin
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
@@ -18,41 +13,73 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.time.LocalDate;
-import java.time.ZoneId;
-import java.util.Date;
+import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
+
+import static java.time.temporal.ChronoUnit.DAYS;
 
 @Controller
 @RequestMapping("/reserva")
 public class ReservaControler {
     @Autowired
-<<<<<<< HEAD
-    IServicioReserva servicioReserva;
-=======
-<<<<<<< HEAD
     ReservaService servicioReserva;
-=======
-    IServicioReserva servicioReserva;
->>>>>>> 4d1af5b (se armo repo de habitacion, controlador, y la vista de las hab con colores por estado)
->>>>>>> kevin
+
+    @Autowired
+    HabitacionService servicioHabitacion;
+
+    @Autowired
+    CategoriaService servicioCategoria;
 
     @GetMapping("/formConsulta")
     public String consultarDisponibilidad(
-            @RequestParam(required = true)@DateTimeFormat(pattern="yyyy-MM-dd") Date entrada,
-            @RequestParam(required = true)@DateTimeFormat(pattern="yyyy-MM-dd") Date salida,
-            @RequestParam(required = false) Integer adulto,
-            @RequestParam(required = false) Integer ninos)  {
+            @RequestParam(required = true) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate entrada,
+            @RequestParam(required = true) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate salida,
+            @RequestParam(required = true) Integer adulto,
+            @RequestParam(required = false) Integer ninos) {
 
-        System.out.println(entrada);
-        System.out.println(salida);
-
-        LocalDate ingreso = entrada.toInstant().atZone(ZoneId.systemDefault()).toLocalDate(); // combierte date to LocalDate
-        LocalDate egreso = salida.toInstant().atZone(ZoneId.systemDefault()).toLocalDate(); // combierte date to LocalDate
-        List<Reserva> Reservas = servicioReserva.traerTodoFechasIngresoSalida(ingreso, egreso);
-
-        for (Reserva aux : Reservas) {
-            System.out.println(aux);
+        if (ninos == null) {
+            ninos = 0;
         }
+
+        int cantPersonas = adulto + ninos;
+
+        Long cantDias = DAYS.between(entrada, salida); //calculo la cantidad de dias de las fechas ingresadas
+
+        System.out.println("La cantidad de dias es de : " + cantDias);
+
+        if (cantPersonas > 0) {
+            List<Reserva> reservas = servicioReserva.traerTodoFechasIngresoSalida(entrada, salida);
+            List<Habitacion> habitacions = servicioHabitacion.findByCategoriaCantidad(cantPersonas);
+            for (Reserva r : reservas) {
+                habitacions.remove(r.getHabitacion());
+//                System.out.println("------------------------------------------------");
+//                System.out.println("id: "+r.getId());
+//                System.out.println("cantidad : "+r.getCantidadPersonas());
+//                System.out.println("ingreso: "+r.getFechaIngreso());
+//                System.out.println("salida: "+r.getFechaSalida());
+//                System.out.println("estado: "+r.getEstado());
+//                System.out.println("empleado: "+r.getEmpleado());
+//                System.out.println("pago: "+r.getPago());
+//                System.out.println("Hab.categoria: "+r.getHabitacion().getCategoria().getNombre());
+//                System.out.println("Hab.desc: "+r.getHabitacion().getDescripcion());
+//                System.out.println("Hab.id: "+r.getHabitacion().getId());
+//                System.out.println("hab.nombre: "+r.getHabitacion().getNombre());
+//                System.out.println("------------------------------------------------");
+//
+//                }
+            }
+            System.out.println("------------------MOSTRANDO HABITACIONES----------------");
+            for (Habitacion h : habitacions) {
+                System.out.println("Hab nombre: " + h.getNombre());
+                System.out.println(h.getDescripcion());
+                System.out.println(h.getCategoria().getNombre());
+                System.out.println("------------------------------------------------");
+            }
+
+        }
+
+
 
         return "index";
     }

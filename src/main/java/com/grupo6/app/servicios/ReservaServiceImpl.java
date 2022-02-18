@@ -39,8 +39,10 @@ public class ReservaServiceImpl implements ReservaService {
         reservaRepository.delete(buscarReservaPorId(idReserva));
     }
 
+    @Transactional(readOnly = true)
     @Override
     public List<Reserva> traerTodoFechasIngresoSalida(LocalDate ingreso, LocalDate salida) {
-        return reservaRepository.findAllFechasIngresoSalida(ingreso,salida).orElse(null);
+        return reservaRepository.findAllFechasIngresoSalida(ingreso,salida);
     }
+
 }
