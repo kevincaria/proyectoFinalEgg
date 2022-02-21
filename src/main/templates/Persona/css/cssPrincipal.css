@@ -1,0 +1,25 @@
+.fondo{
+    background-image: url(./imagenes/Habitacion-hotel-eco-Samadhi.png);
+    background-repeat: no-repeat;
+}
+.formularioHotel{
+    color: aqua;
+    align-items: center;
+    text-align: center;
+    padding: 10cm;
+}
+.divLista{
+    align-items: center;
+    box-sizing: content-box;
+    padding: 5px;
+}
+.sobreNostros{
+    padding-right: 75%;
+    text-align: center;
+    float: right;
+}
+.sobreNosotrosp{
+    float: right;
+    align-items: center;
+    padding-left: 5cm;
+}
