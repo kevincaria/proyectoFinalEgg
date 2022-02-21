@@ -21,20 +21,54 @@
             <a class="nav-link active" aria-current="page" href="#" id="letras">Volver</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="#" id="letras">Ver huespedes</a>
-        </li>
-        <li class="nav-item">
+            <a class="nav-link" href="#"> <button id="modal" type="button" class="btn btn-primary"
+                    data-bs-toggle="modal" data-bs-target="#exampleModal">
+                    Ver huespedes
+                </button>
 
-            <a class="nav-link" href="#" id="letras">Ver habitaciones ocupadas</a>
+                <!-- Modal -->
+                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                    aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Huespedes</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <table>
+                                    <thead>
+                                      <tr>
+                                        <th>Id</th>
+                                        <th>Persona</th>
+                                        <th>Reserva</th>
+                                      </tr>
+                                    </thead>
+                                    <tbody>
+                                      <tr th:each="cliente : ${   *********   }">
+                                        <td th:text="${cliente.id}"></td>
+                              
+                                        <td
+                                          th:text="${cliente.persona} == null ? 'no tiene' : ${cliente.persona.nombre} "
+                                        ></td>
+                                        <td
+                                          th:text="${cliente.cliente} == null ? 'no tiene' : ${cliente.reserva.nombre}"
+                                        ></td>
+                                      </tr>
+                                    </tbody>
+                                  </table>
+                                </body>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </a>
         </li>
-        <li class="nav-item">
 
-            <a class="nav-link" href="#" id="letras">Ver habitaciones disponibles</a>
-        </li>
-        <li class="nav-item">
-
-            <a class="nav-link" href="#" id="letras">Ver estado de huesped</a>
-        </li>
         <li class="nav-item">
 
             <a class="nav-link" href="#" id="letras">Ver empleados</a>
@@ -44,37 +78,39 @@
 
     <div class="fondo">
         <div>
-            <header><h1>Huesped </h1></header>
+            <header>
+                <h1>Huesped </h1>
+            </header>
         </div>
         <form method="post" class="formularioHotel">
             <div>
                 <label for="nombre">Nombre: </label>
-                <input type="text" placeholder="Nombre" required />
+                <input type="text" required />
             </div>
 
             <div>
                 <label for="apellido">Apellido: </label>
-                <input type="text" placeholder="Apellido" required />
+                <input type="text" required />
             </div>
 
             <div>
                 <label for="dni">Dni: </label>
-                <input type="text" placeholder="Dni" required />
+                <input type="text" required />
             </div>
 
             <div>
                 <label for="direccion">Dirección: </label>
-                <input type="text" placeholder="Dirección" required />
+                <input type="text" required />
             </div>
 
             <div>
                 <label for="tel">Teléfono: </label>
-                <input type="text" placeholder="telefono" required />
+                <input type="text" required />
             </div>
 
             <div>
                 <label for="mail">Correo electrónico: </label>
-                <input type="text" placeholder="Correo electrónico" required />
+                <input type="text" required />
             </div>
 
             <div>
@@ -83,7 +119,8 @@
             </div>
 
             <div>
-                <input type="submit" value="Registrar" />
+
+                <button type="submit" class="btn btn-info" id="boton">Registrar</button>
             </div>
         </form>
     </div>
