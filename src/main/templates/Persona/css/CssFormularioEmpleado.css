@@ -59,29 +59,31 @@ header span{
     font-size: 20px;
     outline: none;
 }
-#boton{
-    padding: 25px;
+.boton{
+    padding: 10px;
     border: none;   
     background-color: rgb(6,179, 231);
     color: white;
-    font-size: small;
+    font-size: 20px;
     cursor: pointer;
 }
 #select{
     padding: 10px;
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-    color: rgb(6,179, 231) ;
-    background-color:  rgb(6,179, 231);
+    color: rgb(6,179, 231);
 }
-#opcion{
+#boton{
     padding: 10px;
-    color:  rgb(6,179, 231);
-    background-color: #03045E;
-    
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    border: none;   
+    background-color: rgb(6,179, 231);
+    color: white;
+    font-size: 20px;
+    cursor: pointer;
 }
-.select{
-    padding: 10px;
-    color:  rgb(6,179, 231);
+#modal{
     background-color: #03045E;
+    margin-bottom: 0%;
+    color: #CAF0F8;
+    border: none;
 }
-

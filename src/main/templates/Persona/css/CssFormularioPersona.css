@@ -8,13 +8,13 @@ body{
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 }
 #navBar{
-    background-color: rgb(6,179, 231);
+    background-color: #03045E;
     color: white;
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
     
 }
 #letras{
-    color: white;
+    color: #CAF0F8;
 }
 .fondo{
     background-color: FFF;
@@ -30,11 +30,12 @@ header{
     width: 100%;
     background-color: white;
     overflow: hidden;
+    font-size: small;
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
     color:rgb(6,179, 231);
 }
 header span{
-    font-size: 100px;
+    font-size: 50px;
     display: block;
     padding: 8px;
 }
@@ -66,5 +67,33 @@ header span{
     color: white;
     font-size: 20px;
     cursor: pointer;
-
+}
+#select{
+    padding: 10px;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    color: rgb(6,179, 231);
+}
+#boton{
+    padding: 10px;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    border: none;   
+    background-color: rgb(6,179, 231);
+    color: white;
+    font-size: 20px;
+    cursor: pointer;
+}
+#textarea{
+    border-top-width: 10px;
+    border-right-width: 1em;
+    border-bottom-width: thick;
+    border-left-width: thin;
+}
+#modal{
+    background-color: #03045E;
+    margin-bottom: 0%;
+    color: #CAF0F8;
+    border: none;
+}
+#claseModal{
+    box-sizing: 100%;
 }
