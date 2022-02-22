@@ -58,6 +58,45 @@
         </form>
     </div>
 
+    <div class="conteiner">
+        <table
+                th:if="${habDisponibles != null}" class="table table-dark table-hover">
+            <thead>
+            <tr>
+                <th>#</th>
+                <th>Id</th>
+                <th>Nombre</th>
+                <th>Descripcion</th>
+                <th>Estado</th>
+                <th>Precio</th>
+                <th>Categoria</th>
+                <th>Nivel</th>
+                <th>Reservar</th>
+                <th>Edicion</th>
+                <th>Eliminacion</th>
+
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="hab, contador : ${habDisponibles}">
+                <td th:text="${contador.count}"></td>
+                <td th:text="${hab.id}"></td>
+                <td th:text="${hab.nombre}"></td>
+                <td th:text="${hab.descripcion}"></td>
+                <td th:text="${hab.estado}"></td>
+                <td th:text="${hab.precio}"></td>
+                <td th:text="${hab.categoria.nombre}"></td>
+                <td th:text="${hab.nivel.nombre}"></td>
+
+                <td><a class="btn btn-primary" th:href="@{/reserva/reservar/} + ${hab.id} +entrada+salida ">Reservar</a></td>
+                <td><a class="btn btn-primary" th:href="@{/habitacion/editar/} + ${hab.id}">Editar</a></td>
+                <td><a class="btn btn-danger" th:href="@{/habitacion/eliminar/} + ${hab.id}">Eliminar</a></td>
+            </tr>
+            </tbody>
+        </table>
+
+    </div>
+
 
     <!--Detalles de la pagina-->
     <div>

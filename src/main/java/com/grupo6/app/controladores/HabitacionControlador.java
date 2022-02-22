@@ -17,6 +17,7 @@ public class HabitacionControlador {
     @GetMapping("/listar")
     public String listarHabitaciones(Model model){
 
+        model.addAttribute("titulo","Lista de Reservas");
         model.addAttribute("listaHab", habitacionService.listarHabitaciones());
 
         return "habitaciones-listar";

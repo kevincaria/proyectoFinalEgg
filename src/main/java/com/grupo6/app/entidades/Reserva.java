@@ -27,8 +27,8 @@ public class Reserva implements Serializable {
     @Column(name = "cantidad_personas", nullable = false)
     private Integer cantidadPersonas;
 
-    @Column(name = "estado", length = 45)
-    private String estado;
+    @Column(name = "alta")
+    private Boolean alta;
 
     @ManyToOne(cascade = {CascadeType.MERGE,CascadeType.PERSIST})
     @JoinColumn(name = "id_habitacion")
@@ -78,12 +78,12 @@ public class Reserva implements Serializable {
         this.cantidadPersonas = cantidadPersonas;
     }
 
-    public String getEstado() {
-        return estado;
+    public Boolean getAlta() {
+        return alta;
     }
 
-    public void setEstado(String estado) {
-        this.estado = estado;
+    public void setAlta(Boolean alta) {
+        this.alta = alta;
     }
 
     public Habitacion getHabitacion() {
@@ -125,7 +125,7 @@ public class Reserva implements Serializable {
                 ", fechaIngreso=" + fechaIngreso +
                 ", fechaSalida=" + fechaSalida +
                 ", cantidadPersonas=" + cantidadPersonas +
-                ", estado='" + estado + '\'' +
+                ", alta='" + alta + '\'' +
                 ", habitacion=" + habitacion +
                 ", cliente=" + cliente +
                 ", empleado=" + empleado +
