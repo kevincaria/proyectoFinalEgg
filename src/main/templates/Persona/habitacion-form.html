@@ -133,19 +133,20 @@
 
     <form th:fragment="habitacion-form" th:action="@{/habitacion/crear}" th:object="${Habitacion}" method="post" class="formularioHotel">
       <div>
-        <label for="nombre">Nombre: </label>
-        <input type="text" placeholder="Nombre" th:field="*{nombre}" required />
+        <input type="hidden" th:field="*{id}"/>
+        <label for="nombre" >Nombre: </label>
+        <input type="text" placeholder="Nombre" th:field="*{nombre}" id="nombre" required />
       </div>
 
       <div class="textarea">
         <label for="descripcion">Descripción: </label>
         <textarea name="descripcion" id="" cols="30" rows="10" placeholder="Descripción" th:field="*{descripcion}"
-          required class="textarea"></textarea>
+          id="descripcion" required class="textarea"></textarea>
       </div>
 
       <div>
         <label for="precio en dolar"></label>
-        <input type="number" placeholder="Precio en dolar" th:field="*{precio}" required />
+        <input type="number" placeholder="Precio en dolar" th:field="*{precio}" id="precio" required />
       </div>
       <div class="select">
         <select class="form-select" id="select">

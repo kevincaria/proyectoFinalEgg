@@ -43,5 +43,4 @@ public class Habitacion implements Serializable {
 
     @OneToMany(mappedBy = "habitacion")
     private List<Reserva> reserva;
-
 }
