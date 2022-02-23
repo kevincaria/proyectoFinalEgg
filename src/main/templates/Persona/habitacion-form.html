@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org">
 
 <head>
   <meta charset="UTF-8" />
@@ -131,7 +131,7 @@
       </header>
     </div>
 
-    <form th:action="@{#####}" th:object="${#}" method="post" class="formularioHotel">
+    <form th:fragment="habitacion-form" th:action="@{/habitacion/crear}" th:object="${Habitacion}" method="post" class="formularioHotel">
       <div>
         <label for="nombre">Nombre: </label>
         <input type="text" placeholder="Nombre" th:field="*{nombre}" required />
