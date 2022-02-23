@@ -32,7 +32,7 @@ public class ReservaControler {
 
     @GetMapping("/listar")
     public String listarReservas(Model model){
-
+        model.addAttribute("titulo","Listas de Reservas");
         model.addAttribute("reservas",servicioReserva.listarReservas());
         return "reserva-listar";
     }
@@ -59,7 +59,7 @@ public class ReservaControler {
             List<Reserva> reservas = servicioReserva.traerTodoFechasIngresoSalida(entrada, salida);
             List<Habitacion> habitacions = servicioHabitacion.findByCategoriaCantidad(cantPersonas);
             for (Reserva r : reservas) {
-                habitacions.remove(r.getHabitacion());;
+                habitacions.remove(r.getHabitacion());
             }
 
             if(!habitacions.isEmpty()){
