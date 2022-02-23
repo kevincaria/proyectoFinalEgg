@@ -2,6 +2,7 @@ package com.grupo6.app.controladores;
 
 import com.grupo6.app.entidades.Habitacion;
 import com.grupo6.app.entidades.Reserva;
+import com.grupo6.app.repositorios.ReservaRepository;
 import com.grupo6.app.servicios.CategoriaService;
 import com.grupo6.app.servicios.HabitacionService;
 import com.grupo6.app.servicios.ReservaService;
@@ -30,6 +31,9 @@ public class ReservaControler {
     @Autowired
     CategoriaService servicioCategoria;
 
+    @Autowired
+    ReservaRepository reservaRepository;
+
     @GetMapping("/listar")
     public String listarReservas(Model model){
         model.addAttribute("titulo","Listas de Reservas");
@@ -56,19 +60,20 @@ public class ReservaControler {
         System.out.println("La cantidad de dias es de : " + cantDias);
 
         if (cantPersonas > 0) {
-            List<Reserva> reservas = servicioReserva.traerTodoFechasIngresoSalida(entrada, salida);
-            List<Habitacion> habitacions = servicioHabitacion.findByCategoriaCantidad(cantPersonas);
-            for (Reserva r : reservas) {
-                habitacions.remove(r.getHabitacion());
-            }
+//            List<Reserva> reservas = servicioReserva.traerTodoFechasIngresoSalida(entrada, salida);
+//            List<Habitacion> habitacions = servicioHabitacion.findByCategoriaCantidad(cantPersonas);
+            List<Habitacion> hab2 = reservaRepository.findAllFechasIngresoSalida2(entrada,salida,cantPersonas);
+//            for (Reserva r : reservas) {
+//                habitacions.remove(r.getHabitacion());
+//            }
 
-            if(!habitacions.isEmpty()){
+            if(!hab2.isEmpty()){
                 Reserva reserva = new Reserva();
                 reserva.setFechaSalida(salida);
                 reserva.setFechaIngreso(entrada);
                 reserva.setCantidadPersonas(cantPersonas);
                 model.addAttribute("reserva",reserva);
-                model.addAttribute("habDisponibles",habitacions);
+                model.addAttribute("habDisponibles",hab2);
                 return "reserva-form";
             }
 
