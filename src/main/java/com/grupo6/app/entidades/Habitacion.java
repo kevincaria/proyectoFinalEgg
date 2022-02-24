@@ -39,7 +39,7 @@ public class Habitacion implements Serializable {
 
     @ManyToOne(cascade = {CascadeType.MERGE,CascadeType.PERSIST})
     @JoinColumn(name = "nivel_id")
-    private Nivel idNivel;
+    private Nivel nivel;
 
     @OneToMany(mappedBy = "habitacion")
     private List<Reserva> reserva;

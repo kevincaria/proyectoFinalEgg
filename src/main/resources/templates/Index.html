@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
@@ -11,8 +11,8 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
         crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="C:\Users\MegaTecnologia\OneDrive\Escritorio\Paginas\Hotel\static\img">
-    <link rel="stylesheet" href="../css/cssPrincipal.css">
+    <link rel="stylesheet" href="C:\Users\MegaTecnologia\OneDrive\Escritorio\Paginas\Hotel\css\imagenes">
+    <link rel="stylesheet" href="css/cssPrincipal.css">
 </head>
 
 <body>
@@ -20,23 +20,17 @@
     <!--Nav bar-->
     <ul class="nav justify-content-end">
         <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#">Active</a>
-        </li>
+            <a class="nav-link active" aria-current="page" href="#">Reservas</a>
+        </li>      
         <li class="nav-item">
-            <a class="nav-link" href="#">Link</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="#">Link</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="#">Disabled</a>
+            <a class="nav-link" href="#">Ingresar a la pagina</a>
         </li>
     </ul>
 
 
     <!-- Imagen de hotel con formulario-->
-    <div class="fondo" >
-        <form class="formularioHotel" th:action="@{/reserva/formConsulta}" method="get">
+    <div class="fondo">
+        <form class="formularioHotel">
             <div>
                 <div class="mb-3">
                     <label for="entrada">Entrada: </label>
