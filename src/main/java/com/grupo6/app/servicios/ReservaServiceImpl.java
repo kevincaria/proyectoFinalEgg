@@ -41,6 +41,6 @@ public class ReservaServiceImpl implements ReservaService {
 
     @Override
     public List<Reserva> traerTodoFechasIngresoSalida(LocalDate ingreso, LocalDate salida) {
-        return reservaRepository.findAllFechasIngresoSalida(ingreso,salida).orElse(null);
+        return reservaRepository.findAllFechasIngresoSalida(ingreso,salida);
     }
 }
