@@ -102,7 +102,7 @@ header span{
 textarea{
     resize: none;
     background-color: #FFF8F3;
-    background-image: url("/pagina-usuario/imagen/logo.png");
+    background-image: url("../../static/img/logo.png");
     background-repeat: no-repeat;
     background-position: center;
     margin-left: 50px;

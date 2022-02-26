@@ -1,6 +1,6 @@
 footer{
     background-color: #020327;
-    background-image: url("/pagina-usuario/imagen/logo.png");
+    background-image: url("../../static/img/logo.png");
     background-repeat: no-repeat;
     background-position: center;
     padding: 1.8rem;
@@ -131,5 +131,5 @@ footer a:hover{
     color: #ccc;
     /*background: #b41291;*/
     border-top: 2px solid #83A9CB;
-    background-image: url("/pagina-usuario/imagen/instagram.png");
+    background-image: url("../../static/img/fondoinstagram.png");
     }
