@@ -1,0 +1,135 @@
+footer{
+    background-color: #03045E;
+    background-image: url("imagenes/logo.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    padding: 1.8rem;
+    color: white;
+    padding-bottom: 0%;
+}
+
+footer section{
+    float: right;
+}
+
+footer p{
+    margin: 0%;
+}
+
+footer a{
+    transition: color 0.3s ease;
+    color: #CAF0F8;
+    text-decoration: none;
+}
+
+footer a:hover{
+    color: cornflowerblue;
+}
+
+/* Reset */
+.cartera, .tarjeta, .tarjeta a {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    }
+    /* Contenedor general */
+    .cartera {
+    position: relative;
+    width: 60%;
+    max-width: 500px;
+    
+    text-align: center;
+    line-height: 56px;
+    font-size: 14px;
+    font-family: sans-serif;
+    }
+    /* Cada tarjeta */
+    .tarjeta {
+    position: relative;
+    width: 100%;
+    height: 30px;
+    margin: 0 auto;
+    padding: 0;
+    text-align: left;
+
+    }
+    /* Estado normal */
+    .tarjeta a {
+    position: relative;
+    display: block;
+    top: -6px;
+    left: 50%;
+    width: 70%;
+    margin-left: -48%;
+    padding: 0 0 0 16px;
+    line-height: 32px;
+    font-weight: normal;
+    border-radius: 16px 16px 0 0;
+    text-decoration: none;
+    box-shadow: 0 -2px 2px rgba(0,0,0,.1), 0 0 20px rgba(0,0,0,.2) inset; 
+    -webkit-transition: all .2s linear;
+    -moz-transition: all .2s linear;
+    transition: all .2s linear;
+    }
+    /* Elevación de las tarjetas */
+    .tarjeta a:hover {
+    line-height: 52px;
+    top: -26px;
+    text-decoration: none;
+    }
+
+    /* Logos */
+    .tarjeta a:before { 
+    display: inline-block; *display: inline; zoom: 1;
+    width: 20px;
+    margin-right: 10px;
+    text-align: center;
+    font-family: Fontawesome;
+    font-size: 18px;
+    }
+
+    /* Sombra parte inferior */
+    .tarjeta a:after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 102%;
+    margin-left: -51%;
+    height: 2px;
+    display: block;
+    border-radius: 80px 80px 0 0 ;
+    box-shadow: 0 -2px 6px #666;
+    z-index: -1;
+    }
+
+    /* Colores Twitter */
+    .tarjeta.ttwitter a {
+    color: #ddd;
+    background-color: #01AFEC;
+    border-top: 2px solid #43CFFE;
+    }
+
+    /* Colores Google+ */
+    .tarjeta.tgoogle a {
+    color: #333;
+    background-color: #DB4A37;
+    border-top: 2px solid #E88C80;
+    color: #ccc;
+    border-top: 2px solid #333;
+    }
+
+    /* Colores Facebook */
+    .tarjeta.tfacebook a {
+    color: #ccc;
+    background: #3B559F;
+    border-top: 2px solid #6B83C9;
+    }
+
+    /* Colores Instagram */
+    .tarjeta.tinstagram a {
+    color: #ccc;
+    /*background: #b41291;*/
+    border-top: 2px solid #83A9CB;
+    background-image: url("imagenes/fondoinstagram.png");
+    }

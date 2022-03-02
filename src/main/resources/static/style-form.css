@@ -1,0 +1,45 @@
+body{  
+    /*background: radial-gradient(#ffffff, #f9fafa);*/
+    background: linear-gradient(to right, rgba(255, 254, 254, 0.5), rgba(255, 255, 255, 0.3)),url(imagenes/Library_Book_532388_1920x1080.jpg);
+    /*background-size: 100% 200%;/*Ancho Altura*/
+    background-size:cover;/*Se ajusta al div*/
+    color: black;
+    font-family: Verdana, Sans-serif;
+    font-size: 1.2em;
+  }
+
+.contenedor{
+    background-color: azure;
+    border:1px solid rgb(213, 255, 255);
+    margin: 2em auto;
+    width: 60%;
+}
+
+.encabezado{
+    background-color: rgb(217, 255, 255);
+    margin: 0%;
+    padding: 1em 1.5em;
+}
+
+.formulario{
+    background-color: rgb(179, 253, 253);
+    margin: 0%;
+    border-width: 1px solid rgb(126, 245, 245);
+    margin: 2em auto;
+    width: 75%;
+}
+
+.campo {
+    margin: 0.5em 1.5em;
+    padding: 0.5em 0;
+}
+
+.campo label {
+    display: block;
+}
+
+.formulario .botones{
+    background-color: rgb(83, 194, 194);
+    margin: 0%;
+    padding: 1em 1.5em;
+}

@@ -1,17 +1,21 @@
 <!DOCTYPE html>
-<html xmlns:th="https://www.thymeleaf.org">
+<html lang="en">
 
 <head>
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Formulario de Persona</title>
-  <link rel="stylesheet" href="../../static/css/forms/CssFormularioPersona.css">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
     crossorigin="anonymous"></script>
+
+  <link rel="stylesheet" href="../../static/css/CssReserva.css">
+  <link rel="stylesheet" href="../../static/css/IndexNavbar.css">
+  <link rel="stylesheet" href="../../static/css/IndexPie.css">
+  <link rel="stylesheet" href="../../static/css/CssFormularioPersona.css">
 </head>
 
 <body>
@@ -72,16 +76,10 @@
                       <td th:text="${persona.tel}"></td>
                       <td th:text="${persona.mail}"></td>
                       <td th:text="${persona.fechaNacimiento}"></td>
-            
-                      <td
-                        th:text="${persona.empleado} == null ? 'no tiene' : ${persona.empleado.nombre} "
-                      ></td>
-                      <td
-                        th:text="${persona.cliente} == null ? 'no tiene' : ${persona.cliente.nombre}"
-                      ></td>
-                      <td
-                        th:text="${persona.huesped} == null ? 'no tiene' : ${persona.huesped.nombre}"
-                      ></td>
+
+                      <td th:text="${persona.empleado} == null ? 'no tiene' : ${persona.empleado.nombre} "></td>
+                      <td th:text="${persona.cliente} == null ? 'no tiene' : ${persona.cliente.nombre}"></td>
+                      <td th:text="${persona.huesped} == null ? 'no tiene' : ${persona.huesped.nombre}"></td>
                     </tr>
                   </tbody>
                 </table>
@@ -145,28 +143,6 @@
           <option value="2">Empleado</option>
         </select>
         <div>
-<<<<<<< HEAD
-<<<<<<< ours
-          <label for="input">¿La persona a registrar es un empleado?</label>
-=======
-          
->>>>>>> theirs
-          <div>
-            <label for="input">si<input type="checkbox" value="first_checkbox"></label><br>
-          </div>
-          <label for="input">no</label><input type="checkbox" value="second_checkbox">no</label>
-          <div>
-            <input type="submit" value="Registrar" />
-          </div>
-        </div>
-      </div>
-  </div>
-  </form>
-<<<<<<< ours
-=======
-
->>>>>>> theirs
-=======
           <button type="submit" class="btn btn-info" id="boton">Registrar</button>
         </div>
       </div>

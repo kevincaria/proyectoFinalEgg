@@ -1,0 +1,101 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    background-color: white;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+#navBar{
+    background-color: #03045E;
+    color: white;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    align-items: center;
+}
+#letras{
+    color: #CAF0F8;
+}
+.fondo{
+    background-color: FFF;
+    width: 400px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    box-shadow: 7px, 13px, 37px;
+
+}
+header{
+    width: 100%;
+    background-color: white;
+    overflow: hidden;
+    font-size: small;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    color:rgb(6,179, 231);
+}
+header span{
+    font-size: 50px;
+    display: block;
+    padding: 8px;
+}
+.formularioHotel{
+    padding: .8rme;
+    overflow: hidden;
+    color: white;
+}
+.formularioHotel label, .formularioHotel input,.formularioHotel textarea{
+    color: rgb(6,179, 231);
+    display: block;
+    width: 100%;
+    margin-bottom: 8px;
+}
+.formularioHotel label{
+    font-weight: 700;
+}
+.formularioHotel input, .formularioHotel textarea{
+    border: none;
+    border-bottom: 2px solid  rgb(6,179, 231);
+    margin-bottom: 10px;
+    font-size: 20px;
+    outline: none;
+}
+.boton{
+    padding: 10px;
+    border: none;   
+    background-color: rgb(6,179, 231);
+    color: white;
+    font-size: 20px;
+    cursor: pointer;
+}
+#select{
+    padding: 10px;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    color: rgb(6,179, 231);
+}
+#boton{
+    padding: 10px;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    border: none;   
+    background-color: rgb(6,179, 231);
+    color: white;
+    font-size: 20px;
+    cursor: pointer;
+}
+#textarea{
+    resize: none;
+    border-top-width: 10px;
+    border-right-width: 1em;
+    border-bottom-width: thick;
+    border-left-width: thin;
+
+}
+#modal{
+    background-color: #03045E;
+    margin-bottom: 0%;
+    color: #CAF0F8;
+    border: none;
+}
+#claseModal{
+    box-sizing: 100%;
+}
