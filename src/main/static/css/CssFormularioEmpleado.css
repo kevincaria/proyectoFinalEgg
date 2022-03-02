@@ -7,6 +7,15 @@ body{
     background-color: white;
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 }
+#navBar{
+    background-color: #03045E;
+    color: white;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    align-items: center;
+}
+#letras{
+    color: #CAF0F8;
+}
 .fondo{
     background-color: FFF;
     width: 400px;
@@ -21,11 +30,13 @@ header{
     width: 100%;
     background-color: white;
     overflow: hidden;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    color:rgb(6,179, 231);
 }
 header span{
-
     font-size: 100px;
     display: block;
+    padding: 8px;
 }
 .formularioHotel{
     padding: .8rme;
@@ -33,7 +44,7 @@ header span{
     color: white;
 }
 .formularioHotel label, .formularioHotel input,.formularioHotel textarea{
-
+    color: rgb(6,179, 231);
     display: block;
     width: 100%;
     margin-bottom: 8px;
@@ -55,5 +66,24 @@ header span{
     color: white;
     font-size: 20px;
     cursor: pointer;
-
+}
+#select{
+    padding: 10px;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    color: rgb(6,179, 231);
+}
+#boton{
+    padding: 10px;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    border: none;   
+    background-color: rgb(6,179, 231);
+    color: white;
+    font-size: 20px;
+    cursor: pointer;
+}
+#modal{
+    background-color: #03045E;
+    margin-bottom: 0%;
+    color: #CAF0F8;
+    border: none;
 }

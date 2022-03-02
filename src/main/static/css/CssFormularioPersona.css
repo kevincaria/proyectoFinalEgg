@@ -11,7 +11,7 @@ body{
     background-color: #03045E;
     color: white;
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-    
+    align-items: center;
 }
 #letras{
     color: #CAF0F8;
@@ -83,10 +83,12 @@ header span{
     cursor: pointer;
 }
 #textarea{
+    resize: none;
     border-top-width: 10px;
     border-right-width: 1em;
     border-bottom-width: thick;
     border-left-width: thin;
+
 }
 #modal{
     background-color: #03045E;

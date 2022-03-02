@@ -1,4 +1,5 @@
 *{
+   
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -11,13 +12,13 @@ body{
     background-color: #03045E;
     color: white;
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-    
+    align-items: center;
 }
 #letras{
     color: #CAF0F8;
 }
 .fondo{
-    background-color: FFF;
+    
     width: 400px;
     position: absolute;
     top: 50%;
@@ -30,12 +31,11 @@ header{
     width: 100%;
     background-color: white;
     overflow: hidden;
-    font-size: small;
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
     color:rgb(6,179, 231);
 }
 header span{
-    font-size: 50px;
+    font-size: 100px;
     display: block;
     padding: 8px;
 }
@@ -60,19 +60,6 @@ header span{
     font-size: 20px;
     outline: none;
 }
-.boton{
-    padding: 10px;
-    border: none;   
-    background-color: rgb(6,179, 231);
-    color: white;
-    font-size: 20px;
-    cursor: pointer;
-}
-#select{
-    padding: 10px;
-    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-    color: rgb(6,179, 231);
-}
 #boton{
     padding: 10px;
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
@@ -82,15 +69,11 @@ header span{
     font-size: 20px;
     cursor: pointer;
 }
-#textarea{
-    border-top-width: 10px;
-    border-right-width: 1em;
-    border-bottom-width: thick;
-    border-left-width: thin;
-}
 #modal{
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
     background-color: #03045E;
     margin-bottom: 0%;
     color: #CAF0F8;
     border: none;
+    align-items:baseline;
 }
