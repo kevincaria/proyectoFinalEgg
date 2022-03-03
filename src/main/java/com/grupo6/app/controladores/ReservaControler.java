@@ -2,8 +2,7 @@ package com.grupo6.app.controladores;
 
 import com.grupo6.app.entidades.Habitacion;
 import com.grupo6.app.entidades.Reserva;
-import com.grupo6.app.repositorios.ReservaRepository;
-import com.grupo6.app.servicios.CategoriaService;
+import com.grupo6.app.errores.ErrorServicio;
 import com.grupo6.app.servicios.HabitacionService;
 import com.grupo6.app.servicios.ReservaService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,7 +13,6 @@ import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
 import static java.time.temporal.ChronoUnit.DAYS;
@@ -27,12 +25,6 @@ public class ReservaControler {
 
     @Autowired
     HabitacionService servicioHabitacion;
-
-    @Autowired
-    CategoriaService servicioCategoria;
-
-    @Autowired
-    ReservaRepository reservaRepository;
 
     @GetMapping("/listar")
     public String listarReservas(Model model){
@@ -49,34 +41,37 @@ public class ReservaControler {
             @RequestParam(required = false) Integer ninos,
             Model model) {
 
-        if (ninos == null) {
+        if(ninos == null || ninos < 0) {
             ninos = 0;
+        }
+        if(adulto == null || adulto < 0){
+            adulto = 0;
         }
 
         int cantPersonas = adulto + ninos;
+        if(cantPersonas > 0) {
 
-        Long cantDias = DAYS.between(entrada, salida); //calculo la cantidad de dias de las fechas ingresadas
-
-        System.out.println("La cantidad de dias es de : " + cantDias);
-
-        if (cantPersonas > 0) {
-//            List<Reserva> reservas = servicioReserva.traerTodoFechasIngresoSalida(entrada, salida);
-//            List<Habitacion> habitacions = servicioHabitacion.findByCategoriaCantidad(cantPersonas);
-            List<Habitacion> hab2 = reservaRepository.findAllFechasIngresoSalida2(entrada,salida,cantPersonas);
-//            for (Reserva r : reservas) {
-//                habitacions.remove(r.getHabitacion());
-//            }
-
-            if(!hab2.isEmpty()){
-                Reserva reserva = new Reserva();
-                reserva.setFechaSalida(salida);
-                reserva.setFechaIngreso(entrada);
-                reserva.setCantidadPersonas(cantPersonas);
-                model.addAttribute("reserva",reserva);
-                model.addAttribute("habDisponibles",hab2);
-                return "reserva-form";
+            Long cantDias = DAYS.between(entrada, salida); //calculo la cantidad de dias de las fechas ingresadas
+            System.out.println("La cantidad de dias es de : " + cantDias);
+            List<Habitacion> habDisponibles = new ArrayList<>();
+            try {
+                habDisponibles = servicioReserva.traerTodoFechasIngresoSalidaCantidad(entrada, salida, cantPersonas);
+                if (!habDisponibles.isEmpty()) {
+                    Reserva reserva = new Reserva();
+                    reserva.setFechaSalida(salida);
+                    reserva.setFechaIngreso(entrada);
+                    reserva.setCantidadPersonas(cantPersonas);
+                    model.addAttribute("reserva", reserva);
+                    model.addAttribute("habDisponibles", habDisponibles);
+                    return "reserva-form";
+                }
+            } catch (ErrorServicio e) {
+                model.addAttribute("error", e.getMessage());
+                return "index";
             }
 
+        }else {
+            model.addAttribute("error","Debe ingresar una cantidad de adultos y/o niños");
         }
 
         return "index";

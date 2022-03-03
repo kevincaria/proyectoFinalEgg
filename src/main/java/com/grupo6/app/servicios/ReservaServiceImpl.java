@@ -1,6 +1,8 @@
 package com.grupo6.app.servicios;
 
+import com.grupo6.app.entidades.Habitacion;
 import com.grupo6.app.entidades.Reserva;
+import com.grupo6.app.errores.ErrorServicio;
 import com.grupo6.app.repositorios.ReservaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -41,8 +43,17 @@ public class ReservaServiceImpl implements ReservaService {
 
     @Transactional(readOnly = true)
     @Override
-    public List<Reserva> traerTodoFechasIngresoSalida(LocalDate ingreso, LocalDate salida) {
-        return reservaRepository.findAllFechasIngresoSalida(ingreso,salida);
+    public List<Habitacion> traerTodoFechasIngresoSalidaCantidad(LocalDate ingreso, LocalDate salida, Integer cantidadPersonas) throws ErrorServicio {
+
+        if(ingreso.isAfter(salida) || salida.isBefore(ingreso)){
+            throw new ErrorServicio("Las fechas estan mal ingresadas verifique entrada:"+ingreso+" salida:"+salida);
+        }
+
+        if(cantidadPersonas < 0){
+            throw new ErrorServicio("No puede ingreser numero de personas negativo");
+        }
+
+        return reservaRepository.findAllFechasIngresoSalidaCantidad(ingreso,salida,cantidadPersonas);
     }
 
 }

@@ -33,7 +33,7 @@
         </li>
     </ul>
 
-
+    <p th:if="${error != null}" th:text="${error}">Error</p>
     <!-- Imagen de hotel con formulario-->
     <div class="fondo" >
         <form class="formularioHotel" th:action="@{/reserva/formConsulta}" method="get">
@@ -57,6 +57,8 @@
             <button type="submit" class="btn btn-primary">Ver precios</button>
         </form>
     </div>
+
+
 
     <div class="conteiner">
         <table
