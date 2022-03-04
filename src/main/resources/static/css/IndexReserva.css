@@ -1,4 +1,4 @@
-.imagen {
+imagen {
     height: 100%;
     width: 100%;
    }
@@ -10,6 +10,7 @@
     padding: 1.5%;
     border-color: #232327a8;
     box-shadow: 0 0 50px rgba(0,0,0,0.8);
+    border-radius: 5px;
     
 }
 
@@ -89,8 +90,8 @@ header span{
 }
 
 .modal-content {
-    background: #2d2d2d;
-    color: #fff;
+    background: #fff;
+    color: rgb(0, 0, 0);
 }
 
 /* Comentarios*/
@@ -102,7 +103,7 @@ header span{
 textarea{
     resize: none;
     background-color: #FFF8F3;
-    background-image: url("imagenes/logo.png");
+    background-image: url("../../static/img/logo.png");
     background-repeat: no-repeat;
     background-position: center;
     margin-left: 50px;
@@ -118,7 +119,7 @@ textarea::placeholder{
     background-position: 50%;
     text-align:center;
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-    color:#03045E;
+    color:#020327;
 }
 
 .posicionboton{
@@ -134,7 +135,6 @@ textarea::placeholder{
     text-transform: uppercase;
     text-rendering: optimizeLegibility;
     
-
       color: #202020;
       background-color: #2d2d2d;
       letter-spacing: .1em;
@@ -143,5 +143,38 @@ textarea::placeholder{
         2px 2px 1px #363636;
     
   }*/
+
+/*--------------------------*/
+
+/*Etapa sobre nosotros: Informacion del hotel*/
+
+.sobreNosotrosTitulo{
+    text-align:center;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    color:#fff;
+    font-size: 130%;
+    font-weight: bolder;
+    background-color: #3E497A;
+    margin-bottom: 3%;
+}
+
+.sobreNosotrosFormato{
+    text-align:justify;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    color:#020327;
+    margin: 1%;
+    margin-bottom: 2%;
+    font-size: 90%;
+}
+
+.sobreNosotrosSubtitulo{
+    text-align:center;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    color:#fff;
+    font-size: 105%;
+    font-weight: bolder;
+    background-color: #475280da;
+}
+
 
 /*--------------------------*/
