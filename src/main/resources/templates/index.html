@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
 
 <head>
   <meta charset="UTF-8" />
@@ -15,9 +15,9 @@
 
 
   
-  <link rel="stylesheet" href="../../static/css/indexNavbar.css">
-  <link rel="stylesheet" href="../../static/css/indexReserva.css" />
-  <link rel="stylesheet" href="../../static/css/indexPie.css" />
+  <link rel="stylesheet" href="../css/indexNavbar.css">
+  <link rel="stylesheet" href="../css/indexReserva.css" />
+  <link rel="stylesheet" href="../css/indexPie.css" />
   <title>Pagina principal</title>
 </head>
 
@@ -28,11 +28,11 @@
   <div class="d-flex" id="navBar">
     <nav class="nav justify-content-end">
       <div class="container-fluid">
-        <a class="navbar-brand"><img src="../../static/img/logo.png" alt="" />HotelEgg</a>
+        <a class="navbar-brand"><img src="../img/logo.png" alt="" />HotelEgg</a>
         <a class="navbar-brand" id="letras" href="#iniciosesion" role="button" data-bs-toggle="modal"
-          data-bs-target="#exampleModal1" sec:authorize="!isAuthenticated()" th:href="@{/login}">Iniciar sesión</a>
-        <a class="navbar-brand" id="letras" sec:authorize="isAuthenticated()" th:href="@{/logout}">Cerrar sesión</a>
-        <a class="navbar-brand" id="letras" sec:authorize="!isAuthenticated()" th:href="@{/Registro}">Registrarse</a>
+          data-bs-target="#exampleModal1" th:href="@{/login}">Iniciar sesión</a>
+        <a class="navbar-brand" id="letras" th:href="@{/logout}">Cerrar sesión</a>
+        <a class="navbar-brand" id="letras" th:href="@{/Registro}">Registrarse</a>
       </div>
     </nav>
   </div>
@@ -53,7 +53,7 @@
               <input type="text" placeholder="Nombre" required />
             </div>    
             <div>
-              <label for="password">Contraseña: </label>
+              <label for="password">Contraseña:</label>
               <br />
               <input type="password" placeholder="Contraseña" required />
             </div>
@@ -70,7 +70,7 @@
 
   <!--Fondo-->
   <div class="fondoimg">
-    <img class="imagen" src="../../static/img/h5.jpg" alt="" />
+    <img class="imagen" src="../img/h5.jpg" alt="" />
   </div>
 
   <!--Para hacer la reserva-->
@@ -78,35 +78,36 @@
     <header>
       <h1>Reserva Online</h1>
     </header>
-    <form class="formularioHotel" th:action="@{/}" th:object="${}" method="post">
+    <form class="formularioHotel" th:action="@{/reserva/formConsulta}"  method="get">
       <div class="datos_form">
         <div class="mb-3 d-flex">
           <div>
             <label for="entrada">Entrada: </label>
-            <input type="date" name="entrada" th:field="*{}" placeholder="dd-mm-yyyy" required />
+            <input type="date" name="entrada" placeholder="dd-mm-yyyy" required />
           </div>
 
           <div>
             <label for="salida">Salida: </label>
-            <input type="date" name="salida" th:field="*{}" placeholder="dd-mm-yyyy" required />
+            <input type="date" name="salida" placeholder="dd-mm-yyyy" required />
           </div>
         </div>
 
         <div class="mb-3 d-flex">
           <label for="adulto">Adulto(s): </label>
-          <input type="number" name="adulto" placeholder="Adulto(s)" required />
+          <input type="number" min="0" name="adulto" placeholder="Adulto(s)" required />
 
           <label for="ninos">Niño(s): </label>
-          <input type="number" name="ninos" placeholder="Niño(s)" />
+          <input type="number" min="0" name="ninos" placeholder="Niño(s)" />
         </div>
+      </div>
+      <div class="d-flex justify-content-evenly">
+        <button type="submit" class="btn btn-primary boton">
+          ¡Quiero reservar!
+        </button>
       </div>
     </form>
 
-    <div class="d-flex justify-content-evenly">
-      <button type="submit" class="btn btn-primary boton">
-        ¡Quiero reservar!
-      </button>
-    </div>
+
   </div>
 
   <!--opciones de botones-->
@@ -266,27 +267,27 @@
                       <div class="carousel-inner">
                         <div class="carousel-item active">
                           <img
-                            src="static/img/carrusel/HAB1.png"
+                            src="../img/carrusel/HAB1.png"
                             class="d-block w-100" alt="..." />
                         </div>
                         <div class="carousel-item">
                           <img
-                            src="static/img/carrusel/HAB2.png"
+                            src="../img/carrusel/HAB2.png"
                             class="d-block w-100" alt="..." />
                         </div>
                         <div class="carousel-item">
                           <img
-                            src="static/img/carrusel/HAB3.png"
+                            src="../img/carrusel/HAB3.png"
                             class="d-block w-100" alt="..." />
                         </div>
                         <div class="carousel-item">
                           <img
-                            src="static/img/carrusel/HAB4.png"
+                            src="../img/carrusel/HAB4.png"
                             class="d-block w-100" alt="..." />
                         </div>
                         <div class="carousel-item">
                           <img
-                            src="static/img/carrusel/HAB5.png"
+                            src="../img/carrusel/HAB5.png"
                             class="d-block w-100" alt="..." />
                         </div>
                       </div>
@@ -361,27 +362,27 @@
                         <div class="carousel-inner">
                           <div class="carousel-item active">
                             <img
-                              src="static/img/carrusel/fitne.png"
+                              src="../img/carrusel/fitne.png"
                               class="d-block w-100" alt="..." />
                           </div>
                           <div class="carousel-item">
                             <img
-                              src="static/img/carrusel/piscina.jpg"
+                              src="../img/carrusel/piscina.jpg"
                               class="d-block w-100" alt="..." />
                           </div>
                           <div class="carousel-item">
                             <img
-                              src="static/img/carrusel/piscina2.jpg"
+                              src="../img/carrusel/piscina2.jpg"
                               class="d-block w-100" alt="..." />
                           </div>
                           <div class="carousel-item">
                             <img
-                              src="static/img/carrusel/recepcion.png"
+                              src="../img/carrusel/recepcion.png"
                               class="d-block w-100" alt="..." />
                           </div>
                           <div class="carousel-item">
                             <img
-                              src="static/img/carrusel/Gym.png"
+                              src="../img/carrusel/Gym.png"
                               class="d-block w-100" alt="..." />
                           </div>
                         </div>

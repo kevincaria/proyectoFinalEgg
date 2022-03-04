@@ -46,6 +46,8 @@ public class ReservaControler {
         }
         if(adulto == null || adulto < 0){
             adulto = 0;
+            model.addAttribute("error", "Debe ingresear cantidad la cantidad Adultos");
+            return "index";
         }
 
         int cantPersonas = adulto + ninos;
@@ -80,7 +82,7 @@ public class ReservaControler {
     @PostMapping("/form")
     public String formulario(Reserva reserva){
 
-        System.out.println("ID HAB SELECCIONADo   "+reserva.getHabitacion().getId());
+        System.out.println("ID HAB SELECCIONADO  "+reserva.getHabitacion().getId());
         reserva.setHabitacion(servicioHabitacion.findByIdHabitacion(reserva.getHabitacion().getId()));
         servicioReserva.guardarEditarReserva(reserva);
         return "redirect:/reserva/listar";
