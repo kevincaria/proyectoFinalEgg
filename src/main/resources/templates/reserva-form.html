@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="${titulo}">titulo</title>
+</head>
+<body>
+
+
+<div class="container">
+    <form th:fragment="libro_form" th:action="@{/reserva/form}" th:object="${reserva}" method="post"
+          class="form ">
+        <input type="hidden" name="id" th:field="*{id}" class="form-control w-50"/>
+        <label for="ingreso" class="form-label">Ingreso</label>
+        <input type="text" th:field="*{fechaIngreso}" id="ingreso" class="form-control w-50"/>
+        <br/>
+        <label for="salida" class="form-label">Salida</label>
+        <input type="text" th:field="*{fechaSalida}" id="salida" class="form-control w-50"/>
+        <br/>
+        <label for="cantidadPersonas" class="form-label">Cantidad de personas</label>
+        <input type="number" min=0 th:field="*{cantidadPersonas}" id="cantidadPersonas" class="form-control w-50"/>
+        <br/>
+
+        <div th:if="${habDisponibles != null and !habDisponibles.isEmpty()}">
+            <select class="form-control" th:object="${reserva}" th:field="*{habitacion.id}">
+                <option th:each="hab : ${habDisponibles}"
+                        th:value="${hab.id}"
+                        th:text="'Hab N°'+${hab.nombre}+' Nivel: '+${hab.nivel.nombre}+' Camas: '+${hab.descripcion}"/>
+            </select>
+        </div>
+        <label for="nombre" class="form-label">Nombre</label>
+        <input type="text"  th:field="*{cliente.persona.nombre}" id="nombre" class="form-control w-50"/>
+        <br/>
+        <label for="apellido" class="form-label">Apellido</label>
+        <input type="text"  th:field="*{cliente.persona.apellido}" id="apellido" class="form-control w-50"/>
+        <br/>
+        <label for="dni" class="form-label">Dni</label>
+        <input type="text"  th:field="*{cliente.persona.dni}" id="dni" class="form-control w-50"/>
+        <br/>
+        <label for="tel" class="form-label">Tel</label>
+        <input type="text"  th:field="*{cliente.persona.tel}" id="tel" class="form-control w-50"/>
+        <br/>
+        <label for="mail" class="form-label">Mail</label>
+        <input type="email"  th:field="*{cliente.persona.mail}" id="mail" class="form-control w-50"/>
+        <br/>
+        <label for="fechaNacimiento" class="form-label">Fecha de Nacimiento</label>
+        <input type="date"  th:field="*{cliente.persona.fechaNacimiento}" id="fechaNacimiento" class="form-control w-50"/>
+        <br/>
+        <label for="direccion" class="form-label">Direccion</label>
+        <input type="text"  th:field="*{cliente.persona.direccion}" id="direccion" class="form-control w-50"/>
+        <br/>
+
+        <label class="form-label">Alta</label>
+<!--        <div class="form-check">-->
+<!--            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" th:field="*alta" th:value="false">-->
+<!--            <label class="form-check-label" for="flexRadioDefault1" >-->
+<!--                No confirmada-->
+<!--            </label>-->
+<!--        </div>-->
+<!--        <div class="form-check">-->
+<!--            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" th:field="*alta" th:value="true" checked>-->
+<!--            <label class="form-check-label" for="flexRadioDefault2">-->
+<!--                Confirmada-->
+<!--            </label>-->
+<!--        </div>-->
+<!--        <input type="text" th:field="*{alta}" id="alta" class="form-control w-50"/>-->
+<!--        <br/>  <label for="editorial" class="form-label">idEditorial</label>-->
+<!--        <input type="text" th:field="*{editorial.nombre}" id="editorial" class="form-control w-50"/>-->
+<!--        <br/>  <label for="editorial" class="form-label">idEditorial</label>-->
+<!--        <input type="text" th:field="*{editorial.nombre}" id="editorial" class="form-control w-50"/>-->
+<!--        <br/>-->
+        <button type="submit" class="btn btn-primary">Guardar</button>
+
+    </form>
+</div>
+</body>
+</html>
