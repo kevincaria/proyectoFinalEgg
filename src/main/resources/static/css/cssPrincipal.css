@@ -1,7 +1,6 @@
 .fondo{
-    background-image: url(../img/Habitacion-hotel-eco-Samadhi.png);
+    background-image: url(./imagenes/Habitacion-hotel-eco-Samadhi.png);
     background-repeat: no-repeat;
-
 }
 .formularioHotel{
     color: aqua;
@@ -12,9 +11,10 @@
 .divLista{
     align-items: center;
     box-sizing: content-box;
+    padding: 5px;
 }
 .sobreNostros{
-    padding-right: 50%;
+    padding-right: 75%;
     text-align: center;
     float: right;
 }
