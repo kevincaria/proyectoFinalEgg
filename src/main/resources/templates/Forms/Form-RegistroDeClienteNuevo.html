@@ -44,39 +44,34 @@
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                        <form method="post" class="formularioHotel">
+                        <form th:fragment="Form-Cliente" th:action="@{/cliente/crear}" th:object="${Cliente}" method="post" class="formularioHotel">
+                            <input type="hidden" th:field="*{id}" />
                             <div>
-                                <label for="nombre">Nombre: </label>
-                                <input type="text" required />
+                                <label for="input">Nombre del cliente</label>
+                                <input type="text" required th:field="*{nombre}" id="nombre">
                             </div>
-
                             <div>
-                                <label for="apellido">Apellido: </label>
-                                <input type="text" required />
+                                <label for="input">Apellido del cliente</label>
+                                <input type="text" required th:field="*{apellido}" id="apellido">
                             </div>
-
                             <div>
-                                <label for="dni">Dni: </label>
-                                <input type="text" required />
+                                <label for="input">DNI del cliente</label>
+                                <input type="text" required th:field="*{dni}" id="dni">
                             </div>
-
                             <div>
-                                <label for="direccion">Dirección: </label>
-                                <input type="text" required />
+                                <label for="input">Direccion del cliente</label>
+                                <input type="text" required th:field="*{direccion}" id="direccion">
                             </div>
-
                             <div>
-                                <label for="tel">Teléfono: </label>
-                                <input type="text" required />
+                                <label for="input">Telefono del cliente</label>
+                                <input type="text" required th:field="*{tel}" id="tel">
                             </div>
-
                             <div>
-                                <label for="mail">Correo electrónico: </label>
-                                <input type="text" required />
+                                <label for="input">Mail del cliente</label>
+                                <input type="text" required th:field="*{mail}" id="mail">
                             </div>
-
                             <div>
-                                <label for="fechaNacimiento">Fecha de nacimiento: </label>
+                                <label for="fechaNacimiento">Fecha de nacimiento del cliente </label>
                                 <input type="date" placeholder="dd-mm-yyyy" required />
                             </div>
 

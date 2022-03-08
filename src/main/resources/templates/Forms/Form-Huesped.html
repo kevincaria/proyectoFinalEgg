@@ -76,7 +76,7 @@
 
 <li class="nav-item">
 
-    <a class="nav-link" href="#" id="letras">Ver empleados</a>
+    <a class="nav-link" href="#" id="letras">Ver huespeds</a>
 </li>
 </ul>
 
@@ -87,39 +87,34 @@
             <h1>Huesped </h1>
         </header>
     </div>
-    <form method="post" class="formularioHotel">
+    <form th:fragment="Form-Huesped" th:action="@{/huesped/crear}" th:object="${Huesped}" method="post" class="formularioHotel">
+        <input type="hidden" th:field="*{id}" />
         <div>
-            <label for="nombre">Nombre: </label>
-            <input type="text" required />
+            <label for="input">Nombre del huesped</label>
+            <input type="text" required th:field="*{nombre}" id="nombre">
         </div>
-
         <div>
-            <label for="apellido">Apellido: </label>
-            <input type="text" required />
+            <label for="input">Apellido del huesped</label>
+            <input type="text" required th:field="*{apellido}" id="apellido">
         </div>
-
         <div>
-            <label for="dni">Dni: </label>
-            <input type="text" required />
+            <label for="input">DNI del huesped</label>
+            <input type="text" required th:field="*{dni}" id="dni">
         </div>
-
         <div>
-            <label for="direccion">Dirección: </label>
-            <input type="text" required />
+            <label for="input">Direccion del huesped</label>
+            <input type="text" required th:field="*{direccion}" id="direccion">
         </div>
-
         <div>
-            <label for="tel">Teléfono: </label>
-            <input type="text" required />
+            <label for="input">Telefono del huesped</label>
+            <input type="text" required th:field="*{tel}" id="tel">
         </div>
-
         <div>
-            <label for="mail">Correo electrónico: </label>
-            <input type="text" required />
+            <label for="input">Mail del huesped</label>
+            <input type="text" required th:field="*{mail}" id="mail">
         </div>
-
         <div>
-            <label for="fechaNacimiento">Fecha de nacimiento: </label>
+            <label for="fechaNacimiento">Fecha de nacimiento del huesped </label>
             <input type="date" placeholder="dd-mm-yyyy" required />
         </div>
 

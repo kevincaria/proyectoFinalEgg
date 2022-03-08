@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en"
+xmlns:th="https://www.thymeleaf.org">
 
 <head>
     <meta charset="UTF-8">
@@ -60,29 +61,45 @@
         <header>
             <h1>Formulario de empleados</h1>
         </header>
-        <form th:action="@{/}" th:object="${}" method="post" class="formularioHotel">
+        <form th:fragment="Form-Empleado" th:action="@{/empleado/crear}" th:object="${Empleado}" method="post" class="formularioHotel">
+            <input type="hidden" th:field="*{id}"/>
             <div>
                 <label for="input">Nombre del empleado</label>
-                <input type="text" required>
+                <input type="text" required th:field="*{nombre}" id="nombre">
             </div>
             <div>
                 <label for="input">Apellido del empleado</label>
-                <input type="text" required>
-            </div>
-            <div class="select">
-                <select class="form-select" id="select">
-                    <option selected th:field="*{}">Seleccione categoria empleado</option>
-                    <option value="1">Cocina</option>
-                    <option value="2">Administracion</option>
-                    <option value="3">Mantenimiento</option>
-                    <option value="4">Limpieza</option>
-                </select>
+                <input type="text" required th:field="*{apellido}" id="apellido">
             </div>
             <div>
-                <select class="form-select" id="select">
-                    <option selected th:field="*{}">Coloque disponibilidad empleado</option>
-                    <option value="1">ON</option>
-                    <option value="2">OFF</option>
+                <label for="input">DNI del empleado</label>
+                <input type="text" required th:field="*{dni}" id="dni">
+            </div>
+            <div>
+                <label for="input">Direccion del empleado</label>
+                <input type="text" required th:field="*{direccion}" id="direccion">
+            </div>
+            <div>
+                <label for="input">Telefono del empleado</label>
+                <input type="text" required th:field="*{tel}" id="tel">
+            </div>
+            <div>
+                <label for="input">Mail del empleado</label>
+                <input type="text" required th:field="*{mail}" id="mail">
+            </div>
+            <div>
+                <label for="fechaNacimiento">Fecha de nacimiento del empleado </label>
+                <input type="date" placeholder="dd-mm-yyyy" required />
+            </div>
+            <div>
+                <label for="input">Departamento del empleado</label>
+                <input type="text" required th:field="*{departamento}" id="departamento">
+            </div>
+            <div>
+                <select class="form-select" id="select" th:field="*{alta}">
+                    <option selected >Coloque disponibilidad empleado</option>
+                    <option value="true">ON</option>
+                    <option value="false">OFF</option>
                 </select>
             </div>
             <button type="submit" class="btn btn-info" id="boton">Guardar</button>
