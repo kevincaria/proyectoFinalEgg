@@ -57,11 +57,12 @@
               <br />
               <input type="password" placeholder="Contraseña" required />
             </div>
+
+            <div class="modal-footer">
+              <button type="submit" class="btn btn-primary botonpequeno">Iniciar</button>
+            </div>
           </form>
-        </div>
-        <div class="modal-footer">
-          <button type="submit" class="btn btn-primary botonpequeno">Iniciar</button>
-        </div>
+        </div> 
       </div>
     </div>
   </div>
@@ -100,13 +101,13 @@
           <input type="number" name="ninos" placeholder="Niño(s)" />
         </div>
       </div>
+      
+      <div class="d-flex justify-content-evenly">
+        <button type="submit" class="btn btn-primary boton">
+          ¡Quiero reservar!
+        </button>
+      </div>
     </form>
-
-    <div class="d-flex justify-content-evenly">
-      <button type="submit" class="btn btn-primary boton">
-        ¡Quiero reservar!
-      </button>
-    </div>
   </div>
 
   <!--opciones de botones-->
@@ -409,13 +410,69 @@
   <!--Opiniones-->
   <div class="opinion">
     <h1 class="comentario stilotitulo">Comentarios</h1>
-    <textarea name="comentario" rows="7" cols="40" placeholder="Ingrese su comentario u opinión sobre nuestro hotel."></textarea>
-    <br />
-    <button type="submit" class="btn btn-primary boton posicionboton" data-bs-dismiss="modal">
-      Comentar
-    </button>
+
+    <div class="posicion ubicacion">
+      <table class="posicion">
+        <!--<thead>
+          <tr>
+            <th>Usuario</th>
+            <th>Comentario</th>
+          </tr>
+        </thead>-->
+        <tbody>
+          <tr>
+            <td class="estiloComentarioUsuario">Cristian</td>
+            <td class="puntaje">10</td>
+            <td class="estiloComentario">Muy buena experiencia,el servicio a cuarto no se demora , la habitacion esta muy bien equipada con un baño privado 
+              y television.
+            </td>
+          </tr>
+
+          <tr>
+            <td class="estiloComentarioUsuario">Maria</td>
+            <td class="puntaje">8</td>
+            <td class="estiloComentario">Una linda estadia, el gimnasio esta bien equipado, el spa es muy relajante y la pileta techada es climatizada y 
+              se puede usar a cualquier hora del dia.
+            </td>
+          </tr>
+
+          <tr>
+            <td class="estiloComentarioUsuario">Lisandro</td>
+            <td class="puntaje">7</td>
+            <td class="estiloComentario">Comodidad y amplitud de la habitación, limpieza, ubicación, atención del personal muy cordial y profesional pero No estaba funcionando el aire acondicionado en el lugar del desayuno, estaba muy caluroso.</td>
+        </tr>
+        <tr>
+            <td class="estiloComentarioUsuario">John</td>
+            <td class="puntaje">9</td>
+            <td class="estiloComentario">¡Todo perfecto! Hermoso, impecable y lindo. La atención fenomenal pero algo que no me gusto mucho fue la ubicación. Un poco alejado del centro.</td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+
+  
+    <form  action="  " method="post">
+      <span>
+        <textarea name="comentario" rows="7" cols="50" placeholder="Ingrese su comentario u opinión sobre nuestro hotel."></textarea>
+      </span>
+      <span >
+        <label for="customRange3" class="form-label">Calificación (0-10)</label>
+        <input type="range" class="clasificacion" min="0" max="10" step="1" id="customRange3">
+      </span>
+      
+      <div>
+        
+      </div>
+        
+
+      <button type="submit" class="btn btn-primary boton posicionboton" data-bs-dismiss="modal">
+        Comentar
+      </button>
+    </form>
  
 
+   
+ 
   </div>
 
 
