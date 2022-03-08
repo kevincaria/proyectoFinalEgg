@@ -80,7 +80,13 @@ public class ReservaControler {
     }
 
     @PostMapping("/form")
-    public String formulario(Reserva reserva){
+    public String formulario(Reserva reserva, String flag){
+
+        if(flag.equals("1")){
+            reserva.setAlta(true);
+        }else {
+            reserva.setAlta(false);
+        }
 
         System.out.println("ID HAB SELECCIONADO  "+reserva.getHabitacion().getId());
         reserva.setHabitacion(servicioHabitacion.findByIdHabitacion(reserva.getHabitacion().getId()));
