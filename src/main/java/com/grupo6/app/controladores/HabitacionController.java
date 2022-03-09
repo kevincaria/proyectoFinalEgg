@@ -1,6 +1,7 @@
 package com.grupo6.app.controladores;
 
 import com.grupo6.app.entidades.Habitacion;
+import com.grupo6.app.enums.Estado;
 import com.grupo6.app.servicios.HabitacionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -19,9 +20,7 @@ public class HabitacionController {
 
     @GetMapping("/listar")
     public String listarHabitaciones(Model model){
-
         model.addAttribute("listaHab", habitacionService.listarHabitaciones());
-
         return "habitaciones-listar";
     }
 
@@ -33,8 +32,13 @@ public class HabitacionController {
     }
 
     @PostMapping("/crear")
-    public String crear(Habitacion Habitacion) {
-        habitacionService.crearHabitacion(Habitacion);
+    public String crear(Habitacion habitacion, String estado) {
+        if(estado.equals("1")){
+            habitacion.setEstado(Estado.MANTENIMIENTO);
+        }else {
+            habitacion.setEstado(Estado.DISPONIBLE);
+        }
+        habitacionService.crearHabitacion(habitacion);
         return "redirect:/habitacion/lista";
     }
 

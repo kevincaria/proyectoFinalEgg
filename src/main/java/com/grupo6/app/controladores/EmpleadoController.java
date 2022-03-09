@@ -33,7 +33,12 @@ public class EmpleadoController {
     }
 
     @PostMapping("/crear")
-    public String crear(Empleado empleado) {
+    public String crear(Empleado empleado, String flag) {
+        if(flag.equals("1")){
+            empleado.setAlta(true);
+        }else {
+            empleado.setAlta(false);
+        }
         empleadoService.crearEmpleado(empleado);
         return "redirect:/empleado/lista";
     }

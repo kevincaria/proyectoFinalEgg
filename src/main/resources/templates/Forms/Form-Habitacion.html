@@ -133,42 +133,35 @@
       </header>
     </div>
 
-    <form th:action="@{#####}" th:object="${#}" method="post" class="formularioHotel">
+    <form th:fragment="Form-Habitacion" th:action="@{habitacion/crear}" th:object="${Habitacion}" method="post" class="formularioHotel">
+      <input type="hidden" th:field="*{id}"/>
       <div>
         <label for="nombre">Nombre: </label>
-        <input type="text" placeholder="Nombre" th:field="*{nombre}" required />
+        <input type="text" placeholder="Nombre" th:field="*{nombre}" id="nombre" required />
       </div>
 
       <div class="textarea">
         <label for="descripcion">Descripción: </label>
         <textarea name="descripcion" id="" cols="30" rows="10" placeholder="Descripción" th:field="*{descripcion}"
-          required class="textarea"></textarea>
+          required class="textarea" id="descripcion"></textarea>
       </div>
 
       <div>
         <label for="precio en dolar"></label>
-        <input type="number" placeholder="Precio en dolar" th:field="*{precio}" required />
+        <input type="number" placeholder="Precio en dolar" th:field="*{precio}" id="precio" required />
       </div>
-      <div class="select">
-        <select class="form-select" id="select">
-          <option selected>Estado</option>
+      <div>
+        <label class="select">Alta</label>
+        <select class="form-control" name="flag">
+            <option value="0">Disponible</option>
+            <option value="1">Mantenimiento</option>
         </select>
-      </div>
+    </div>
       <div class="select">
-        <select class="form-select" id="select" th:field="*{###}">
+        <select class="form-select" id="select" th:field="*{categoria}">
           <option selected>Categoria</option>
         </select>
       </div>
-
-      <div>
-        <div class="select">
-          <select class="form-select" id="select" th:field="*{###}">
-            <option selected>Reserva</option>
-          </select>
-        </div>
-        </select>
-      </div>
-
 
       <button type="submit" class="btn btn-info" id="boton">Registrar</button>
     </form>
