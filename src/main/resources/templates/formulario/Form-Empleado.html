@@ -13,91 +13,99 @@ xmlns:th="https://www.thymeleaf.org">
         integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
         crossorigin="anonymous"></script>
 
-    <link rel="stylesheet" href="../../static/css/CssReserva.css">
+    <link rel="stylesheet" href="../../static/css/Reserva.css">
     <link rel="stylesheet" href="../../static/css/IndexNavbar.css">
     <link rel="stylesheet" href="../../static/css/IndexPie.css">
-    <link rel="stylesheet" href="../../static/css/CssFormularioEmpleado.css">
+    <link rel="stylesheet" href="../../static/css/MenuAdmid.css" />
+    <link rel="stylesheet" href="../../static/css/FormularioEmpleado.css">
 </head>
 
 <body>
-    <div>
-        <ul class="nav justify-content-end" id="navBar">
-            <li class="nav-item" id="letras">
-                <a class="nav-link active" aria-current="page" href="#" id="letras">Volver</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#"> <button id="modal" type="button" class="btn btn-primary"
-                        data-bs-toggle="modal" data-bs-target="#exampleModal">
-                        Ver empleados
-                    </button>
-    
-                    <!-- Modal -->
-                    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
-                        aria-hidden="true">
-                        <div class="modal-dialog">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h5 class="modal-title" id="exampleModalLabel">Empleados</h5>
-                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                        aria-label="Close"></button>
-                                </div>
-                                <div class="modal-body">
-                                    Aca van todos los empleados
-                                </div>
-                                <div class="modal-footer">
-                                    <button id ="modal" type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </a>
-            </li>
-            <li class="nav-item" id="letras">
-                <a class="nav-link" href="#" id="letras">Ir a las habitaciones</a>
-            </li>
-        </ul>    
+<!--Navbar del usuario-->
+  <div>
+    <div class="d-flex" id="navBar">
+      <nav class="nav justify-content-end">
+        <div class="container-fluid">
+         <a class="navbar-brand"><img src="../../static/img/logo.png" alt="" />HotelEgg</a>
+          <a class="navbar-brand" id="letras" href="#iniciosesion" role="button" data-bs-toggle="modal"
+           data-bs-target="#exampleModal1" sec:authorize="!isAuthenticated()" th:href="@{/login}">Iniciar sesión</a>
+          <a class="navbar-brand" id="letras" sec:authorize="isAuthenticated()" th:href="@{/logout}">Cerrar sesión</a>
+          <a class="navbar-brand" id="letras" sec:authorize="!isAuthenticated()" th:href="@{/Registro}">Registrarse</a>
+        </div>
+      </nav>
     </div>
+<!--Menu para el administrador-->
+<div class="menu">
+  <ul>
+    <li><a class="active" href="#home">Menú principal</a></li>
+    <li><a href="#about">Caja</a></li>
+    <li><a href="#about">Categoría</a></li>
+    <li><a href="#about">Cliente</a></li>
+    <li><a href="#about">Comentarios</a></li>
+    <li><a href="#about">Empleado</a></li>
+    <li><a href="#contact">Habitaciones</a></li>
+    <li><a href="#news">Huésped</a></li>
+    <li><a href="#about">Nivel</a></li>
+    <li><a href="#about">Persona</a></li>
+    <li><a href="#about">Recepción</a></li>
+    <li><a href="#about">Reserva</a></li>
+    <li><a href="#about">Usuario</a></li>
+  </ul>
+</div>
+
+  <!--Botones-->
+  <div class="posicionboton">
+    <button type="submit" class="btn btn-dark boton2" >
+      Listado empleados
+    </button>
+    <button type="submit" class="btn btn-dark boton2" >
+      Volver
+    </button>
+  </div>
 
     <div class="form">
-        <div class="titulo">
-            <h1>Registro de empleado</h1>
-        </div>
+      <header class="titulo">
+        <h1>Registro de empleado</h1>
+      </header>
 
         <form th:fragment="Form-Empleado" th:action="@{/empleado/crear}" th:object="${Empleado}" method="post" >
             <input type="hidden" th:field="*{id}"/>
             <div>
-                <input class="cajas" type="text" required th:field="*{nombre}" id="nombre" placeholder="Nombre del empleado">
+                <input class="cajas" type="text" required th:field="*{nombre}" id="nombre" placeholder="Nombre">
             </div>
             <div>
-                <input class="cajas" type="text" required th:field="*{apellido}" id="apellido" placeholder="Apellido del empleado">
+                <input class="cajas" type="text" required th:field="*{apellido}" id="apellido" placeholder="Apellido">
             </div>
             <div>
-                <input class="cajas" type="text" required th:field="*{dni}" id="dni" placeholder="DNI del empleado">
+                <input class="cajas" type="text" required th:field="*{dni}" id="dni" placeholder="DNI">
             </div>
             <div>
-                <input class="cajas" type="text" required th:field="*{direccion}" id="direccion" placeholder="Direccion del empleado">
+                <input class="cajas" type="text" required th:field="*{direccion}" id="direccion" placeholder="Direccion">
             </div>
             <div>
-                <input class="cajas" type="text" required th:field="*{tel}" id="tel" placeholder="Teléfono del empleado">
+                <input class="cajas" type="text" required th:field="*{tel}" id="tel" placeholder="Teléfono">
             </div>
             <div>
-                <input class="cajas" type="text" required th:field="*{mail}" id="mail" placeholder="Mail del empleado">
+                <input class="cajas" type="text" required th:field="*{mail}" id="mail" placeholder="Mail ">
             </div>
             <div>
-                <label for="fechaNacimiento">Fecha de nacimiento del empleado </label>
+                <label for="fechaNacimiento">Fecha de nacimiento</label>
                 <input class="cajas" type="date" placeholder="dd-mm-yyyy" required />
             </div>
             <div>
-                <input class="cajas" type="text" required th:field="*{departamento}" id="departamento" placeholder="Departamento del empleado">
+                <input class="cajas" type="text" required th:field="*{departamento}" id="departamento" placeholder="Departamento ">
             </div>
             <div>
                 <select class="form-select cajas" id="select" th:field="*{alta}">
-                    <option selected >Coloque disponibilidad empleado</option>
+                    <option selected >Coloque disponibilidad </option>
                     <option value="true">ON</option>
                     <option value="false">OFF</option>
                 </select>
             </div>
-            <button type="submit" class="btn btn-info" id="modal">Guardar</button>
+            <div class="d-flex justify-content-evenly">
+                <button type="submit" class="btn btn-info" id="modal">Guardar</button>
+            </div>
+            
         </form>
     </div>
 

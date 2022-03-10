@@ -139,6 +139,9 @@ textarea::placeholder{
 .ubicacion{
     position:static;
     margin-left: 60px;
+    position: absolute;
+    margin-left: 60px;
+    margin-top: 25px;
 }
 
 table {
@@ -181,6 +184,12 @@ table {
   width: 250px;
   padding: 0;
 }
+
+.iconoestrella{
+    width: 23px;
+}
+
+
 /*
 .stilotitulo {
     

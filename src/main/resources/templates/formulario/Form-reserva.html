@@ -9,22 +9,97 @@
     integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
     crossorigin="anonymous"></script>
     
-    <link rel="stylesheet" href="../../static/css/Css-RegistroDeClienteNuevo.css">
+    <link rel="stylesheet" href="../../static/css/IndexNavbar.css"/>
+    <link rel="stylesheet" href="../../static/css/MenuAdmid.css"/>
+    <link rel="stylesheet" href="../../static/css/IndexPie.css">
+    <link rel="stylesheet" href="../../static/css/FormularioReserva.css">
  
 
-    <title th:text="${titulo}">titulo</title>
+    <title th:text="${titulo}">Registro de reserva</title>
 </head>
 <body>
+       <!--Navbar del usuario-->
+       <div>
+        <div class="d-flex" id="navBar">
+          <nav class="nav justify-content-end">
+            <div class="container-fluid">
+             <a class="navbar-brand"><img src="../../static/img/logo.png" alt="" />HotelEgg</a>
+              <a class="navbar-brand" id="letras" href="#iniciosesion" role="button" data-bs-toggle="modal"
+               data-bs-target="#exampleModal1" sec:authorize="!isAuthenticated()" th:href="@{/login}">Iniciar sesión</a>
+              <a class="navbar-brand" id="letras" sec:authorize="isAuthenticated()" th:href="@{/logout}">Cerrar sesión</a>
+              <a class="navbar-brand" id="letras" sec:authorize="!isAuthenticated()" th:href="@{/Registro}">Registrarse</a>
+            </div>
+          </nav>
+        </div>
+   <!--Menu para el administrador-->
+<div class="menu">
+  <ul>
+    <li><a class="active" href="#home">Menú principal</a></li>
+    <li><a href="#about">Caja</a></li>
+    <li><a href="#about">Categoría</a></li>
+    <li><a href="#about">Cliente</a></li>
+    <li><a href="#about">Comentarios</a></li>
+    <li><a href="#about">Empleado</a></li>
+    <li><a href="#contact">Habitaciones</a></li>
+    <li><a href="#news">Huésped</a></li>
+    <li><a href="#about">Nivel</a></li>
+    <li><a href="#about">Persona</a></li>
+    <li><a href="#about">Recepción</a></li>
+    <li><a href="#about">Reserva</a></li>
+    <li><a href="#about">Usuario</a></li>
+  </ul>
+</div>
 
 
-<div class="container">
+<!--Modales-->
+<!-- Modal de iniciar sesion-->
+<div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header ">
+        <h5 class="modal-title" id="iniciosesion">Inicio de sesión</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form >
+          <div>
+            <label for="username">Nombre de usuario:</label>
+            <br />
+            <input type="text" placeholder="Nombre" required />
+          </div>    
+          <div>
+            <label for="password">Contraseña: </label>
+            <br />
+            <input type="password" placeholder="Contraseña" required />
+          </div>
+
+          <div class="modal-footer">
+            <button type="submit" class="btn btn-primary botonpequeno">Iniciar</button>
+          </div>
+        </form>
+      </div> 
+    </div>
+  </div>
+</div>
+    
+<!--Botones-->
+  <div class="posicionboton">
+    <button type="submit" class="btn btn-dark boton2" >
+      Listado reservas
+    </button>
+    <button type="submit" class="btn btn-dark boton2" >
+      Volver
+    </button>
+  </div>
     
 
-    <form th:fragment="libro_form" th:action="@{/reserva/form}" th:object="${reserva}" method="post"
-          class="form ">
+<div class="form">
+    <div class="titulo">
+        <h1>Registro de reserva</h1>
+    </div>
 
-        <h1 class="titulo">Registro de huesped</h1>
-    <div class="posicion">
+    <form th:fragment="libro_form" th:action="@{/reserva/form}" th:object="${reserva}" method="post">
+
         <input class="cajas" type="hidden" name="id" th:field="*{id}" class="form-control w-50"/>
         <input class="cajas" type="text" th:field="*{fechaIngreso}" id="ingreso" class="form-control w-50"  placeholder="Ingreso (dd-mm-aaaa)"/>
 
@@ -43,9 +118,6 @@
 
         <input class="cajas" type="text"  th:field="*{cliente.persona.nombre}" id="nombre" class="form-control w-50" placeholder="Nombre"/>
 
-    </div>
-        
-    <div class="posicion">
         <input class="cajas" type="text"  th:field="*{cliente.persona.apellido}" id="apellido" class="form-control w-50" placeholder="Apellido"/>
 
         <input class="cajas" type="text"  th:field="*{cliente.persona.dni}" id="dni" class="form-control w-50" placeholder="Dni"/>
@@ -59,32 +131,10 @@
 
         <input class="cajas" type="text"  th:field="*{cliente.persona.direccion}" id="direccion" class="form-control w-50" placeholder="Dirección"/>
 
-
-        <label class="form-label">Alta</label>
-       <div class="form-check">
-           <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" th:field="*alta" th:value="false">
-           <label class="form-check-label" for="flexRadioDefault1" >
-               No confirmada
-           </label>
-       </div>
-       <div class="form-check">
-           <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" th:field="*alta" th:value="true" checked>
-           <label class="form-check-label" for="flexRadioDefault2">
-               Confirmada
-           </label>
-       </div>
-       <!--
-       <input type="text" th:field="*{alta}" id="alta" class="form-control w-50"/>
-       <br/>  <label for="editorial" class="form-label">idEditorial</label>
-       <input type="text" th:field="*{editorial.nombre}" id="editorial" class="form-control w-50"/>
-       <br/>  <label for="editorial" class="form-label">idEditorial</label>
-       <input type="text" th:field="*{editorial.nombre}" id="editorial" class="form-control w-50"/>
-       -->
-    </div>
-        
-       <br/>
+       <div class="d-flex justify-content-evenly">
         <button id="modal" type="submit" class="btn btn-primary">Guardar</button>
-
+       </div>
+        
     </form>
 </div>
 </body>
