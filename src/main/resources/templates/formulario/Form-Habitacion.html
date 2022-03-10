@@ -63,50 +63,46 @@
   </div>
 
   <div class="form">
-    <div>
+    <div >
       <header>
         <h2>Formulario de habitación</h2>
       </header>
     </div>
 
-    <form th:action="@{#####}" th:object="${#}" method="post" class="formularioHotel">
-      <div>
-        <label for="nombre">Nombre: </label>
-        <input type="text" placeholder="Nombre" th:field="*{nombre}" required />
-      </div>
+    <form th:action="@{#####}" th:object="${#}" method="post">
+      
+      <input class="cajas" type="text" placeholder="Nombre" th:field="*{nombre}" required />
+      
 
       <div class="textarea">
-        <label for="descripcion">Descripción: </label>
-        <textarea name="descripcion" id="" cols="30" rows="10" placeholder="Descripción" th:field="*{descripcion}"
+        <textarea class="cajas" name="descripcion" id="" cols="30" rows="10" placeholder="Descripción" th:field="*{descripcion}"
           required class="textarea"></textarea>
       </div>
 
-      <div>
-        <label for="precio en dolar"></label>
-        <input type="number" placeholder="Precio en dolar" th:field="*{precio}" required />
-      </div>
+      <input class="cajas" type="number" placeholder="Precio en dolar" th:field="*{precio}" required />
+    
       <div class="select">
-        <select class="form-select" id="select">
+        <select class="form-select cajas" id="select">
           <option selected>Estado</option>
         </select>
       </div>
+
       <div class="select">
-        <select class="form-select" id="select" th:field="*{###}">
+        <select class="form-select cajas" id="select" th:field="*{###}">
           <option selected>Categoria</option>
         </select>
       </div>
 
-      <div>
-        <div class="select">
-          <select class="form-select" id="select" th:field="*{###}">
-            <option selected>Reserva</option>
-          </select>
-        </div>
+      <div class="select">
+        <select class="form-select cajas" id="select" th:field="*{###}">
+          <option selected>Reserva</option>
         </select>
       </div>
 
 
-      <button type="submit" class="btn btn-info" id="boton">Registrar</button>
+      <div class="d-flex justify-content-evenly">
+        <button id="modal" type="submit" class="btn btn-primary">Guardar</button>
+       </div>
     </form>
   </div>
   </div>
