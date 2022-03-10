@@ -110,7 +110,7 @@ textarea{
     background-image: url("../../static/img/logo.png");
     background-repeat: no-repeat;
     background-position: center;
-    margin-left: 349px;
+    margin-left: 480px;
     margin-top: 10px;
     border: 2.1px solid #2c68b6;
 }
@@ -138,9 +138,8 @@ textarea::placeholder{
 
 .ubicacion{
     position:static;
-    margin-left: 60px;
+    margin-left: 90px;
     position: absolute;
-    margin-left: 60px;
     margin-top: 25px;
 }
 
@@ -149,7 +148,7 @@ table {
     width: 70%;
     border-collapse: collapse;
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-    
+    margin-left: 230px;
 }
 
 .estiloComentario{
