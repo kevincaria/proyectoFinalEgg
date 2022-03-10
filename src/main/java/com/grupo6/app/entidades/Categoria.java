@@ -29,6 +29,9 @@ public class Categoria implements Serializable {
     @Column(name = "nombre", nullable = false, length = 100)
     private String nombre;
 
+    @Column(name = "cantidad", nullable = false)
+    private Integer cantidad;
+
     @OneToMany(mappedBy = "categoria")
     private List<Habitacion> habitacion;
 

@@ -39,10 +39,4 @@ public class PagoServiceImpl implements PagoService{
         return pagoRepository.findById(id).orElse(null);
     }
 
-    @Override
-    @Transactional(readOnly = true)
-    public Pago buscarPorNombrePago(String nombre) {
-        return pagoRepository.findByNombre(nombre).orElse(null);
-    }
-    
 }

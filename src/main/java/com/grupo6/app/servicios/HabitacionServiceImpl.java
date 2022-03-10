@@ -14,7 +14,7 @@ public class HabitacionServiceImpl implements HabitacionService {
 
     @Autowired
     private HabitacionRepository habitacionRepository;
-    
+
     @Override
     @Transactional(readOnly = true)
     public List<Habitacion> listarHabitaciones() {
@@ -44,5 +44,12 @@ public class HabitacionServiceImpl implements HabitacionService {
     public Habitacion buscarPorNombreHabitacion(String nombre) {
         return habitacionRepository.findByNombre(nombre).orElse(null);
     }
-    
+
+    @Transactional(readOnly = true)
+    @Override
+    public List<Habitacion> findByCategoriaCantidad(Integer cantidad) {
+        return habitacionRepository.findByCategoriaCantidad(cantidad);
+    }
+
+
 }

@@ -1,5 +1,4 @@
 package com.grupo6.app.entidades;
-
 import com.grupo6.app.enums.Estado;
 import lombok.Data;
 import javax.persistence.*;

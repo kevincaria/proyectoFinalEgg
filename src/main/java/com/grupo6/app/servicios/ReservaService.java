@@ -1,6 +1,8 @@
 package com.grupo6.app.servicios;
 
+import com.grupo6.app.entidades.Habitacion;
 import com.grupo6.app.entidades.Reserva;
+import com.grupo6.app.errores.ErrorServicio;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -15,6 +17,6 @@ public interface ReservaService {
 
     void eliminarReserva(Integer idReserva);
 
-    List<Reserva> traerTodoFechasIngresoSalida (LocalDate ingreso, LocalDate salida);
+    List<Habitacion> traerTodoFechasIngresoSalidaCantidad (LocalDate ingreso, LocalDate salida, Integer cantidadPersonas) throws ErrorServicio;
 
 }
