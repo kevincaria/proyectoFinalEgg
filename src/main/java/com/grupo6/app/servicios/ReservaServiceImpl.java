@@ -43,10 +43,6 @@ public class ReservaServiceImpl implements ReservaService {
 
     @Transactional(readOnly = true)
     @Override
-<<<<<<< HEAD
-    public List<Reserva> traerTodoFechasIngresoSalida(LocalDate ingreso, LocalDate salida) {
-        return reservaRepository.findAllFechasIngresoSalida(ingreso,salida);
-=======
     public List<Habitacion> traerTodoFechasIngresoSalidaCantidad(LocalDate ingreso, LocalDate salida, Integer cantidadPersonas) throws ErrorServicio {
 
         if(ingreso.isAfter(salida) || salida.isBefore(ingreso)){
@@ -58,7 +54,6 @@ public class ReservaServiceImpl implements ReservaService {
         }
 
         return reservaRepository.findAllFechasIngresoSalidaCantidad(ingreso,salida,cantidadPersonas);
->>>>>>> origin/alexis
     }
 
 }
