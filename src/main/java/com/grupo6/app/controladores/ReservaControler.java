@@ -94,4 +94,30 @@ public class ReservaControler {
         return "redirect:/reserva/listar";
     }
 
+    @GetMapping("/editar/{id}")
+    public String editarReserva(@PathVariable("id") Integer id, Model model){
+
+        try {
+            List<Habitacion> habDisponibles = new ArrayList<>();
+            Reserva reserva = servicioReserva.buscarReservaPorId(id);
+            model.addAttribute("reserva", reserva);
+            habDisponibles = servicioReserva.traerTodoFechasIngresoSalidaCantidad(reserva.getFechaIngreso(), reserva.getFechaSalida(), reserva.getCantidadPersonas());
+            model.addAttribute("titulo", "Editar Reserva");
+            model.addAttribute("habDisponibles", habDisponibles);
+        }catch (ErrorServicio e){
+            model.addAttribute("error",e.getMessage());
+            return "reserva-form";
+        }
+        return "reserva-form";
+    }
+
+    @GetMapping("/eliminar/{id}")
+    public String eliminarReserva (@PathVariable("id") Integer id, Model model){
+
+        servicioReserva.eliminarReserva(id);
+        model.addAttribute("msj","Se elimino la reserva id " + id);
+
+        return "redirect:/reserva/listar";
+    }
+
 }

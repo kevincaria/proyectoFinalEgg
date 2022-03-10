@@ -32,10 +32,12 @@
             <td th:text="${reserva.fechaIngreso}"></td>
             <td th:text="${reserva.fechaSalida}"></td>
             <td th:text="${reserva.cantidadPersonas}"></td>
+            <td th:text="${reserva.alta}"></td>
             <td th:text="${reserva.habitacion.nombre}"></td>
+            <td th:text="${reserva.cliente.persona.nombre}"></td>
 <!--            <td th:text="${reserva.cliente.id}"></td>-->
 <!--            <td th:text="${reserva.empleado.nombre}"></td>-->
-            <td th:text="${reserva.alta}"></td>
+
 <!--            <td th:text="${reserva.pago.pagoTotal}"></td>-->
 
             <td><a class="btn btn-primary" th:href="@{/reserva/editar/} + ${reserva.id}">Editar</a></td>
