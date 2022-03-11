@@ -10,12 +10,12 @@
     <link rel="stylesheet" href="../../static/css/Tabla.css">
     <link rel="stylesheet" href="../../static/css/MenuAdmid.css"/>
     <link rel="stylesheet" href="../../static/css/IndexNavbar.css"/>
-    <link rel="stylesheet" href="../../static/css/RegistroDeClienteNuevo.css"/>
+    <link rel="stylesheet" href="../../static/css/FormularioHuesped.css"/>
 
-    <title>Listado de Clientes</title>
+    <title>Listado de Huespedes</title>
   </head>
   <body>
-         <!--Navbar del usuario-->
+     <!--Navbar del usuario-->
   <div>
     <div class="d-flex" id="navBar">
       <nav class="nav justify-content-end">
@@ -29,23 +29,23 @@
       </nav>
     </div>
 <!--Menu para el administrador-->
-<div class="menu">
-  <ul>
-    <li><a class="active" href="#home">Menú principal</a></li>
-    <li><a href="#about">Caja</a></li>
-    <li><a href="#about">Categoría</a></li>
-    <li><a href="#about">Cliente</a></li>
-    <li><a href="#about">Comentarios</a></li>
-    <li><a href="#about">Empleado</a></li>
-    <li><a href="#contact">Habitaciones</a></li>
-    <li><a href="#news">Huésped</a></li>
-    <li><a href="#about">Nivel</a></li>
-    <li><a href="#about">Persona</a></li>
-    <li><a href="#about">Recepción</a></li>
-    <li><a href="#about">Reserva</a></li>
-    <li><a href="#about">Usuario</a></li>
-  </ul>
-</div>
+  <div class="menu">
+    <ul>
+      <li><a class="active" href="#home">Menú principal</a></li>
+      <li><a href="#about">Caja</a></li>
+      <li><a href="#about">Categoría</a></li>
+      <li><a href="#about">Cliente</a></li>
+      <li><a href="#about">Comentarios</a></li>
+      <li><a href="#about">Empleado</a></li>
+      <li><a href="#contact">Habitaciones</a></li>
+      <li><a href="#news">Huésped</a></li>
+      <li><a href="#about">Nivel</a></li>
+      <li><a href="#about">Persona</a></li>
+      <li><a href="#about">Recepción</a></li>
+      <li><a href="#about">Reserva</a></li>
+      <li><a href="#about">Usuario</a></li>
+    </ul>
+  </div>
 
   <!--Botones-->
   <div class="posicionboton">
@@ -60,29 +60,24 @@
       <thead>
         <tr>
           <th>Id</th>
-          <th>Persona</th>
           <th>Reserva</th>
-          <th>Editar</th>
-          <th>Eliminar</th>
+          <th>Persona</th>
+          <th>Género</th>
+          <th></th>
+          <th></th>
         </tr>
       </thead>
       <tbody>
-        <tr th:each="cliente : ${   *********   }">
-          <td th:text="${cliente.id}"></td>
-
-          <td
-            th:text="${cliente.persona} == null ? 'no tiene' : ${cliente.persona.nombre} "
-          ></td>
-          <td
-            th:text="${cliente.cliente} == null ? 'no tiene' : ${cliente.reserva.nombre}"
-          ></td>
-
-          <td><a class="btn btn-primary" th:href="@{/reserva/editar/} + ${reserva.id}">Editar</a></td>
-          <td><a class="btn btn-danger" th:href="@{/reserva/eliminar/} + ${reserva.id}">Eliminar</a></td>
+        <tr th:each="empleado : ${   *********   }">
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td><a class="btn btn-primary" th:href="@{/reserva/editar/} + ${reserva.id}">Editar</a></td>
+            <td><a class="btn btn-danger" th:href="@{/reserva/eliminar/} + ${reserva.id}">Eliminar</a></td>
         </tr>
       </tbody>
     </table>
   </div>
-
   </body>
 </html>

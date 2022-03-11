@@ -10,28 +10,28 @@
     <link rel="stylesheet" href="../../static/css/Tabla.css">
     <link rel="stylesheet" href="../../static/css/MenuAdmid.css"/>
     <link rel="stylesheet" href="../../static/css/IndexNavbar.css"/>
-    <link rel="stylesheet" href="../../static/css/RegistroDeClienteNuevo.css"/>
-
-    <title>Listado de Clientes</title>
+    <link rel="stylesheet" href="../../static/css/FormularioHabitacion.css"/>
+    <title>Listado de Habitaciones</title>
   </head>
   <body>
-         <!--Navbar del usuario-->
-  <div>
-    <div class="d-flex" id="navBar">
-      <nav class="nav justify-content-end">
-        <div class="container-fluid">
-         <a class="navbar-brand"><img src="../../static/img/logo.png" alt="" />HotelEgg</a>
-          <a class="navbar-brand" id="letras" href="#iniciosesion" role="button" data-bs-toggle="modal"
-           data-bs-target="#exampleModal1" sec:authorize="!isAuthenticated()" th:href="@{/login}">Iniciar sesión</a>
-          <a class="navbar-brand" id="letras" sec:authorize="isAuthenticated()" th:href="@{/logout}">Cerrar sesión</a>
-          <a class="navbar-brand" id="letras" sec:authorize="!isAuthenticated()" th:href="@{/Registro}">Registrarse</a>
-        </div>
-      </nav>
-    </div>
+    
+  <!--Navbar del usuario-->
+<div>
+  <div class="d-flex" id="navBar">
+    <nav class="nav justify-content-end">
+      <div class="container-fluid">
+        <a class="navbar-brand"><img src="../../static/img/logo.png" alt="" />HotelEgg</a>
+        <a class="navbar-brand" id="letras" href="#iniciosesion" role="button" data-bs-toggle="modal"
+          data-bs-target="#exampleModal1" sec:authorize="!isAuthenticated()" th:href="@{/login}">Iniciar sesión</a>
+        <a class="navbar-brand" id="letras" sec:authorize="isAuthenticated()" th:href="@{/logout}">Cerrar sesión</a>
+        <a class="navbar-brand" id="letras" sec:authorize="!isAuthenticated()" th:href="@{/Registro}">Registrarse</a>
+      </div>
+    </nav>
+  </div>
 <!--Menu para el administrador-->
 <div class="menu">
   <ul>
-    <li><a class="active" href="#home">Menú principal</a></li>
+    <li><a href="#home">Menú principal</a></li>
     <li><a href="#about">Caja</a></li>
     <li><a href="#about">Categoría</a></li>
     <li><a href="#about">Cliente</a></li>
@@ -47,6 +47,7 @@
   </ul>
 </div>
 
+
   <!--Botones-->
   <div class="posicionboton">
     <button type="submit" class="btn btn-dark boton2" >
@@ -55,34 +56,38 @@
   </div>
 
   <!--Tabla-->
-  <div class="posicionTabla">
-    <table>
-      <thead>
-        <tr>
-          <th>Id</th>
-          <th>Persona</th>
-          <th>Reserva</th>
-          <th>Editar</th>
-          <th>Eliminar</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr th:each="cliente : ${   *********   }">
-          <td th:text="${cliente.id}"></td>
-
-          <td
-            th:text="${cliente.persona} == null ? 'no tiene' : ${cliente.persona.nombre} "
-          ></td>
-          <td
-            th:text="${cliente.cliente} == null ? 'no tiene' : ${cliente.reserva.nombre}"
-          ></td>
-
+<div class="posicionTabla">
+  <table>
+    <thead>
+      <tr>
+        <th>Id</th>
+        <th>Nombre</th>
+        <th>Descripción</th>
+        <th>Estado</th>
+        <th>Precio</th>
+        <th>Categoría</th>
+        <th>Nivel</th>
+        <th>Reserva</th>
+        <th>Editar</th>
+        <th>Eliminar</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr th:each="empleado : ${   *********   }">
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
           <td><a class="btn btn-primary" th:href="@{/reserva/editar/} + ${reserva.id}">Editar</a></td>
           <td><a class="btn btn-danger" th:href="@{/reserva/eliminar/} + ${reserva.id}">Eliminar</a></td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-
+      </tr>
+    </tbody>
+  </table>
+</div>
+    
   </body>
 </html>

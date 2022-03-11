@@ -33,7 +33,7 @@ public class ReservaControler {
         return "reserva-listar";
     }
 
-    @GetMapping("/formConsulta")
+    @GetMapping("/formRerva")
     public String consultarDisponibilidad(
             @RequestParam(required = true) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate entrada,
             @RequestParam(required = true) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate salida,
@@ -65,7 +65,7 @@ public class ReservaControler {
                     reserva.setCantidadPersonas(cantPersonas);
                     model.addAttribute("reserva", reserva);
                     model.addAttribute("habDisponibles", habDisponibles);
-                    return "reserva-form";
+                    return "formulario/Form-reserva";
                 }
             } catch (ErrorServicio e) {
                 model.addAttribute("error", e.getMessage());
@@ -80,14 +80,13 @@ public class ReservaControler {
     }
 
     @PostMapping("/form")
-    public String formulario(Reserva reserva, String flag){
+    public String formulario(Reserva reserva, @RequestParam(required = false)String flag){
 
         if(flag.equals("1")){
             reserva.setAlta(true);
         }else {
             reserva.setAlta(false);
         }
-
         System.out.println("ID HAB SELECCIONADO  "+reserva.getHabitacion().getId());
         reserva.setHabitacion(servicioHabitacion.findByIdHabitacion(reserva.getHabitacion().getId()));
         servicioReserva.guardarEditarReserva(reserva);
@@ -106,17 +105,15 @@ public class ReservaControler {
             model.addAttribute("habDisponibles", habDisponibles);
         }catch (ErrorServicio e){
             model.addAttribute("error",e.getMessage());
-            return "reserva-form";
+            return "formulario/Form-reserva";
         }
-        return "reserva-form";
+        return "formulario/Form-reserva";
     }
 
     @GetMapping("/eliminar/{id}")
     public String eliminarReserva (@PathVariable("id") Integer id, Model model){
-
         servicioReserva.eliminarReserva(id);
         model.addAttribute("msj","Se elimino la reserva id " + id);
-
         return "redirect:/reserva/listar";
     }
 

@@ -10,12 +10,12 @@
     <link rel="stylesheet" href="../../static/css/Tabla.css">
     <link rel="stylesheet" href="../../static/css/MenuAdmid.css"/>
     <link rel="stylesheet" href="../../static/css/IndexNavbar.css"/>
-    <link rel="stylesheet" href="../../static/css/RegistroDeClienteNuevo.css"/>
+    <link rel="stylesheet" href="../../static/css/FormularioEmpleado.css"/>
 
-    <title>Listado de Clientes</title>
+    <title>Listado de Empleados</title>
   </head>
   <body>
-         <!--Navbar del usuario-->
+     <!--Navbar del usuario-->
   <div>
     <div class="d-flex" id="navBar">
       <nav class="nav justify-content-end">
@@ -60,6 +60,8 @@
       <thead>
         <tr>
           <th>Id</th>
+          <th>Departamento</th>
+          <th>Alta</th>
           <th>Persona</th>
           <th>Reserva</th>
           <th>Editar</th>
@@ -67,22 +69,17 @@
         </tr>
       </thead>
       <tbody>
-        <tr th:each="cliente : ${   *********   }">
-          <td th:text="${cliente.id}"></td>
-
-          <td
-            th:text="${cliente.persona} == null ? 'no tiene' : ${cliente.persona.nombre} "
-          ></td>
-          <td
-            th:text="${cliente.cliente} == null ? 'no tiene' : ${cliente.reserva.nombre}"
-          ></td>
-
-          <td><a class="btn btn-primary" th:href="@{/reserva/editar/} + ${reserva.id}">Editar</a></td>
-          <td><a class="btn btn-danger" th:href="@{/reserva/eliminar/} + ${reserva.id}">Eliminar</a></td>
+        <tr th:each="empleado : ${   *********   }">
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td><a class="btn btn-primary" th:href="@{/reserva/editar/} + ${reserva.id}">Editar</a></td>
+            <td><a class="btn btn-danger" th:href="@{/reserva/eliminar/} + ${reserva.id}">Eliminar</a></td>
         </tr>
       </tbody>
     </table>
   </div>
-
   </body>
 </html>
