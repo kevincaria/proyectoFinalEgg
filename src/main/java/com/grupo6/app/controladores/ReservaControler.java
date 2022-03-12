@@ -1,9 +1,11 @@
 package com.grupo6.app.controladores;
 
 import com.grupo6.app.entidades.Habitacion;
+import com.grupo6.app.entidades.Persona;
 import com.grupo6.app.entidades.Reserva;
 import com.grupo6.app.errores.ErrorServicio;
 import com.grupo6.app.servicios.HabitacionService;
+import com.grupo6.app.servicios.PersonaService;
 import com.grupo6.app.servicios.ReservaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -26,11 +28,14 @@ public class ReservaControler {
     @Autowired
     HabitacionService servicioHabitacion;
 
+    @Autowired
+    PersonaService servicioPersona;
+
     @GetMapping("/listar")
     public String listarReservas(Model model){
         model.addAttribute("titulo","Listas de Reservas");
         model.addAttribute("reservas",servicioReserva.listarReservas());
-        return "reserva-listar";
+        return "lista/reserva-lista";
     }
 
     @GetMapping("/formRerva")
@@ -80,17 +85,33 @@ public class ReservaControler {
     }
 
     @PostMapping("/form")
-    public String formulario(Reserva reserva, @RequestParam(required = false)String flag){
+    public String formulario(Reserva reserva, Model model){
 
-        if(flag.equals("1")){
-            reserva.setAlta(true);
-        }else {
+        Persona persona =servicioPersona.buscarDniPersona(reserva.getCliente().getPersona().getDni());
+        if(persona != null){
+            reserva.getCliente().setPersona(persona);
             reserva.setAlta(false);
+            reserva.setHabitacion(servicioHabitacion.findByIdHabitacion(reserva.getHabitacion().getId()));
+            servicioReserva.guardarEditarReserva(reserva);
+            return "redirect:/reserva/listar";
+        }else{
+            List<Habitacion> habDisponibles = new ArrayList<>();
+            try {
+                habDisponibles = servicioReserva.traerTodoFechasIngresoSalidaCantidad(reserva.getFechaIngreso(), reserva.getFechaSalida(), reserva.getCantidadPersonas());
+                model.addAttribute("habDisponibles", habDisponibles);
+                model.addAttribute("reserva",reserva);
+                model.addAttribute("crearCliente",true);
+                return "formulario/Form-reserva";
+            } catch (ErrorServicio e) {
+                model.addAttribute("error",e.getMessage());
+                model.addAttribute("habDisponibles", habDisponibles);
+                model.addAttribute("reserva",reserva);
+                model.addAttribute("crearCliente",true);
+                return "formulario/Form-reserva";
+            }
+
         }
-        System.out.println("ID HAB SELECCIONADO  "+reserva.getHabitacion().getId());
-        reserva.setHabitacion(servicioHabitacion.findByIdHabitacion(reserva.getHabitacion().getId()));
-        servicioReserva.guardarEditarReserva(reserva);
-        return "redirect:/reserva/listar";
+
     }
 
     @GetMapping("/editar/{id}")
