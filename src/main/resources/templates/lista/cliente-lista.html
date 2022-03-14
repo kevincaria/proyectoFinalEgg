@@ -39,18 +39,11 @@
         </tr>
       </thead>
       <tbody>
-        <tr th:each="cliente : ${   *********   }">
+        <tr th:each="cliente : ${clientes}">
           <td th:text="${cliente.id}"></td>
 
-          <td
-            th:text="${cliente.persona} == null ? 'no tiene' : ${cliente.persona.nombre} "
-          ></td>
-          <td
-            th:text="${cliente.cliente} == null ? 'no tiene' : ${cliente.reserva.nombre}"
-          ></td>
-
-          <td><a class="btn btn-primary" th:href="@{/reserva/editar/} + ${reserva.id}">Editar</a></td>
-          <td><a class="btn btn-danger" th:href="@{/reserva/eliminar/} + ${reserva.id}">Eliminar</a></td>
+          <td><a class="btn btn-primary" th:href="@{/cliente/editar/} + ${cliente.id}">Editar</a></td>
+          <td><a class="btn btn-danger" th:href="@{/cliente/eliminar/} + ${cliente.id}">Eliminar</a></td>
         </tr>
       </tbody>
     </table>

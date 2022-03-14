@@ -39,6 +39,10 @@ public class ClienteServiceImpl implements ClienteService {
         return clienteRepository.findById(id).orElse(null);
     }
 
+    @Override
+    public Cliente buscarClientePorIdPersona(Integer idPersona) {
+        return clienteRepository.findByPersonaId(idPersona).orElse(null);
+    }
 
-    
+
 }

@@ -1,5 +1,6 @@
 package com.grupo6.app.servicios;
 
+import com.grupo6.app.entidades.Categoria;
 import com.grupo6.app.entidades.Habitacion;
 import com.grupo6.app.entidades.Reserva;
 import com.grupo6.app.errores.ErrorServicio;
@@ -19,4 +20,5 @@ public interface ReservaService {
 
     List<Habitacion> traerTodoFechasIngresoSalidaCantidad (LocalDate ingreso, LocalDate salida, Integer cantidadPersonas) throws ErrorServicio;
 
+    Boolean validarReserva(LocalDate ingreso, LocalDate salida, Integer cantidadPersonas, Categoria categoria) throws ErrorServicio;
 }

@@ -11,7 +11,7 @@
     <div class="d-flex" id="navBar">
         <nav class="nav justify-content-end">
             <div class="container-fluid">
-                <a class="navbar-brand" th:href="@{/}"><img src="../img/logo.png" alt="logo" />HotelEgg</a>
+                <a class="navbar-brand" th:href="@{/}"><img src="/img/logo.png" alt="logo" />HotelEgg</a>
                 <a class="navbar-brand" id="letras" href="#iniciosesion" role="button" data-bs-toggle="modal"
                    data-bs-target="#exampleModal1"  th:href="@{/login}">Iniciar sesión</a>
                 <a class="navbar-brand"  th:href="@{/logout}">Cerrar sesión</a>
@@ -34,12 +34,12 @@
                         <div>
                             <label for="username">Nombre de usuario:</label>
                             <br />
-                            <input type="text" name="username" placeholder="Nombre" required />
+                            <input id="username" type="text" name="username" placeholder="Nombre" required />
                         </div>
                         <div>
                             <label for="password">Contraseña: </label>
                             <br />
-                            <input type="password" name="password" placeholder="Contraseña" required />
+                            <input id="password" type="password" name="password" placeholder="Contraseña" required />
                         </div>
 
                         <div class="modal-footer">

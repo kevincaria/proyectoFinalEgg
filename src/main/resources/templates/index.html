@@ -37,27 +37,30 @@
 <div class="fondo">
     <header>
         <h1>Reserva Online</h1>
+        <div th:if="${error != null}" >
+            <p th:text="${error}" ></p>
+        </div>
     </header>
-    <form class="formularioHotel" th:action="@{/reserva/formRerva}" method="get">
+    <form class="formularioHotel" th:action="@{/reserva/formReserva}" method="get">
         <div class="datos_form">
             <div class="mb-3 d-flex">
                 <div>
                     <label for="entrada">Entrada: </label>
-                    <input type="date" name="entrada" placeholder="dd-mm-yyyy" required/>
+                    <input id="entrada" type="date" name="entrada" placeholder="dd-mm-yyyy" required/>
                 </div>
 
                 <div>
                     <label for="salida">Salida: </label>
-                    <input type="date" name="salida" placeholder="dd-mm-yyyy" required/>
+                    <input id="salida" type="date" name="salida" placeholder="dd-mm-yyyy" required/>
                 </div>
             </div>
 
             <div class="mb-3 d-flex">
                 <label for="adulto">Adulto(s): </label>
-                <input type="number" min="0" name="adulto" placeholder="Adulto(s)" required/>
+                <input id="adulto" type="number" min="0" name="adulto" placeholder="Adulto(s)"/>
 
                 <label for="ninos">Niño(s): </label>
-                <input type="number" min="0" name="ninos" placeholder="Niño(s)"/>
+                <input id="ninos" type="number" min="0" name="ninos" placeholder="Niño(s)"/>
             </div>
         </div>
 

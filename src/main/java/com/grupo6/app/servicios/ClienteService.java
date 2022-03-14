@@ -5,12 +5,14 @@ import java.util.List;
 import com.grupo6.app.entidades.Cliente;
 
 public interface ClienteService {
-    public List<Cliente> listarClientes();
+     List<Cliente> listarClientes();
 
-    public void eliminarCliente(Integer id);
+     void eliminarCliente(Integer id);
 
-    public void crearCliente(Cliente Cliente);
+     void crearCliente(Cliente Cliente);
 
-    public Cliente findByIdCliente(Integer id);
+     Cliente findByIdCliente(Integer id);
+
+    Cliente buscarClientePorIdPersona(Integer idPersona);
 
 }
