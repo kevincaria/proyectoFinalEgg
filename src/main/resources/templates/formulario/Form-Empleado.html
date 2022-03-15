@@ -22,37 +22,9 @@ xmlns:th="https://www.thymeleaf.org">
 
 <body>
 <!--Navbar del usuario-->
-  <div>
-    <div class="d-flex" id="navBar">
-      <nav class="nav justify-content-end">
-        <div class="container-fluid">
-         <a class="navbar-brand"><img src="../../static/img/logo.png" alt="" />HotelEgg</a>
-          <a class="navbar-brand" id="letras" href="#iniciosesion" role="button" data-bs-toggle="modal"
-           data-bs-target="#exampleModal1" sec:authorize="!isAuthenticated()" th:href="@{/login}">Iniciar sesión</a>
-          <a class="navbar-brand" id="letras" sec:authorize="isAuthenticated()" th:href="@{/logout}">Cerrar sesión</a>
-          <a class="navbar-brand" id="letras" sec:authorize="!isAuthenticated()" th:href="@{/Registro}">Registrarse</a>
-        </div>
-      </nav>
-    </div>
+<header th:replace="layout/nav-var :: header"></header>
 <!--Menu para el administrador-->
-<div class="menu">
-  <ul>
-    <li><a class="active" href="#home">Menú principal</a></li>
-    <li><a href="#about">Caja</a></li>
-    <li><a href="#about">Categoría</a></li>
-    <li><a href="#about">Cliente</a></li>
-    <li><a href="#about">Comentarios</a></li>
-    <li><a href="#about">Empleado</a></li>
-    <li><a href="#contact">Habitaciones</a></li>
-    <li><a href="#news">Huésped</a></li>
-    <li><a href="#about">Nivel</a></li>
-    <li><a href="#about">Persona</a></li>
-    <li><a href="#about">Recepción</a></li>
-    <li><a href="#about">Reserva</a></li>
-    <li><a href="#about">Usuario</a></li>
-  </ul>
-</div>
-
+<div th:replace="layout/menu-admin :: menu-admin"></div>
   <!--Botones-->
   <div class="posicionboton">
     <button type="submit" class="btn btn-dark boton2" >

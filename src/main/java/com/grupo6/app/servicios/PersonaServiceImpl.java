@@ -23,8 +23,8 @@ public class PersonaServiceImpl implements PersonaService{
 
     @Override
     @Transactional
-    public void eliminarPersona(Integer id) {
-        personaRepository.delete(findByIdPersona(id));
+    public void eliminarDniPersona(String dni) {
+        personaRepository.delete(buscarDniPersona(dni));
     }
 
     @Override
@@ -33,16 +33,17 @@ public class PersonaServiceImpl implements PersonaService{
         personaRepository.save(persona);
     }
 
-    @Override
     @Transactional(readOnly = true)
-    public Persona findByIdPersona(Integer id) {
+    @Override
+    public Persona buscarIdPersona(Integer id) {
         return personaRepository.findById(id).orElse(null);
     }
 
-    @Override
     @Transactional(readOnly = true)
-    public Persona buscarPorNombrePersona(String nombre) {
-        return personaRepository.findByNombre(nombre).orElse(null);
+    @Override
+    public Persona buscarDniPersona(String dni) {
+        return personaRepository.findByDni(dni).orElse(null);
     }
-    
+
+
 }

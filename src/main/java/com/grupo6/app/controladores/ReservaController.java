@@ -1,9 +1,12 @@
 package com.grupo6.app.controladores;
 
 import com.grupo6.app.entidades.Habitacion;
+import com.grupo6.app.entidades.Persona;
 import com.grupo6.app.entidades.Reserva;
 import com.grupo6.app.errores.ErrorServicio;
+import com.grupo6.app.servicios.ClienteService;
 import com.grupo6.app.servicios.HabitacionService;
+import com.grupo6.app.servicios.PersonaService;
 import com.grupo6.app.servicios.ReservaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -26,14 +29,20 @@ public class ReservaController {
     @Autowired
     HabitacionService servicioHabitacion;
 
+    @Autowired
+    PersonaService servicioPersona;
+
+    @Autowired
+    ClienteService servicioCliente;
+
     @GetMapping("/listar")
     public String listarReservas(Model model){
         model.addAttribute("titulo","Listas de Reservas");
         model.addAttribute("reservas",servicioReserva.listarReservas());
-        return "reserva-listar";
+        return "lista/reserva-lista";
     }
 
-    @GetMapping("/formConsulta")
+    @GetMapping("/formReserva")
     public String consultarDisponibilidad(
             @RequestParam(required = true) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate entrada,
             @RequestParam(required = true) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate salida,
@@ -65,7 +74,7 @@ public class ReservaController {
                     reserva.setCantidadPersonas(cantPersonas);
                     model.addAttribute("reserva", reserva);
                     model.addAttribute("habDisponibles", habDisponibles);
-                    return "reserva-form";
+                    return "formulario/Form-reserva";
                 }
             } catch (ErrorServicio e) {
                 model.addAttribute("error", e.getMessage());
@@ -80,44 +89,67 @@ public class ReservaController {
     }
 
     @PostMapping("/form")
-    public String formulario(Reserva reserva, String flag){
+    public String formulario(Reserva reserva, Model model) {
 
-        if(flag.equals("1")){
-            reserva.setAlta(true);
-        }else {
-            reserva.setAlta(false);
+        try {
+            Persona persona = servicioPersona.buscarDniPersona(reserva.getCliente().getPersona().getDni());
+            if (persona != null) {
+                reserva.setCliente(servicioCliente.buscarClientePorIdPersona(persona.getId()));
+              //  reserva.getCliente().setPersona(persona);
+                reserva.setAlta(false);
+                reserva.setHabitacion(servicioHabitacion.findByIdHabitacion(reserva.getHabitacion().getId()));
+
+            } else {
+                List<Habitacion> habDisponibles = new ArrayList<>();
+                habDisponibles = servicioReserva.traerTodoFechasIngresoSalidaCantidad(reserva.getFechaIngreso(), reserva.getFechaSalida(), reserva.getCantidadPersonas());
+                model.addAttribute("habDisponibles", habDisponibles);
+                model.addAttribute("reserva", reserva);
+                model.addAttribute("Cliente", true);
+                return "formulario/Form-reserva";
+            }
+                if (servicioReserva.validarReserva(reserva.getFechaIngreso(), reserva.getFechaSalida(), reserva.getCantidadPersonas(), reserva.getHabitacion().getCategoria())) {
+
+                    servicioReserva.guardarEditarReserva(reserva);
+                    model.addAttribute("error", "holaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
+                    return "redirect:/reserva/listar";
+
+
+            }
+        } catch (ErrorServicio e) {
+
+            model.addAttribute("error", e.getMessage());
+            return "redirect:/reserva/listar";
         }
 
-        System.out.println("ID HAB SELECCIONADO  "+reserva.getHabitacion().getId());
-        reserva.setHabitacion(servicioHabitacion.findByIdHabitacion(reserva.getHabitacion().getId()));
-        servicioReserva.guardarEditarReserva(reserva);
         return "redirect:/reserva/listar";
+
     }
 
-    @GetMapping("/editar/{id}")
+    @RequestMapping("/editar/{id}")
     public String editarReserva(@PathVariable("id") Integer id, Model model){
 
         try {
             List<Habitacion> habDisponibles = new ArrayList<>();
             Reserva reserva = servicioReserva.buscarReservaPorId(id);
+            model.addAttribute("Cliente",true);
             model.addAttribute("reserva", reserva);
             habDisponibles = servicioReserva.traerTodoFechasIngresoSalidaCantidad(reserva.getFechaIngreso(), reserva.getFechaSalida(), reserva.getCantidadPersonas());
             model.addAttribute("titulo", "Editar Reserva");
             model.addAttribute("habDisponibles", habDisponibles);
+            return "formulario/Form-reserva";
         }catch (ErrorServicio e){
             model.addAttribute("error",e.getMessage());
-            return "reserva-form";
+            return "redirect:/reserva/listar";
         }
-        return "reserva-form";
+
     }
 
     @GetMapping("/eliminar/{id}")
-    public String eliminarReserva (@PathVariable("id") Integer id, Model model){
-
+    public String eliminarReserva(@PathVariable("id") Integer id, Model model){
         servicioReserva.eliminarReserva(id);
         model.addAttribute("msj","Se elimino la reserva id " + id);
-
         return "redirect:/reserva/listar";
     }
+
 
 }

@@ -1,5 +1,6 @@
 package com.grupo6.app.servicios;
 
+import com.grupo6.app.entidades.Categoria;
 import com.grupo6.app.entidades.Habitacion;
 import com.grupo6.app.entidades.Reserva;
 import com.grupo6.app.errores.ErrorServicio;
@@ -54,6 +55,27 @@ public class ReservaServiceImpl implements ReservaService {
         }
 
         return reservaRepository.findAllFechasIngresoSalidaCantidad(ingreso,salida,cantidadPersonas);
+    }
+
+    @Override
+    public Boolean validarReserva(LocalDate ingreso, LocalDate salida, Integer cantidadPersonas, Categoria categoria) throws ErrorServicio{
+        boolean flag =true;
+        if(ingreso.isAfter(salida) || salida.isBefore(ingreso)){
+            flag=false;
+            throw new ErrorServicio("Las fechas estan mal ingresadas verifique entrada:"+ingreso+" salida:"+salida);
+        }
+
+        if(cantidadPersonas < 0){
+            flag=false;
+            throw new ErrorServicio("No puede ingreser numero de personas negativo");
+        }
+
+        if(cantidadPersonas != categoria.getCantidad()){
+            flag=false;
+            throw new ErrorServicio("La cantidad de personas no puede ser distinta a la categoria");
+        }
+
+        return flag;
     }
 
 }

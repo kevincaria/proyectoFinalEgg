@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="${titulo}">Title</title>
+</head>
+<body>
+<!--Menu para el administrador-->
+<div th:fragment="menu-admin" class="menu">
+    <ul>
+        <li><a class="active" href="#home">Menú principal</a></li>
+        <li><a th:href="@{/caja/listar}">Caja</a></li>
+        <li><a th:href="@{/categoria/listar}">Categorías</a></li>
+        <li><a th:href="@{/cliente/listar}">Clientes</a></li>
+        <li><a th:href="@{/comentario/listar}">Comentarios</a></li>
+        <li><a th:href="@{/empleado/listar}">Empleados</a></li>
+        <li><a th:href="@{/habitacion/listar}">Habitaciones</a></li>
+        <li><a th:href="@{/huesped/listar}">Huespedes</a></li>
+        <li><a th:href="@{/nivel/listar}">Niveles</a></li>
+        <li><a th:href="@{/persona/listar}">Personas</a></li>
+        <li><a th:href="@{/recepcion/listar}">Recepción</a></li>
+        <li><a th:href="@{/reserva/listar}">Reservas</a></li>
+        <li><a th:href="@{/usuario/listar}">Usuarios</a></li>
+    </ul>
+</div>
+
+</body>
+</html>
