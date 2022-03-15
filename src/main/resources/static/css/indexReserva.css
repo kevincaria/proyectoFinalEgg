@@ -1,4 +1,4 @@
-.imagen {
+imagen {
     height: 100%;
     width: 100%;
    }
@@ -10,12 +10,7 @@
     padding: 1.5%;
     border-color: #232327a8;
     box-shadow: 0 0 50px rgba(0,0,0,0.8);
-    border-radius: 5px;    
-
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%,-50%);
+    border-radius: 5px;
     
 }
 
@@ -102,16 +97,16 @@ header span{
 /* Comentarios*/
 .opinion{
     background-color: #97d3dd;
+    
 }
 
 textarea{
     resize: none;
     background-color: #FFF8F3;
-    background-image: url("../img/logo.png");
+    background-image: url("../../static/img/logo.png");
     background-repeat: no-repeat;
     background-position: center;
-    margin-left: 349px;
-    margin-top: 10px;
+    margin-left: 50px;
     border: 2.1px solid #2c68b6;
 }
 
@@ -128,68 +123,9 @@ textarea::placeholder{
 }
 
 .posicionboton{
-    margin-left: 700px;
+    margin-left: 10%;
     margin-bottom: 1%;
 }
-
-.posicion{
-    display: inline-block;
-}
-
-.ubicacion{
-    position:static;
-    margin-left: 60px;
-    position: absolute;
-    margin-left: 60px;
-    margin-top: 25px;
-}
-
-table {
-    margin: 0.5em auto;
-    width: 70%;
-    border-collapse: collapse;
-    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-    
-}
-
-.estiloComentario{
-    text-align: left;
-    border-bottom: 20px solid #97d3dd;
-    background-color: #fff; 
-    
-
-}
-
-.estiloComentarioUsuario{
-    text-align: center;
-    font-weight: bolder;
-    font-size: 110%;
-}
-
-.puntaje {
-    background-color: tomato;
-    color: white;
-    text-align: center;
-    border-right: 20px solid #97d3dd;
-    border-left: 20px solid #97d3dd;
-    border-bottom: 20px solid #97d3dd;
-}
-
-.estiloComentario:hover {
-    background-color: #aaa;
-    cursor: pointer;
-}
-
-.clasificacion{
-  width: 250px;
-  padding: 0;
-}
-
-.iconoestrella{
-    width: 23px;
-}
-
-
 /*
 .stilotitulo {
     
@@ -199,7 +135,6 @@ table {
     text-transform: uppercase;
     text-rendering: optimizeLegibility;
     
-
       color: #202020;
       background-color: #2d2d2d;
       letter-spacing: .1em;
@@ -240,12 +175,6 @@ table {
     font-weight: bolder;
     background-color: #475280da;
 }
-
-
-/*--------------------------*/
-
-/*Comentario*/
-
 
 
 /*--------------------------*/
