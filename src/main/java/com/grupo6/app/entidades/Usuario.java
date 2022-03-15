@@ -5,7 +5,6 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -20,7 +19,7 @@ public class Usuario implements Serializable {
     private static final long serialVersionUID = -232498464754500196L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_usuario", nullable = false)
+    @Column(name = "usuario_id", nullable = false)
     private Integer id;
 
     @NotEmpty(message = "Debe ingrese un nombre de usuario")

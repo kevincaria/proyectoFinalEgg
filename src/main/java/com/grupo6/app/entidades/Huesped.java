@@ -15,15 +15,15 @@ public class Huesped implements Serializable {
     private static final long serialVersionUID = 4308689895597444795L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_huesped", nullable = false)
+    @Column(name = "huesped_id", nullable = false)
     private Integer id;
 
     @ManyToOne(cascade = {CascadeType.MERGE,CascadeType.PERSIST})
-    @JoinColumn(name = "id_reserva")
+    @JoinColumn(name = "reserva_id")
     private Reserva idReserva;
 
     @ManyToOne(cascade = {CascadeType.MERGE,CascadeType.PERSIST})
-    @JoinColumn(name = "id_persona")
+    @JoinColumn(name = "persona_id")
     private Persona persona;
 
     @Column(name = "genero", length = 45)

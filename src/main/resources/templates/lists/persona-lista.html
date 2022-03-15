@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Listado de Personas</title>
+  </head>
+  <body>
+    <table>
+      <thead>
+        <tr>
+          <th>Id</th>
+          <th>Nombre</th>
+          <th>Apellido</th>
+          <th>Dni</th>
+          <th>Dirección</th>
+          <th>Teléfono</th>
+          <th>Correo electrónico</th>
+          <th>Fecha de nacimiento</th>
+          <th>Empleado</th>
+          <th>Cliente</th>
+          <th>Huesped</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr th:each="persona : ${   *********   }">
+          <td th:text="${persona.id}"></td>
+          <td th:text="${persona.nombre}"></td>
+          <td th:text="${persona.apellido}"></td>
+          <td th:text="${persona.dni}"></td>
+          <td th:text="${persona.direccion}"></td>
+          <td th:text="${persona.tel}"></td>
+          <td th:text="${persona.mail}"></td>
+          <td th:text="${persona.fechaNacimiento}"></td>
+
+          <td
+            th:text="${persona.empleado} == null ? 'no tiene' : ${persona.empleado.nombre} "
+          ></td>
+          <td
+            th:text="${persona.cliente} == null ? 'no tiene' : ${persona.cliente.nombre}"
+          ></td>
+          <td
+            th:text="${persona.huesped} == null ? 'no tiene' : ${persona.huesped.nombre}"
+          ></td>
+        </tr>
+      </tbody>
+    </table>
+  </body>
+</html>

@@ -16,11 +16,11 @@ public class Cliente implements Serializable {
     private static final long serialVersionUID = -4002272232547927677L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_cliente", nullable = false)
+    @Column(name = "cliente_id", nullable = false)
     private Integer id;
 
     @ManyToOne(cascade = {CascadeType.MERGE,CascadeType.PERSIST})
-    @JoinColumn(name = "id_persona")
+    @JoinColumn(name = "persona_id")
     private Persona persona;
 
     @OneToMany(mappedBy = "cliente")

@@ -19,7 +19,7 @@ public class Persona implements Serializable {
     private static final long serialVersionUID = -6443854902331297206L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_persona", nullable = false)
+    @Column(name = "persona_id", nullable = false)
     private Integer id;
 
     @NotEmpty(message = "El nombre no puede estar vacio")

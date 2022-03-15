@@ -1,15 +1,12 @@
 package com.grupo6.app.entidades;
 
 import com.grupo6.app.enums.Estado;
-import lombok.Getter;
-import lombok.Setter;
-
+import lombok.Data;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.List;
 
-@Getter
-@Setter
+@Data
 @Entity
 @Table(name = "habitacion")
 public class Habitacion implements Serializable {
@@ -17,7 +14,7 @@ public class Habitacion implements Serializable {
     private static final long serialVersionUID = 2567821086822562978L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_habitacion", nullable = false)
+    @Column(name = "habitacion_id", nullable = false)
     private Integer id;
 
     @Column(name = "nombre", nullable = false, length = 10)
@@ -34,12 +31,12 @@ public class Habitacion implements Serializable {
     private Double precio;
 
     @ManyToOne(cascade = {CascadeType.MERGE,CascadeType.PERSIST})
-    @JoinColumn(name = "id_categoria", nullable = false)
-    private Categoria idCategoria;
+    @JoinColumn(name = "categoria_id")
+    private Categoria categoria;
 
     @ManyToOne(cascade = {CascadeType.MERGE,CascadeType.PERSIST})
-    @JoinColumn(name = "id_nivel", nullable = false)
-    private Nivel idNivel;
+    @JoinColumn(name = "nivel_id")
+    private Nivel nivel;
 
     @OneToMany(mappedBy = "habitacion")
     private List<Reserva> reserva;

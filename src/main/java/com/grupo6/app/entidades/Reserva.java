@@ -1,12 +1,10 @@
 package com.grupo6.app.entidades;
 
-import org.springframework.format.annotation.DateTimeFormat;
-
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
-import java.util.Date;
-import java.util.List;
+import java.time.LocalDate;
+
 
 @Entity
 @Table(name = "reserva")
@@ -18,24 +16,18 @@ public class Reserva implements Serializable {
     @Column(name = "id_reserva", nullable = false)
     private Integer id;
 
-    @NotNull(message = "Debe marcar una fecha de ingreso")
-    @Temporal(TemporalType.TIMESTAMP)
-    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
     @Column(name = "fecha_ingreso", nullable = false)
-    private Date fechaIngreso;
+    private LocalDate fechaIngreso;
 
-    @NotNull(message = "Debe marcar una fecha de egreso")
-    @Temporal(TemporalType.TIMESTAMP)
-    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
     @Column(name = "fecha_salida", nullable = false)
-    private Date fechaSalida;
+    private LocalDate fechaSalida;
 
     @NotNull(message = "Debe ingresar la cantidad de personas")
     @Column(name = "cantidad_personas", nullable = false)
     private Integer cantidadPersonas;
 
-    @Column(name = "estado", length = 45)
-    private String estado;
+    @Column(name = "alta")
+    private Boolean alta;
 
     @ManyToOne(cascade = {CascadeType.MERGE,CascadeType.PERSIST})
     @JoinColumn(name = "id_habitacion")
@@ -53,6 +45,90 @@ public class Reserva implements Serializable {
     @JoinColumn(name = "id_pago")
     private Pago pago;
 
+    public Integer getId() {
+        return id;
+    }
 
+    public void setId(Integer id) {
+        this.id = id;
+    }
 
+    public LocalDate getFechaIngreso() {
+        return fechaIngreso;
+    }
+
+    public void setFechaIngreso(LocalDate fechaIngreso) {
+        this.fechaIngreso = fechaIngreso;
+    }
+
+    public LocalDate getFechaSalida() {
+        return fechaSalida;
+    }
+
+    public void setFechaSalida(LocalDate fechaSalida) {
+        this.fechaSalida = fechaSalida;
+    }
+
+    public Integer getCantidadPersonas() {
+        return cantidadPersonas;
+    }
+
+    public void setCantidadPersonas(Integer cantidadPersonas) {
+        this.cantidadPersonas = cantidadPersonas;
+    }
+
+    public Boolean getAlta() {
+        return alta;
+    }
+
+    public void setAlta(Boolean alta) {
+        this.alta = alta;
+    }
+
+    public Habitacion getHabitacion() {
+        return habitacion;
+    }
+
+    public void setHabitacion(Habitacion habitacion) {
+        this.habitacion = habitacion;
+    }
+
+    public Cliente getCliente() {
+        return cliente;
+    }
+
+    public void setCliente(Cliente cliente) {
+        this.cliente = cliente;
+    }
+
+    public Empleado getEmpleado() {
+        return empleado;
+    }
+
+    public void setEmpleado(Empleado empleado) {
+        this.empleado = empleado;
+    }
+
+    public Pago getPago() {
+        return pago;
+    }
+
+    public void setPago(Pago pago) {
+        this.pago = pago;
+    }
+
+    @Override
+    public String toString() {
+        return "Reserva{" +
+                "id=" + id +
+                ", fechaIngreso=" + fechaIngreso +
+                ", fechaSalida=" + fechaSalida +
+                ", cantidadPersonas=" + cantidadPersonas +
+                ", alta='" + alta + '\'' +
+                ", habitacion=" + habitacion +
+                ", cliente=" + cliente +
+                ", empleado=" + empleado +
+                ", pago=" + pago +
+                '}';
+    }
 }
