@@ -59,6 +59,7 @@
     <table>
       <thead>
         <tr>
+          <th>#</th>
           <th>Id</th>
           <th>Departamento</th>
           <th>Alta</th>
@@ -69,12 +70,15 @@
         </tr>
       </thead>
       <tbody>
-        <tr th:each="empleado : ${   *********   }">
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
+        <tr th:each="empleado, contador : ${lista}">
+            <td th:text="${contador.count}"></td>
+            <td th:text="${empleado.id}"></td>
+            <td th:text="${empleado.departamento}"></td>
+            <td th:text="${empleado.alta}"></td>
+            <td th:text="${empleado.persona} == null ? 'no tiene' : ${empleado.persona.nombre}"
+            ></td>
+            <td th:text="${empleado.reserva} == null ? 'no tiene' : ${empleado.reserva.id}"
+            ></td>
             <td><a class="btn btn-primary" th:href="@{/reserva/editar/} + ${reserva.id}">Editar</a></td>
             <td><a class="btn btn-danger" th:href="@{/reserva/eliminar/} + ${reserva.id}">Eliminar</a></td>
         </tr>
