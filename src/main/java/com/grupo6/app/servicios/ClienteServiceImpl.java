@@ -1,13 +1,13 @@
 package com.grupo6.app.servicios;
 
+import com.grupo6.app.entidades.Cliente;
+import com.grupo6.app.repositorios.ClienteRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
-import com.grupo6.app.entidades.Cliente;
-import com.grupo6.app.repositorios.ClienteRepository;
 
 @Service
 public class ClienteServiceImpl implements ClienteService {
@@ -40,9 +40,9 @@ public class ClienteServiceImpl implements ClienteService {
     }
 
     @Override
-    @Transactional(readOnly = true)
-    public Cliente buscarPorNombreCliente(String nombre) {
-        return clienteRepository.findByNombre(nombre).orElse(null);
+    public Cliente buscarClientePorIdPersona(Integer idPersona) {
+        return clienteRepository.findByPersonaId(idPersona).orElse(null);
     }
-    
+
+
 }

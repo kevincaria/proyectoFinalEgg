@@ -2,11 +2,14 @@ package com.grupo6.app.repositorios;
 
 import com.grupo6.app.entidades.Cliente;
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.stereotype.Repository;
-
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 import java.util.Optional;
 
-@Repository
+
 public interface ClienteRepository extends JpaRepository<Cliente, Integer> {
-    Optional<Cliente> findByNombre(String nombre);
+
+    @Query("SELECT c FROM Cliente c WHERE c.persona.id = :p")
+    Optional<Cliente> findByPersonaId (@Param("p") Integer idPersona);
+
 }

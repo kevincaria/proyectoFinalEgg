@@ -8,5 +8,4 @@ public interface HuespedService {
     public void eliminarHuesped(Integer id);
     public void crearHuesped(Huesped Huesped);
     public Huesped findByIdHuesped(Integer id);
-    public Huesped buscarPorNombreHuesped(String nombre);
 }

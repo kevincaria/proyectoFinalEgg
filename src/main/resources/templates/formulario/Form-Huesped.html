@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Formulario huesped</title>
+
+    <link
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+            rel="stylesheet"
+            integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
+            crossorigin="anonymous"
+    />
+    <script
+            src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+            crossorigin="anonymous"
+    ></script>
+
+    <link rel="stylesheet" href="../../static/css/Reserva.css"/>
+    <link rel="stylesheet" href="../../static/css/IndexNavbar.css"/>
+    <link rel="stylesheet" href="../../static/css/IndexPie.css"/>
+    <link rel="stylesheet" href="../../static/css/MenuAdmid.css"/>
+    <link rel="stylesheet" href="../../static/css/FormularioHuesped.css"/>
+</head>
+
+<body>
+<!--Navbar del usuario-->
+<header th:replace="layout/nav-var :: header"></header>
+<!--Menu para el administrador-->
+<div th:replace="layout/menu-admin :: menu-admin"></div>
+
+<!--Botones-->
+<div class="posicionboton">
+    <button type="submit" class="btn btn-dark boton2">
+        Listado huésped
+    </button>
+    <button type="submit" class="btn btn-dark boton2">
+        Volver
+    </button>
+</div>
+
+<div class="form">
+    <div>
+        <header class="titulo">
+            <h1>Registro de huésped</h1>
+        </header>
+    </div>
+    <form th:fragment="Form-Huesped" th:action="@{/huesped/crear}" th:object="${Huesped}" method="post">
+        <input type="hidden" th:field="*{id}"/>
+        <div>
+            <input class="cajas" type="text" required th:field="*{reserva}" id="reserva" placeholder="Reserva"/>
+        </div>
+        <div>
+            <input class="cajas" type="text" required th:field="*{persona}" id="persona" placeholder="Persona"/>
+        </div>
+        <div>
+            <input class="cajas" type="text" required th:field="*{genero}" id="genero" placeholder="Genero"/>
+        </div>
+
+        <div class="d-flex justify-content-evenly">
+            <button type="submit" class="btn btn-primary " id="modal">
+                Guardar
+            </button>
+        </div>
+    </form>
+</div>
+<script
+        src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"
+        integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB"
+        crossorigin="anonymous"
+></script>
+<script
+        src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"
+        integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13"
+        crossorigin="anonymous"
+></script>
+</body>
+</html>

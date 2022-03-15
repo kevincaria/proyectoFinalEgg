@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous"/>
+    
+    <link rel="stylesheet" href="../css/Tabla.css"/>
+    <link rel="stylesheet" href="../css/FormularioCategoria.css"/>
+    <link rel="stylesheet" href="../css/MenuAdmid.css"/>
+    <link rel="stylesheet" href="../css/IndexNavbar.css"/>
+
+
+    <title>Listado de categorias</title>
+  </head>
+  <body>
+  <!--Navbar del usuario-->
+  <header th:replace="layout/nav-var :: header"></header>
+  <!--Menu para el administrador-->
+  <div th:replace="layout/menu-admin :: menu-admin"></div>
+  <!--Botones-->
+  <div class="posicionboton">
+    <button class="btn btn-dark boton2" >
+      <a th:href="@{/categoria/crear}">Crear Categoria</a>
+    </button>
+  </div>
+
+  <!--Tabla-->
+  <div class="posicionTabla" >
+    <table >
+      <thead>
+        <tr>
+          <th>Id</th>
+          <th>Nombre</th>
+          <th>Cantidad</th>
+          <th>Editar</th>
+          <th>Eliminar</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr th:each="categoria : ${categorias}">
+          <td th:text="${categoria.id}"></td>
+          <td th:text="${categoria.nombre}"></td>
+          <td th:text="${categoria.cantidad}"></td>
+          <td><a class="btn btn-primary" th:href="@{/categoria/editar/} + ${categoria.id}">Editar</a></td>
+          <td><a class="btn btn-danger" th:href="@{/categoria/eliminar/} + ${categoria.id}">Eliminar</a></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  </body>
+</html>
