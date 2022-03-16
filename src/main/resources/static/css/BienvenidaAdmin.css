@@ -1,0 +1,48 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Open sans';
+}
+
+body{
+    background-image: url(../img/Hotel2.jpg);
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    text-align:justify;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+.bienvenida{
+    width: 580px;
+    height: 280px;
+    padding: 20px;
+    margin: auto;
+    background: rgba(15, 50, 72, 0.3);
+    border-radius: 5px;
+    position: absolute;
+    top: 30%;
+    left: 45%;
+    transform: translate(-30%,-30%);
+    
+
+}
+
+.titulobienvenida{
+    color: #1d4169;
+    color: #03045E;
+    font-size: 110px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.titulobienvenida2{
+    color: #691d21;
+    font-size: 80px;
+    font-weight: bold;
+    text-align: center;
+}
+
+

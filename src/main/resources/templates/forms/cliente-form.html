@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Formulario Cliente</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+    crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="../../static/css/forms/CssReserva.css">
+</head>
+
+<body>
+
+  <ul class="nav justify-content-end" id="navBar">
+    <li class="nav-item">
+      <a class="nav-link active" aria-current="page" href="#" id="letras">¡Volver a ver otras habitaciones!</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="#" id="letras">Ver estado de pago</a>
+    </li>
+    <li class="nav-item">
+
+      <a class="nav-link" href="#" id="letras">Ver estado de reserva</a>
+    </li>
+  </ul>
+
+
+  <div class="fondo">
+    <header>
+      <h1>Elije la reserva</h1>
+    </header>
+    <form class="formularioHotel" th:action="@{/}" th:object="${}" method="post">
+      <div class="datos_form">
+        <div class="mb-3 d-flex ">
+          <div>
+            <label for="entrada">Entrada: </label>
+            <br />
+            <input type="date" name="entrada" th:field="*{}" placeholder="dd-mm-yyyy" required />
+
+          </div>
+
+          <div>
+            <label for="salida">Salida: </label>
+            <br />
+            <input type="date" name="salida" th:field="*{}" placeholder="dd-mm-yyyy" required />
+          </div>
+        </div>
+        <div class="mb-3 d-flex">
+          <label for="adulto">Adulto: </label>
+          <input type="number" name="adulto" placeholder="Adulto" required />
+
+          <label for="ninos">Niño(s): </label>
+          <input type="number" name="ninos" placeholder="Ninos" />
+
+        </div>
+      </div>
+      <div>
+        <div>
+          <!-- Button trigger modal -->
+          <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal"
+            id="boton">
+            ¡Quiero reservar!
+          </button>
+        </div>
+      </div>
+
+  </div>
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Informacion de pago</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <!--<div>
+                      <label for="comprobnateImg">Comprobante</label>
+                      <input type="text" placeholder="comprobante_de_pago" required>
+                    </div>
+                    <br>
+                    <div>
+                      <label for="fechaEmision">Fecha de Emisión</label>
+                      <input type="date" placeholder="fecha_emisiòn" required>
+                    </div>
+                    <br>
+                    <div>
+                      <label for="fechaPago">Fecha de Pago</label>
+                      <input type="date" placeholder="fecha_pago" required>
+                    </div>
+                    <br>
+                    <div>-->
+          <label for="pagoTotal">Pago</label>
+          <input type="number" placeholder="Ingrese monto">
+        </div>
+        <div>
+          <label for="tipoFactura">Tipo de Factura</label>
+          <input type="text" placeholder="A O Consumidor_final" required>
+        </div>
+        <br>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Arrepentirse</button>
+          <button type="submit" class="btn btn-primary">Registrar pago</button>
+        </div>
+        </form>
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"
+          integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB"
+          crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"
+          integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13"
+          crossorigin="anonymous"></script>
+</body>
+
+</html>
