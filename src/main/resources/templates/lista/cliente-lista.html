@@ -68,7 +68,7 @@
         </tr>
       </thead>
       <tbody>
-        <tr th:each="cliente, contador : ${clientes}">
+        <tr th:each="cliente, contador : ${lista}">
           <td th:text="${contador.count}"></td>
           <td th:text="${cliente.id}"></td>
           <td th:text="${cliente.persona} == null ? 'no tiene' : ${cliente.persona.nombre}"

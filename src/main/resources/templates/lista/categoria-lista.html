@@ -59,6 +59,7 @@
     <table >
       <thead>
         <tr>
+          <th>#</th>
           <th>Id</th>
           <th>Nombre</th>
           <th></th>
@@ -66,7 +67,8 @@
         </tr>
       </thead>
       <tbody>
-        <tr th:each="categoria : ${   *********   }">
+        <tr th:each="categoria, contador : ${lista}">
+          <td th:text="${contador.count}"></td>
           <td th:text="${categoria.id}"></td>
           <td th:text="${categoria.nombre}"></td>
           <td><a class="btn btn-primary" th:href="@{/reserva/editar/} + ${reserva.id}">Editar</a></td>

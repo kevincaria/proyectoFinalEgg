@@ -8,5 +8,4 @@ public interface ClienteService {
     public void eliminarCliente(Integer id);
     public void crearCliente(Cliente Cliente);
     public Cliente findByIdCliente(Integer id);
-    public Cliente buscarPorNombreCliente(String nombre);
 }

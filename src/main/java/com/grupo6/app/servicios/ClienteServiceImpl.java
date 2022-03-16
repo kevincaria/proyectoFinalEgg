@@ -38,11 +38,5 @@ public class ClienteServiceImpl implements ClienteService {
     public Cliente findByIdCliente(Integer id) {
         return clienteRepository.findById(id).orElse(null);
     }
-
-    @Override
-    @Transactional(readOnly = true)
-    public Cliente buscarPorNombreCliente(String nombre) {
-        return clienteRepository.findByNombre(nombre).orElse(null);
-    }
     
 }

@@ -10,4 +10,7 @@ import java.util.Optional;
 @Repository
 public interface HabitacionRepository extends JpaRepository<Habitacion, Integer> {
     Optional<Habitacion> findByNombre(String nombre);
+
+    @Query("SELECT h FROM Habitacion h WHERE h.categoria.cantidad = :c")
+    List<Habitacion> findByCategoriaCantidad(@Param("c")Integer cantidad);
 }
