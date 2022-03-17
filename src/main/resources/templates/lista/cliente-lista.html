@@ -21,8 +21,11 @@
          <div th:replace="layout/menu-admin :: menu-admin"></div>
   <!--Botones-->
   <div class="posicionboton">
-    <button type="submit" class="btn btn-dark boton2" >
-      Volver
+    <button class="btn btn-dark boton2" >
+      <a th:href="@{/cliente/crear}">Crear</a>
+    </button>
+    <button class="btn btn-dark boton2" >
+      <a th:href="@{/}">Inicio</a>
     </button>
   </div>
 
@@ -31,9 +34,12 @@
     <table>
       <thead>
         <tr>
-          <th>Id</th>
-          <th>Persona</th>
-          <th>Reserva</th>
+          <th>IdCliente</th>
+          <th>Nombre</th>
+          <th>Apellido</th>
+          <th>Dni</th>
+          <th>Mail</th>
+          <th>Tel</th>
           <th>Editar</th>
           <th>Eliminar</th>
         </tr>
@@ -41,7 +47,11 @@
       <tbody>
         <tr th:each="cliente : ${clientes}">
           <td th:text="${cliente.id}"></td>
-
+          <td th:text="${cliente.persona.nombre}"></td>
+          <td th:text="${cliente.persona.apellido}"></td>
+          <td th:text="${cliente.persona.dni}"></td>
+          <td th:text="${cliente.persona.mail}"></td>
+          <td th:text="${cliente.persona.tel}"></td>
           <td><a class="btn btn-primary" th:href="@{/cliente/editar/} + ${cliente.id}">Editar</a></td>
           <td><a class="btn btn-danger" th:href="@{/cliente/eliminar/} + ${cliente.id}">Eliminar</a></td>
         </tr>

@@ -20,4 +20,6 @@ public class Nivel implements Serializable {
 
     private String nombre;
 
+    private String ordinal;
+
 }

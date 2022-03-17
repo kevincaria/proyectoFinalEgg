@@ -110,7 +110,6 @@ public class ReservaControler {
                 if (servicioReserva.validarReserva(reserva.getFechaIngreso(), reserva.getFechaSalida(), reserva.getCantidadPersonas(), reserva.getHabitacion().getCategoria())) {
 
                     servicioReserva.guardarEditarReserva(reserva);
-                    model.addAttribute("error", "holaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
                     return "redirect:/reserva/listar";
 
 

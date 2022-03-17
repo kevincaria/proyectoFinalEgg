@@ -32,8 +32,7 @@
 </div>
 <!--Tabla-->
 <div class="posicionTabla">
-
-    <table class="table table-dark table-hover">
+    <table>
         <thead>
         <tr>
             <th>#</th>
@@ -61,10 +60,10 @@
             <td th:text="${reserva.alta}"></td>
             <td th:text="${reserva.habitacion.nombre}"></td>
             <td th:text="${reserva.cliente.persona.nombre}"></td>
-            <!--            <td th:text="${reserva.cliente.id}"></td>-->
-            <!--            <td th:text="${reserva.empleado.nombre}"></td>-->
-
-            <!--            <td th:text="${reserva.pago.pagoTotal}"></td>-->
+<!--            <td th:text="${reserva.empleado.id}"></td>-->
+<!--            <td th:text="${reserva.empleado.id != null} ? ${reserva.empleado.id} : 'null' "></td>-->
+<!--            <td th:text="${reserva.pago.pagoTotal}"></td>-->
+<!--            <td th:text="${reserva.pago.pagoTotal != null} ? ${reserva.pago.pagoTotal} : 'null' "></td>-->
             <td><a class="btn btn-primary" th:href="@{/reserva/editar/} + ${reserva.id}">Editar</a></td>
             <td><a class="btn btn-danger" th:href="@{/reserva/eliminar/} + ${reserva.id}">Eliminar</a></td>
         </tr>
