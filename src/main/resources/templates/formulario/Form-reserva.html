@@ -66,22 +66,22 @@
         </div>
         <input class="form-control cajas" type="text" th:field="*{cliente.persona.dni}" id="dni" placeholder="Dni"/>
 
-<!--        <div th:if="${Cliente == true}">-->
+        <div th:if="${Cliente == true}">
 
-<!--            <input class="form-control cajas" type="text" th:field="*{cliente.persona.nombre}" id="nombre"-->
-<!--                   placeholder="Nombre"/>-->
-<!--            <input class="form-control cajas" type="text" th:field="*{cliente.persona.apellido}" id="apellido"-->
-<!--                   placeholder="Apellido"/>-->
-<!--            <input class="form-control cajas" type="email" th:field="*{cliente.persona.mail}" id="mail"-->
-<!--                   placeholder="Mail"/>-->
-<!--            <label for="fechaNacimiento" class="form-label">Fecha de Nacimiento</label>-->
-<!--            <input class="form-control cajas" type="date" th:field="*{cliente.persona.fechaNacimiento}"-->
-<!--                   id="fechaNacimiento" placeholder="Fecha de Nacimiento"/>-->
-<!--            <input class="form-control cajas" type="text" th:field="*{cliente.persona.direccion}" id="direccion"-->
-<!--                   placeholder="Dirección"/>-->
-<!--            <input class="form-control cajas" type="text" th:field="*{cliente.persona.tel}" id="tel"-->
-<!--                   placeholder="Teléfono"/>-->
-<!--        </div>-->
+            <input class="form-control cajas" type="text" th:field="*{cliente.persona.nombre}" id="nombre"
+                   placeholder="Nombre"/>
+            <input class="form-control cajas" type="text" th:field="*{cliente.persona.apellido}" id="apellido"
+                   placeholder="Apellido"/>
+            <input class="form-control cajas" type="email" th:field="*{cliente.persona.mail}" id="mail"
+                   placeholder="Mail"/>
+            <label for="fechaNacimiento" class="form-label">Fecha de Nacimiento</label>
+            <input class="form-control cajas" type="date" th:field="*{cliente.persona.fechaNacimiento}"
+                   id="fechaNacimiento" placeholder="Fecha de Nacimiento"/>
+            <input class="form-control cajas" type="text" th:field="*{cliente.persona.direccion}" id="direccion"
+                   placeholder="Dirección"/>
+            <input class="form-control cajas" type="text" th:field="*{cliente.persona.tel}" id="tel"
+                   placeholder="Teléfono"/>
+        </div>
 
         <div class="d-flex justify-content-evenly">
             <button id="modal" type="submit" class="btn btn-primary">Guardar</button>

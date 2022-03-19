@@ -1,5 +1,6 @@
 package com.grupo6.app.controladores;
 
+import com.grupo6.app.entidades.Cliente;
 import com.grupo6.app.entidades.Habitacion;
 import com.grupo6.app.entidades.Persona;
 import com.grupo6.app.entidades.Reserva;
@@ -100,12 +101,17 @@ public class ReservaControler {
                 reserva.setHabitacion(servicioHabitacion.findByIdHabitacion(reserva.getHabitacion().getId()));
 
             } else {
-                List<Habitacion> habDisponibles = new ArrayList<>();
-                habDisponibles = servicioReserva.traerTodoFechasIngresoSalidaCantidad(reserva.getFechaIngreso(), reserva.getFechaSalida(), reserva.getCantidadPersonas());
-                model.addAttribute("habDisponibles", habDisponibles);
-                model.addAttribute("reserva", reserva);
-                model.addAttribute("Cliente", true);
-                return "formulario/Form-reserva";
+//                List<Habitacion> habDisponibles = new ArrayList<>();
+//                habDisponibles = servicioReserva.traerTodoFechasIngresoSalidaCantidad(reserva.getFechaIngreso(), reserva.getFechaSalida(), reserva.getCantidadPersonas());
+//                model.addAttribute("habDisponibles", habDisponibles);
+//                model.addAttribute("reserva", reserva);
+//                model.addAttribute("Cliente", true);
+                Cliente cliente = new Cliente();
+                persona = new Persona();
+                persona.setDni(reserva.getCliente().getPersona().getDni());
+                cliente.setPersona(persona);
+                model.addAttribute("cliente",cliente);
+                return "formulario/Form-Cliente";
             }
                 if (servicioReserva.validarReserva(reserva.getFechaIngreso(), reserva.getFechaSalida(), reserva.getCantidadPersonas(), reserva.getHabitacion().getCategoria())) {
 
@@ -144,9 +150,8 @@ public class ReservaControler {
     }
 
     @GetMapping("/eliminar/{id}")
-    public String eliminarReserva (@PathVariable("id") Integer id, Model model){
+    public String eliminarReserva (@PathVariable("id") Integer id){
         servicioReserva.eliminarReserva(id);
-        model.addAttribute("msj","Se elimino la reserva id " + id);
         return "redirect:/reserva/listar";
     }
 
