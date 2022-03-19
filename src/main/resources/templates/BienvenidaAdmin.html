@@ -37,6 +37,17 @@
         <a class="navbar-brand" id="letras" sec:authorize="isAuthenticated()" th:href="@{/logout}">Cerrar sesión</a>
         <a class="navbar-brand" id="letras" sec:authorize="!isAuthenticated()" th:href="@{/Registro}">Registrarse</a>
       </div>
+      <div class="dropdown">
+        <a class="btn btn-secondary dropdown-toggle" href="dropdown-menu" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="true">
+          Dropdown link
+        </a>
+      
+        <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+          <li><a class="dropdown-item" href="#">Action</a></li>
+          <li><a class="dropdown-item" href="#">Another action</a></li>
+          <li><a class="dropdown-item" href="#">Something else here</a></li>
+        </ul>
+      </div>
     </nav>
   </div>
 
