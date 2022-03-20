@@ -4,6 +4,7 @@ import com.grupo6.app.entidades.Categoria;
 import com.grupo6.app.entidades.Habitacion;
 import com.grupo6.app.entidades.Reserva;
 import com.grupo6.app.errores.ErrorServicio;
+import org.springframework.data.repository.query.Param;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -21,4 +22,6 @@ public interface ReservaService {
     List<Habitacion> traerTodoFechasIngresoSalidaCantidad (LocalDate ingreso, LocalDate salida, Integer cantidadPersonas) throws ErrorServicio;
 
     Boolean validarReserva(LocalDate ingreso, LocalDate salida, Integer cantidadPersonas, Categoria categoria) throws ErrorServicio;
+
+    List<Reserva> findAllByQ(String q)throws ErrorServicio;
 }

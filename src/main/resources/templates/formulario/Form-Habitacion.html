@@ -43,7 +43,6 @@
 
 <form th:action="@{/habitacion/crear}" th:object="${habitacion}" method="post" class="formularioHotel">
     <input type="hidden" th:field="*{id}">
-<!--    <input type="hidden" th:field="*{categoria.id}">-->
     <div>
         <label for="nombre">Nombre: </label>
         <input id="nombre" type="text" placeholder="Nombre" th:field="*{nombre}" required/>
@@ -51,6 +50,7 @@
 
     <div class="textarea">
         <label for="descripcion">Descripción: </label>
+        <br/>
         <textarea name="descripcion" id="descripcion" cols="20" rows="2"
                   placeholder="Descripción de la Habitacion"
                   th:field="*{descripcion}"
@@ -74,6 +74,14 @@
             <option th:each="categoria : ${categoriaList}"
                     th:value="${categoria.id}"
                     th:text="${categoria.nombre}"></option>
+        </select>
+    </div>
+
+    <div class="select">
+        <select id="niveles" class="form-select" th:object="${habitacion}" th:field="*{nivel.id}">
+            <option th:each="nivel : ${niveles}"
+                    th:value="${nivel.id}"
+                    th:text="${nivel.nombre}"></option>
         </select>
     </div>
 

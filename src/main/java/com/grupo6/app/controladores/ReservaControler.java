@@ -37,9 +37,23 @@ public class ReservaControler {
     ClienteService servicioCliente;
 
     @GetMapping("/listar")
-    public String listarReservas(Model model){
+    public String listarReservas(Model model, @RequestParam(required = false) String q){
+
+        if(q != null && !q.isEmpty()){
+            model.addAttribute("titulo","Listas de Reservas");
+
+            try {
+                model.addAttribute("reservas", servicioReserva.findAllByQ(q));
+                return "lista/reserva-lista";
+            } catch (ErrorServicio e) {
+               model.addAttribute("error",e.getMessage());
+                return "lista/reserva-lista";
+            }
+        }
+
         model.addAttribute("titulo","Listas de Reservas");
         model.addAttribute("reservas",servicioReserva.listarReservas());
+
         return "lista/reserva-lista";
     }
 

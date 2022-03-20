@@ -78,4 +78,15 @@ public class ReservaServiceImpl implements ReservaService {
         return flag;
     }
 
+    @Transactional(readOnly = true)
+    @Override
+    public List<Reserva> findAllByQ(String q) throws ErrorServicio {
+        List<Reserva> reservas = reservaRepository.findAllByQ("%"+q+"%");
+        if(reservas.isEmpty()){
+            throw new ErrorServicio("No se econtraron resultados con la palabra : "+q);
+        }
+        return reservas;
+
+    }
+
 }

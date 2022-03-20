@@ -1,9 +1,9 @@
 package com.grupo6.app.controladores;
 
 import com.grupo6.app.entidades.Habitacion;
-import com.grupo6.app.enums.Estado;
 import com.grupo6.app.servicios.CategoriaService;
 import com.grupo6.app.servicios.HabitacionService;
+import com.grupo6.app.servicios.NivelService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -22,13 +22,14 @@ public class HabitacionControlador {
     @Autowired
     CategoriaService categoriaService;
 
+    @Autowired
+    NivelService nivelService;
+
     @GetMapping("/listar")
     public String listarHabitaciones(Model model){
 
         model.addAttribute("titulo","Habitaciones");
         model.addAttribute("listaHab", habitacionService.listarHabitaciones());
-
-
         return "lista/habitaciones-listar";
     }
 
@@ -37,12 +38,14 @@ public class HabitacionControlador {
         model.addAttribute("titulo", "Crear Habitacion");
         model.addAttribute("habitacion", new Habitacion());
         model.addAttribute("categoriaList", categoriaService.listarCategorias());
+        model.addAttribute("niveles", nivelService.listarNiveles());
         return "formulario/Form-Habitacion";
     }
 
     @PostMapping("/crear")
     public String crear(Habitacion habitacion) {
         habitacion.setCategoria(categoriaService.findByIdCategoria(habitacion.getCategoria().getId()));
+        habitacion.setNivel(nivelService.findByIdNivel(habitacion.getNivel().getId()));
         habitacionService.crearHabitacion(habitacion);
         return "redirect:/habitacion/listar";
     }
@@ -56,6 +59,7 @@ public class HabitacionControlador {
         model.addAttribute("titulo", "Editar Habitacion");
         model.addAttribute("habitacion", habitacionService.findByIdHabitacion(id));
         model.addAttribute("categoriaList", categoriaService.listarCategorias());
+        model.addAttribute("niveles", nivelService.listarNiveles());
         return "formulario/Form-Habitacion";
     }
 
@@ -69,12 +73,5 @@ public class HabitacionControlador {
         return "redirect:/habitacion/listar";
     }
 
-//    @GetMapping("/recepcion")
-//    public String listarRecepcion(Model model){
-//
-//        model.addAttribute("titulo","Lista de Reservas");
-//        model.addAttribute("listaHab", habitacionService.listarHabitaciones());
-//
-//        return "habitaciones-listar";
 
 }

@@ -34,6 +34,16 @@ public interface ReservaRepository extends JpaRepository<Reserva, Integer> {
                                                          @Param("s") LocalDate salida,
                                                          @Param("cantidad")Integer cantidadPersonas);
 
+    @Query("SELECT r FROM Reserva r WHERE " +
+//            "r.fechaIngreso LIKE :q " +
+//            "or r.fechaSalida LIKE :q " +
+            "r.habitacion.nombre LIKE :q " +
+            "or r.cliente.persona.dni LIKE :q " +
+            "or r.cliente.persona.nombre LIKE :q " +
+            "or r.cliente.persona.apellido LIKE :q")
+    List<Reserva> findAllByQ(@Param("q")String q);
+
+
 //    select habitacion_id
 //    from habitacion
 //    where categoria_id = 2 and habitacion_id not in (
