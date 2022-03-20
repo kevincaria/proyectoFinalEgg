@@ -117,8 +117,6 @@ public class ReservaControler {
 
                     servicioReserva.guardarEditarReserva(reserva);
                     return "redirect:/reserva/listar";
-
-
             }
         } catch (ErrorServicio e) {
 
