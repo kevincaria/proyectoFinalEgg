@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title th:text="${titulo}">titulo</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+            crossorigin="anonymous"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/css/indexNavbar.css">
+    <link rel="stylesheet" href="/css/BienvenidaAdmin.css">
+    <link rel="stylesheet" href="/css/MenuAdmid.css">
+    <link rel="stylesheet" href="/css/cssTarjetasListarHabitacion.css">
+</head>
+
+<body>
+<!--Navbar del usuario-->
+<header th:replace="layout/nav-var :: header"></header>
+<!--Menu para el administrador-->
+<div class="container" th:replace="layout/menu-admin :: menu-admin"></div>
+
+<div class="d-flex justify-content-center">
+    <button class="btn btn-dark">
+        <a th:href="@{/habitacion/listar}">Listado de Habitaciones</a>
+    </button>
+    <button class="btn btn-dark">
+        <a th:href="@{/habitacion/crear}">Crear Habitacion</a>
+    </button>
+</div>
+
+<div class="container mt-4" id="conteiner-mt-5">
+    <div class="row">
+        <div th:each="hab : ${listaHab}" class="d-flex justify-content-center p-2 col-md-4">
+            <div class="card text-center" style="max-width: 18rem;">
+                <div class="card-header text-white"
+                     th:classappend="${#strings.toString(hab.estado) == 'DISPONIBLE' } ? 'bg-success'
+                             : (${#strings.toString(hab.estado) == 'LIMPIEZA' } ? 'bg-warning'
+                             : (${#strings.toString(hab.estado) == 'OCUPADO' } ? 'bg-info': 'bg-danger'))">
+
+                    <div class="row aling-items-center">
+                        <div class="col">
+                            <i class="fa fa-bed fa-4x"></i>
+                            <h6 th:text="${hab.categoria.nombre}">CATEGORIA</h6>
+                        </div>
+                        <div class="col">
+                            <h3 th:text="${hab.nombre}" class="display-3">NOMBRE HABITACION</h3>
+                            <h6 th:text="${hab.precio}">PRECIO</h6>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <h5>
+                        <a th:href="@{/habitacion/editar/} + ${hab.id}" class="text-decoration-none"
+                           th:classappend="${#strings.toString(hab.estado) == 'DISPONIBLE' } ? 'text-success'
+                             : (${#strings.toString(hab.estado) == 'LIMPIEZA' } ? 'text-warning'
+                             : (${#strings.toString(hab.estado) == 'OCUPADO' } ? 'text-info': 'text-danger'))">
+                            <span th:text="${hab.estado}">ESTADO</span>
+                            <i class="fas fa-edit"></i>
+                        </a>
+                    </h5>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"
+        integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"
+        integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

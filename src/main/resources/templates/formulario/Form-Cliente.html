@@ -12,10 +12,10 @@
             integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
             crossorigin="anonymous"></script>
 
-    <link rel="stylesheet" href="../css/IndexNavbar.css">
-    <link rel="stylesheet" href="../css/IndexPie.css">
-    <link rel="stylesheet" href="../css/MenuAdmid.css"/>
-    <link rel="stylesheet" href="../css/FormularioPersona.css">
+    <link rel="stylesheet" href="/css/IndexNavbar.css">
+    <link rel="stylesheet" href="/css/IndexPie.css">
+    <link rel="stylesheet" href="/css/MenuAdmid.css"/>
+    <link rel="stylesheet" href="/css/FormularioPersona.css">
 </head>
 
 <body>
@@ -36,54 +36,54 @@
 
 <div class="form">
     <header>
-        <h1>Registro de Persona</h1>
+        <h1>Registro de Cliente</h1>
     </header>
-    <form method="post" th:action="@{/}" th:object="" class="formularioHotel">
-        <input type="hidden" th:field="*{cliente.id}">
-        <!--    <input type="hidden" th:field="*{cliente.persona.id}">-->
+    <form method="post" th:action="@{/cliente/formCliente}" th:object="${cliente}" class="formularioHotel">
+        <input type="hidden" th:field="*{id}">
+        <input type="hidden" th:field="*{persona.id}">
         <div>
             <label for="nombre">Nombre: </label>
-            <input id="nombre" type="text" th:field="*{cliente.persona.nombre}" required/>
+            <input id="nombre" type="text" th:field="*{persona.nombre}" required/>
         </div>
 
         <div>
             <label for="apellido">Apellido: </label>
-            <input id="apellido" type="text" th:field="*{cliente.persona.apellido}" required/>
+            <input id="apellido" type="text" th:field="*{persona.apellido}" required/>
         </div>
 
         <div>
             <label for="dni">Dni: </label>
-            <input id="dni" type="text" th:field="*{cliente.persona.dni}" required/>
+            <input id="dni" type="text" th:field="*{persona.dni}" required/>
         </div>
 
         <div>
             <label for="direccion">Dirección: </label>
-            <input id="direccion" type="text" th:field="*{cliente.persona.direccion}"/>
+            <input id="direccion" type="text" th:field="*{persona.direccion}"/>
         </div>
 
         <div>
             <label for="tel">Teléfono: </label>
-            <input id="tel" type="text" th:field="*{cliente.persona.tel}" required/>
+            <input id="tel" type="text" th:field="*{persona.tel}" required/>
         </div>
 
         <div>
             <label for="mail">Correo electrónico: </label>
-            <input id="mail" type="text" th:field="*{cliente.persona.mail}" required/>
+            <input id="mail" type="text" th:field="*{persona.mail}" required/>
         </div>
 
         <div>
             <label for="fechaNacimiento">Fecha de nacimiento: </label>
             <input id="fechaNacimiento" type="date" placeholder="dd-mm-yyyy"
-                   th:field="*{cliente.persona.fechaNacimiento}" required/>
+                   th:field="*{persona.fechaNacimiento}" required/>
         </div>
 
         <div>
             <div>
-<!--                <select class="form-select" id="select">-->
-<!--                    <option selected>Seleccion la opcion</option>-->
-<!--                    <option value="1">Huesped</option>-->
-<!--                    <option value="2">Empleado</option>-->
-<!--                </select>-->
+                <!--                <select class="form-select" id="select">-->
+                <!--                    <option selected>Seleccion la opcion</option>-->
+                <!--                    <option value="1">Huesped</option>-->
+                <!--                    <option value="2">Empleado</option>-->
+                <!--                </select>-->
                 <div>
                     <button type="submit" class="btn btn-info" id="boton">Registrar</button>
                 </div>

@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8"/>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous"/>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+            crossorigin="anonymous"></script>
+
+    <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet"/>
+
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="/css/indexNavbar.css"/>
+    <link rel="stylesheet" href="/css/MenuAdmid.css"/>
+    <link rel="stylesheet" href="/css/indexReserva.css"/>
+    <link rel="stylesheet" href="/css/indexPie.css"/>
+
+    <title th:text="${titulo}">titulo</title>
+</head>
+
+<body>
+
+<!--Navbar del usuario-->
+<header th:replace="layout/nav-var :: header"></header>
+<!--Menu para el administrador-->
+<div th:replace="layout/menu-admin :: menu-admin"></div>
+<!--Fondo-->
+<div class="fondoimg">
+    <img class="imagen" src="../img/h5.jpg" alt="img de fondo"/>
+</div>
+
+<!--Para hacer la reserva-->
+<div class="fondo">
+    <header>
+        <h1>Reserva Online</h1>
+        <div th:if="${error != null}" >
+            <p th:text="${error}" ></p>
+        </div>
+    </header>
+    <form class="formularioHotel" th:action="@{/reserva/formReserva}" method="get">
+        <div class="datos_form">
+            <div class="mb-3 d-flex">
+                <div>
+                    <label for="entrada">Entrada: </label>
+                    <input id="entrada" type="date" name="entrada" placeholder="dd-mm-yyyy" required/>
+                </div>
+
+                <div>
+                    <label for="salida">Salida: </label>
+                    <input id="salida" type="date" name="salida" placeholder="dd-mm-yyyy" required/>
+                </div>
+            </div>
+
+            <div class="mb-3 d-flex">
+                <label for="adulto">Adulto(s): </label>
+                <input id="adulto" type="number" min="0" name="adulto" placeholder="Adulto(s)"/>
+
+                <label for="ninos">Niño(s): </label>
+                <input id="ninos" type="number" min="0" name="ninos" placeholder="Niño(s)"/>
+            </div>
+        </div>
+
+        <div class="d-flex justify-content-evenly">
+            <button type="submit" class="btn btn-primary boton">
+                ¡Quiero reservar!
+            </button>
+        </div>
+    </form>
+</div>
+
+<!--opciones de botones-->
+<div class="fondo2">
+    <p class="d-flex justify-content-evenly">
+        <a class="btn btn-primary boton" data-bs-toggle="collapse" href="#sobreNosotros" role="button"
+           aria-expanded="false" aria-controls="multiCollapseExample1">Sobre nosotros</a>
+        <button class="btn btn-primary boton" type="button" data-bs-toggle="collapse" data-bs-target="#habitacion"
+                aria-expanded="false" aria-controls="multiCollapseExample1 multiCollapseExample2">
+            Habitaciones
+        </button>
+        <button class="btn btn-primary boton" type="button" data-bs-toggle="collapse" data-bs-target="#servicio"
+                aria-expanded="false" aria-controls="multiCollapseExample1 multiCollapseExample2">
+            Servicio
+        </button>
+    </p>
+    <div class="row">
+        <div class="col">
+            <div class="collapse multi-collapse" id="sobreNosotros">
+                <div class="card card-body">
+                    <p>
+                    <div class="sobreNosotrosTitulo">
+                        Bienvenido al HotelEgg
+                    </div>
+
+                    <div class="sobreNosotrosFormato">
+                        Hotel de 5 estrellas fundado por Team Six, nos centramos en crear experiencias inolvidable en
+                        nuestros huespedes,
+                        enfocados en la cultura y ofreciendo los mejores servicios de calidad. Durante su estadia podra
+                        disfrutar
+                        de la pileta techada y de un gimasio completamente equipado, además puede contar con cochera y
+                        un pequeño bar ubicado
+                        en la zona de recepción.
+                    </div>
+
+                    <div class="sobreNosotrosSubtitulo">
+                        Satisfacción
+                    </div>
+
+                    <div class="sobreNosotrosFormato">
+                        Trabajamos para ofrecer servicios de calidad, anticipándonos a las necesidades de nuestros
+                        clientes.
+                    </div>
+
+                    <div class="sobreNosotrosSubtitulo">
+                        Calidad y precios
+                    </div>
+
+                    <div class="sobreNosotrosFormato">
+                        Excelente relación calidad y precio, factor más valorados por nuestros clientes. Nuestras
+                        tarifas incluyen
+                        desayuno hasta las 12:00 pm, minibar de bienvenida gratis y late check out 2 horas gratis.
+                        Es un beneficio exclusivo realizando las reservas a través de nuestra página web o llamando
+                        telefónico.
+                    </div>
+
+                    <div class="sobreNosotrosSubtitulo">
+                        Misión
+                    </div>
+                    <div class="sobreNosotrosFormato">
+                        Crear experiencias inolvidables ofreciendo a nuestros huéspedes un servicio de alojamiento y
+                        restauración con una excelente relación calidad-precio.
+                    </div>
+
+                    <div class="sobreNosotrosSubtitulo">
+                        Visión
+                    </div>
+                    <div class="sobreNosotrosFormato">
+                        Consolidarnos como una cadena hotelera sólida y de referencia a nivel nacional e internacional,
+                        fidelizando a nuestros huéspedes.
+                    </div>
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Habitaciones -->
+        <div class="col">
+            <div class="collapse multi-collapse" id="habitacion">
+                <div class="card card-body">
+                    <p>
+                    <div class="sobreNosotrosTitulo">
+                        Información de las habitaciones
+                    </div>
+                    <div class="sobreNosotrosFormato"></div>
+
+                    <div class="sobreNosotrosSubtitulo">
+                        Single
+                    </div>
+                    <div class="sobreNosotrosFormato">
+                        Ideal para disfrutar de tu estancia en XXXXX. Estas habitaciones de 30 m<sup>2</sup> están
+                        equipadas con una cama
+                        de 200x200 cm. o 2 camas de 125x200 cm., TV satélite, aire acondicionado, minibar, dispensadores
+                        de bebidas
+                        y balcón o terraza.
+                    </div>
+
+                    <div class="sobreNosotrosSubtitulo">
+                        Doble Estándar con vista al mar
+                    </div>
+                    <div class="sobreNosotrosFormato">
+                        Las habitaciones Doble con vista mar del HotelEgg XXXX son la estancia ideal para vivir unas
+                        auténticas
+                        vacaciones en XXXXX. Estas habitaciones de 30 m<sup>2</sup> cuentan con una cama de 200x200 cm.
+                        o 2 camas de 125x200
+                        cm., TV satélite, aire acondicionado, minibar, dispensadores de bebidas y balcón o terraza para
+                        disfrutar
+                        de las vistas mar Caribe.
+                    </div>
+
+                    <div class="sobreNosotrosSubtitulo">
+                        Suit Junior
+                    </div>
+
+                    <div class="sobreNosotrosFormato">
+                        En las Junior Suite con vista mar del HotelEgg XXXXX encontrarás todo lo necesario para vivir
+                        una estancia
+                        inolvidable. Estas habitaciones de 44 o 53 m<sup>2</sup> cuentan con una cama de 200x200 cm. o 2
+                        camas de 125x200 cm.,
+                        sofá-cama en la zona de estar, TV satélite, aire acondicionado, minibar y dispensadores de
+                        bebidas.
+                        Además, en el balcón o terraza podrás relajarte bajo la brisa del mar.
+
+                    </div>
+
+                    <div class="sobreNosotrosSubtitulo">
+                        Suit con vista al mar
+                    </div>
+
+                    <div class="sobreNosotrosFormato">
+                        Si quieres vivir unas vacaciones inolvidables con las mayores comodidades, las Suite con vista
+                        mar del
+                        HotelEgg son tu estancia perfecta. Estas habitaciones de 50 m<sup>2</sup> cuentan con una cama
+                        de 200x200 cm.,
+                        sofá en la zona de estar, TV satélite, aire acondicionado, minibar, dispensadores de bebidas y
+                        terraza
+                        con vistas al mar. Además, estas estancias están equipadas con una bañera de hidromasaje para
+                        que consigas
+                        el máximo relax.
+                    </div>
+
+
+                    </p>
+                    <!-- Modal de fotos -->
+                    <button id="modal" type="button" class="btn btn-primary botonpequeno" data-bs-toggle="modal"
+                            data-bs-target="#exampleModal">
+                        Ver fotografías
+                    </button>
+
+                    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                         aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">
+                                        Galería de fotos
+                                    </h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                            aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <!--Carrusel de fotos-->
+                                    <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+                                        <div class="carousel-indicators">
+                                            <button type="button" data-bs-target="#carouselExampleIndicators"
+                                                    data-bs-slide-to="0"
+                                                    class="active" aria-current="true" aria-label="Slide 1"></button>
+                                            <button type="button" data-bs-target="#carouselExampleIndicators"
+                                                    data-bs-slide-to="1"
+                                                    aria-label="Slide 2"></button>
+                                            <button type="button" data-bs-target="#carouselExampleIndicators"
+                                                    data-bs-slide-to="2"
+                                                    aria-label="Slide 3"></button>
+                                            <button type="button" data-bs-target="#carouselExampleIndicators"
+                                                    data-bs-slide-to="3"
+                                                    aria-label="Slide 4"></button>
+                                            <button type="button" data-bs-target="#carouselExampleIndicators"
+                                                    data-bs-slide-to="4"
+                                                    aria-label="Slide 5"></button>
+                                        </div>
+
+                                        <div class="carousel-inner">
+                                            <div class="carousel-item active">
+                                                <img
+                                                        src="../img/carrusel/HAB1.png"
+                                                        class="d-block w-100" alt="..."/>
+                                            </div>
+                                            <div class="carousel-item">
+                                                <img
+                                                        src="../img/carrusel/HAB2.png"
+                                                        class="d-block w-100" alt="..."/>
+                                            </div>
+                                            <div class="carousel-item">
+                                                <img
+                                                        src="../img/carrusel/HAB3.png"
+                                                        class="d-block w-100" alt="..."/>
+                                            </div>
+                                            <div class="carousel-item">
+                                                <img
+                                                        src="../img/carrusel/HAB4.png"
+                                                        class="d-block w-100" alt="..."/>
+                                            </div>
+                                            <div class="carousel-item">
+                                                <img
+                                                        src="../img/carrusel/HAB5.png"
+                                                        class="d-block w-100" alt="..."/>
+                                            </div>
+                                        </div>
+                                        <button class="carousel-control-prev" type="button"
+                                                data-bs-target="#carouselExampleIndicators"
+                                                data-bs-slide="prev">
+                                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                            <span class="visually-hidden">Previous</span>
+                                        </button>
+                                        <button class="carousel-control-next" type="button"
+                                                data-bs-target="#carouselExampleIndicators"
+                                                data-bs-slide="next">
+                                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                            <span class="visually-hidden">Next</span>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col">
+            <div class="collapse multi-collapse" id="servicio">
+                <div class="card card-body">
+                    <p>
+                    <div class="sobreNosotrosTitulo">
+                        Servicios del Hotel
+                    </div>
+
+                    <div class="sobreNosotrosFormato">
+                        Incluido dentro del servicio todo Incluido 24h podrás disfrutar de servicios tales como
+                        restaurante buffet principal
+                        y de los restaurantes temáticos que ofrecen una gran variedad de platos frescos, para satisfacer
+                        tu paladar con los
+                        mejores sabores. También encontrarás un sinfín de actividades que podrás realizar a diario junto
+                        con tu familia, amigos
+                        o pareja. Dispone de gimnasio, actividades y deportes acuáticos en la playa e incluso un campo
+                        de golf cerca del hotel.
+                        Entretenimiento diurno y nocturno para adultos así como espectáculos, música en vivo, discoteca
+                        y actividades para
+                        niños en el programa de HotelEgg.
+                    </div>
+                    </p>
+                    <!-- Modal de fotos -->
+                    <button id="modal" type="button" class="btn btn-primary botonpequeno" data-bs-toggle="modal"
+                            data-bs-target="#exampleModal2">
+                        Ver fotografías
+                    </button>
+
+                    <div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel"
+                         aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">
+                                        Galería de fotos
+                                    </h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                            aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <!--Carrusel de fotos-->
+                                    <div id="carouselExampleIndicators2" class="carousel slide" data-bs-ride="carousel">
+                                        <div class="carousel-indicators">
+                                            <button type="button" data-bs-target="#carouselExampleIndicators2"
+                                                    data-bs-slide-to="0"
+                                                    class="active" aria-current="true" aria-label="Slide 1"></button>
+                                            <button type="button" data-bs-target="#carouselExampleIndicators2"
+                                                    data-bs-slide-to="1"
+                                                    aria-label="Slide 2"></button>
+                                            <button type="button" data-bs-target="#carouselExampleIndicators2"
+                                                    data-bs-slide-to="2"
+                                                    aria-label="Slide 3"></button>
+                                            <button type="button" data-bs-target="#carouselExampleIndicators2"
+                                                    data-bs-slide-to="3"
+                                                    aria-label="Slide 4"></button>
+                                            <button type="button" data-bs-target="#carouselExampleIndicators2"
+                                                    data-bs-slide-to="4"
+                                                    aria-label="Slide 5"></button>
+                                        </div>
+
+                                        <div class="carousel-inner">
+                                            <div class="carousel-item active">
+                                                <img
+                                                        src="../img/carrusel/fitne.png"
+                                                        class="d-block w-100" alt="..."/>
+                                            </div>
+                                            <div class="carousel-item">
+                                                <img
+                                                        src="../img/carrusel/piscina.jpg"
+                                                        class="d-block w-100" alt="..."/>
+                                            </div>
+                                            <div class="carousel-item">
+                                                <img
+                                                        src="../img/carrusel/piscina2.jpg"
+                                                        class="d-block w-100" alt="..."/>
+                                            </div>
+                                            <div class="carousel-item">
+                                                <img
+                                                        src="../img/carrusel/recepcion.png"
+                                                        class="d-block w-100" alt="..."/>
+                                            </div>
+                                            <div class="carousel-item">
+                                                <img
+                                                        src="../img/carrusel/Gym.png"
+                                                        class="d-block w-100" alt="..."/>
+                                            </div>
+                                        </div>
+                                        <button class="carousel-control-prev" type="button"
+                                                data-bs-target="#carouselExampleIndicators2"
+                                                data-bs-slide="prev">
+                                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                            <span class="visually-hidden">Previous</span>
+                                        </button>
+                                        <button class="carousel-control-next" type="button"
+                                                data-bs-target="#carouselExampleIndicators2"
+                                                data-bs-slide="next">
+                                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                            <span class="visually-hidden">Next</span>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--Opiniones-->
+<div class="opinion">
+    <h1 class="comentario stilotitulo">Comentarios</h1>
+
+    <div class="posicion ">
+        <table class="posicion">
+            <!--<thead>
+              <tr>
+                <th>Usuario</th>
+                <th>Comentario</th>
+              </tr>
+            </thead>-->
+            <tbody>
+            <tr>
+                <td class="estiloComentarioUsuario">Cristian</td>
+                <td class="puntaje">10</td>
+                <td class="estiloComentario">Muy buena experiencia,el servicio a cuarto no se demora , la habitacion
+                    esta muy bien equipada con un baño privado
+                    y television.
+                </td>
+            </tr>
+
+            <tr>
+                <td class="estiloComentarioUsuario">Maria</td>
+                <td class="puntaje">8</td>
+                <td class="estiloComentario">Una linda estadia, el gimnasio esta bien equipado, el spa es muy relajante
+                    y la pileta techada es climatizada y
+                    se puede usar a cualquier hora del dia.
+                </td>
+            </tr>
+
+            <tr>
+                <td class="estiloComentarioUsuario">Lisandro</td>
+                <td class="puntaje">7</td>
+                <td class="estiloComentario">Comodidad y amplitud de la habitación, limpieza, ubicación, atención del
+                    personal muy cordial y profesional pero No estaba funcionando el aire acondicionado en el lugar del
+                    desayuno, estaba muy caluroso.
+                </td>
+            </tr>
+            <tr>
+                <td class="estiloComentarioUsuario">John</td>
+                <td class="puntaje">9</td>
+                <td class="estiloComentario">¡Todo perfecto! Hermoso, impecable y lindo. La atención fenomenal pero algo
+                    que no me gusto mucho fue la ubicación. Un poco alejado del centro.
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+
+    <form action="" method="post">
+        <div class="posicion ">
+            <textarea name="comentario" rows="7" cols="50"
+                      placeholder="Ingrese su comentario u opinión sobre nuestro hotel."></textarea>
+        </div>
+
+        <div class="posicion ubicacion">
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+                <label class="form-check-label" for="flexRadioDefault1">
+                    <img class="iconoestrella" src="../img/icons8-estrella-64.png" alt="">
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
+                <label class="form-check-label" for="flexRadioDefault2">
+                    <img class="iconoestrella" src="../img/icons8-estrella-64.png" alt="">
+                    <img class="iconoestrella" src="../img/icons8-estrella-64.png" alt="">
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
+                <label class="form-check-label" for="flexRadioDefault2">
+                    <img class="iconoestrella" src="../img/icons8-estrella-64.png" alt="">
+                    <img class="iconoestrella" src="../img/icons8-estrella-64.png" alt="">
+                    <img class="iconoestrella" src="../img/icons8-estrella-64.png" alt="">
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
+                <label class="form-check-label" for="flexRadioDefault2">
+                    <img class="iconoestrella" src="../img/icons8-estrella-64.png" alt="">
+                    <img class="iconoestrella" src="../img/icons8-estrella-64.png" alt="">
+                    <img class="iconoestrella" src="../img/icons8-estrella-64.png" alt="">
+                    <img class="iconoestrella" src="../img/icons8-estrella-64.png" alt="">
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
+                <label class="form-check-label" for="flexRadioDefault2">
+                    <img class="iconoestrella" src="../img/icons8-estrella-64.png" alt="">
+                    <img class="iconoestrella" src="../img/icons8-estrella-64.png" alt="">
+                    <img class="iconoestrella" src="../img/icons8-estrella-64.png" alt="">
+                    <img class="iconoestrella" src="../img/icons8-estrella-64.png" alt="">
+                    <img class="iconoestrella" src="../img/icons8-estrella-64.png" alt="">
+                </label>
+            </div>
+        </div>
+
+        <div>
+
+        </div>
+
+
+        <button type="submit" class="btn btn-primary boton posicionboton" data-bs-dismiss="modal">
+            Comentar
+        </button>
+    </form>
+
+
+</div>
+
+
+<!--Pie de pagina -->
+<footer>
+    <section>
+        <a href="#navBar">Ir al comienzo</a>
+        <br/><br/>
+        <p>CopyRight equipo 6, 2021/2022</p>
+    </section>
+
+    <p>
+    <div class="cartera">
+        <span style="font-family: Lobster, italic;font-size: 40px;"></span>
+        <div class="tarjeta tfacebook">
+            <a class="fa-facebook" target="_blank" href="https://www.facebook.com/">Facebook</a>
+        </div>
+        <div class="tarjeta tgoogle">
+            <a class="fa-google-plus" target="_blank" href="https://www.google.com/">Google</a>
+        </div>
+        <div class="tarjeta ttwitter">
+            <a class="fa-twitter" target="_blank" href="https://www.twitter.com/">Twitter</a>
+        </div>
+        <div class="tarjeta tinstagram">
+            <a class="fa-instagram" target="_blank" href="https://www.instagram.com/">Instagram</a>
+        </div>
+    </div>
+    </p>
+</footer>
+</body>
+
+</html>

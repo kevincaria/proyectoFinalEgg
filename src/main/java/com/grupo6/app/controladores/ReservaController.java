@@ -1,5 +1,6 @@
 package com.grupo6.app.controladores;
 
+import com.grupo6.app.entidades.Cliente;
 import com.grupo6.app.entidades.Habitacion;
 import com.grupo6.app.entidades.Persona;
 import com.grupo6.app.entidades.Reserva;
@@ -22,7 +23,7 @@ import static java.time.temporal.ChronoUnit.DAYS;
 
 @Controller
 @RequestMapping("/reserva")
-public class ReservaController {
+public class ReservaControler {
     @Autowired
     ReservaService servicioReserva;
 
@@ -36,9 +37,23 @@ public class ReservaController {
     ClienteService servicioCliente;
 
     @GetMapping("/listar")
-    public String listarReservas(Model model){
+    public String listarReservas(Model model, @RequestParam(required = false) String q){
+
+        if(q != null && !q.isEmpty()){
+            model.addAttribute("titulo","Listas de Reservas");
+
+            try {
+                model.addAttribute("reservas", servicioReserva.findAllByQ(q));
+                return "lista/reserva-lista";
+            } catch (ErrorServicio e) {
+               model.addAttribute("error",e.getMessage());
+                return "lista/reserva-lista";
+            }
+        }
+
         model.addAttribute("titulo","Listas de Reservas");
         model.addAttribute("reservas",servicioReserva.listarReservas());
+
         return "lista/reserva-lista";
     }
 
@@ -95,25 +110,26 @@ public class ReservaController {
             Persona persona = servicioPersona.buscarDniPersona(reserva.getCliente().getPersona().getDni());
             if (persona != null) {
                 reserva.setCliente(servicioCliente.buscarClientePorIdPersona(persona.getId()));
-              //  reserva.getCliente().setPersona(persona);
                 reserva.setAlta(false);
                 reserva.setHabitacion(servicioHabitacion.findByIdHabitacion(reserva.getHabitacion().getId()));
 
             } else {
-                List<Habitacion> habDisponibles = new ArrayList<>();
-                habDisponibles = servicioReserva.traerTodoFechasIngresoSalidaCantidad(reserva.getFechaIngreso(), reserva.getFechaSalida(), reserva.getCantidadPersonas());
-                model.addAttribute("habDisponibles", habDisponibles);
-                model.addAttribute("reserva", reserva);
-                model.addAttribute("Cliente", true);
-                return "formulario/Form-reserva";
+//                List<Habitacion> habDisponibles = new ArrayList<>();
+//                habDisponibles = servicioReserva.traerTodoFechasIngresoSalidaCantidad(reserva.getFechaIngreso(), reserva.getFechaSalida(), reserva.getCantidadPersonas());
+//                model.addAttribute("habDisponibles", habDisponibles);
+//                model.addAttribute("reserva", reserva);
+//                model.addAttribute("Cliente", true);
+                Cliente cliente = new Cliente();
+                persona = new Persona();
+                persona.setDni(reserva.getCliente().getPersona().getDni());
+                cliente.setPersona(persona);
+                model.addAttribute("cliente",cliente);
+                return "formulario/Form-Cliente";
             }
                 if (servicioReserva.validarReserva(reserva.getFechaIngreso(), reserva.getFechaSalida(), reserva.getCantidadPersonas(), reserva.getHabitacion().getCategoria())) {
 
                     servicioReserva.guardarEditarReserva(reserva);
-                    model.addAttribute("error", "holaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
                     return "redirect:/reserva/listar";
-
-
             }
         } catch (ErrorServicio e) {
 
@@ -145,11 +161,9 @@ public class ReservaController {
     }
 
     @GetMapping("/eliminar/{id}")
-    public String eliminarReserva(@PathVariable("id") Integer id, Model model){
+    public String eliminarReserva (@PathVariable("id") Integer id){
         servicioReserva.eliminarReserva(id);
-        model.addAttribute("msj","Se elimino la reserva id " + id);
         return "redirect:/reserva/listar";
     }
-
 
 }
