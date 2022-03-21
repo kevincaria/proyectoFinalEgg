@@ -4,18 +4,17 @@
 <head>
     <meta charset="UTF-8">
     <title th:text="${titulo}">Title</title>
-
 </head>
 <body>
 <header th:fragment="header">
     <div class="d-flex" id="navBar">
         <nav class="nav justify-content-end">
             <div class="container-fluid">
-                <a class="navbar-brand" th:href="@{/}"><img src="/img/logo.png" alt="logo" />HotelEgg</a>
+                <a class="navbar-brand" th:href="@{/}"><img src="/img/logo.png" alt="logo"/>HotelEgg</a>
                 <a class="navbar-brand" id="letras" href="#iniciosesion" role="button" data-bs-toggle="modal"
-                   data-bs-target="#exampleModal1"  th:href="@{/login}">Iniciar sesión</a>
-                <a class="navbar-brand"  th:href="@{/logout}">Cerrar sesión</a>
-                <a class="navbar-brand"  th:href="@{/Registro}">Registrarse</a>
+                   data-bs-target="#exampleModal1" th:href="@{/login}">Iniciar sesión</a>
+                <a class="navbar-brand" th:href="@{/logout}">Cerrar sesión</a>
+                <a class="navbar-brand" th:href="@{/Registro}">Registrarse</a>
             </div>
         </nav>
     </div>
@@ -30,16 +29,16 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <form >
+                    <form>
                         <div>
                             <label for="username">Nombre de usuario:</label>
-                            <br />
-                            <input id="username" type="text" name="username" placeholder="Nombre" required />
+                            <br/>
+                            <input id="username" type="text" name="username" placeholder="Nombre" required/>
                         </div>
                         <div>
                             <label for="password">Contraseña: </label>
-                            <br />
-                            <input id="password" type="password" name="password" placeholder="Contraseña" required />
+                            <br/>
+                            <input id="password" type="password" name="password" placeholder="Contraseña" required/>
                         </div>
 
                         <div class="modal-footer">

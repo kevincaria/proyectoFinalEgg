@@ -110,7 +110,6 @@ public class ReservaControler {
             Persona persona = servicioPersona.buscarDniPersona(reserva.getCliente().getPersona().getDni());
             if (persona != null) {
                 reserva.setCliente(servicioCliente.buscarClientePorIdPersona(persona.getId()));
-              //  reserva.getCliente().setPersona(persona);
                 reserva.setAlta(false);
                 reserva.setHabitacion(servicioHabitacion.findByIdHabitacion(reserva.getHabitacion().getId()));
 
