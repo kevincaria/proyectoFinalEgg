@@ -18,8 +18,6 @@ public class Nivel implements Serializable {
     @Column(name = "nivel_id", nullable = false)
     private Integer id;
 
-    private Integer ordinal;
-    
     private String nombre;
 
     private String ordinal;

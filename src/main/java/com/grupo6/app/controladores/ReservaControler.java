@@ -46,7 +46,7 @@ public class ReservaControler {
                 model.addAttribute("reservas", servicioReserva.findAllByQ(q));
                 return "lista/reserva-lista";
             } catch (ErrorServicio e) {
-               model.addAttribute("error",e.getMessage());
+                model.addAttribute("error",e.getMessage());
                 return "lista/reserva-lista";
             }
         }
@@ -126,10 +126,10 @@ public class ReservaControler {
                 model.addAttribute("cliente",cliente);
                 return "formulario/Form-Cliente";
             }
-                if (servicioReserva.validarReserva(reserva.getFechaIngreso(), reserva.getFechaSalida(), reserva.getCantidadPersonas(), reserva.getHabitacion().getCategoria())) {
+            if (servicioReserva.validarReserva(reserva.getFechaIngreso(), reserva.getFechaSalida(), reserva.getCantidadPersonas(), reserva.getHabitacion().getCategoria())) {
 
-                    servicioReserva.guardarEditarReserva(reserva);
-                    return "redirect:/reserva/listar";
+                servicioReserva.guardarEditarReserva(reserva);
+                return "redirect:/reserva/listar";
             }
         } catch (ErrorServicio e) {
 
